@@ -18,6 +18,8 @@ return {
       -- ansible = { "ansible_lint" },
     }
 
+    lint.linters.yamllint.args = { "-d", "relaxed", "--format", "parsable", "-" }
+
     -- Auto lint on save
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
