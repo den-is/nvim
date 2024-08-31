@@ -67,8 +67,27 @@ return {
       end,
     })
 
+    --- from nvim-ufo doc
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- capabilities.textDocument.foldingRange = {
+    --   dynamicRegistration = false,
+    --   lineFoldingOnly = true,
+    -- }
+    -- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+    -- for _, ls in ipairs(language_servers) do
+    --   require("lspconfig")[ls].setup({
+    --     capabilities = capabilities,
+    --     -- you can add other fields for setting up lsp server in this table
+    --   })
+    -- end
+
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- enabled folding managed by nvim-ufo
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
