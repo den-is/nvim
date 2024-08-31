@@ -12,6 +12,7 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
 
     telescope.setup({
       defaults = {
@@ -24,13 +25,38 @@ return {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-            ["<C-d>"] = actions.delete_buffer,
           },
         },
       },
       pickers = {
+        buffers = {
+          -- Delete open buffers from telescope list sing Ctrl-d
+          -- Select multiple buffers using Tab
+          attach_mappings = function(prompt_bufnr, map)
+            map({ "n", "i" }, "<C-d>", function()
+              local current_picker = action_state.get_current_picker(prompt_bufnr)
+              local selections = current_picker:get_multi_selection()
+
+              -- If no buffers are selected, delete the currently selected buffer
+              if vim.tbl_isempty(selections) then
+                local selection = action_state.get_selected_entry()
+                vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+              else
+                -- Delete all selected buffers
+                for _, selection in ipairs(selections) do
+                  vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+                end
+              end
+
+              actions.close(prompt_bufnr)
+            end)
+            return true
+          end,
+          previewer = false, -- Disable the previewer since C-d is used to scroll preview
+        },
         find_files = {
-          -- theme = "dropdown",
+          theme = "dropdown",
+          previewer = false,
           -- fd --hidden --no-ignore --exclude '\.git' --type f --color never
           find_command = {
             "rg",
