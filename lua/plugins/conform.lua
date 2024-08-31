@@ -13,10 +13,9 @@ return {
 
       format_on_save = {
         -- These options will be passed to conform.format()
+        lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
-        lsp_format = "fallback",
-        lsp_fallback = false,
       },
 
       formatters_by_ft = {
@@ -56,7 +55,6 @@ return {
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
       conform.format({
         lsp_format = "fallback",
-        lsp_fallback = false,
         async = false,
         timeout_ms = 1000,
       })
