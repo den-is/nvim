@@ -31,7 +31,17 @@ return {
       pickers = {
         find_files = {
           -- theme = "dropdown",
-          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--column" },
+          -- fd --hidden --no-ignore --exclude '\.git' --type f --color never
+          find_command = {
+            "rg",
+            "--files",
+            "--hidden",
+            "--no-ignore-vcs",
+            "--glob",
+            "!**/.git/*",
+            "--color",
+            "never",
+          },
         },
       },
     })
