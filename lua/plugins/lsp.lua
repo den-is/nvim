@@ -126,6 +126,10 @@ return {
               -- make the language server recognize "vim" global
               diagnostics = {
                 globals = { "vim" },
+                -- disable next warnings for LuaLS globally
+                -- or use annotations `---@diagnostic disable-next-line: missing-fields` or `---@diagnostic disable: missing-fields`
+                --
+                -- disable = { "missing-parameters", "missing-fields" },
               },
               telemetry = { enable = false },
               hint = { enable = true },
