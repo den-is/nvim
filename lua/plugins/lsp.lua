@@ -20,10 +20,33 @@ return {
     local keymap = vim.keymap
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-      callback = function(ev)
+      callback = function(args)
+        vim.diagnostic.config({
+          virtual_text = false,
+          signs = true,
+          underline = true,
+          update_in_insert = true,
+          severity_sort = false,
+        })
+
+        vim.api.nvim_create_autocmd("CursorHold", {
+          buffer = args.buf,
+          callback = function()
+            local opts = {
+              focusable = false,
+              close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+              border = "rounded",
+              source = "always",
+              prefix = " ",
+              scope = "cursor",
+            }
+            vim.diagnostic.open_float(nil, opts)
+          end,
+        })
+
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for docs on any of the below functions
-        local opts = { buffer = ev.buf, silent = true }
+        local opts = { buffer = args.buf, silent = true }
 
         -- set keybinds
         opts.desc = "Show LSP references"
@@ -66,20 +89,6 @@ return {
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
       end,
     })
-
-    --- from nvim-ufo doc
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities.textDocument.foldingRange = {
-    --   dynamicRegistration = false,
-    --   lineFoldingOnly = true,
-    -- }
-    -- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-    -- for _, ls in ipairs(language_servers) do
-    --   require("lspconfig")[ls].setup({
-    --     capabilities = capabilities,
-    --     -- you can add other fields for setting up lsp server in this table
-    --   })
-    -- end
 
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
