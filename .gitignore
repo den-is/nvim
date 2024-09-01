@@ -1,3 +1,6 @@
+*.bkp
+*.log
+tmp
 .envrc
 spell/
 
