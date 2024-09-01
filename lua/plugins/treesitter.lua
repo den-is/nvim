@@ -6,11 +6,18 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "RRethy/nvim-treesitter-endwise",
+    "nvim-treesitter/nvim-treesitter-context",
     "windwp/nvim-ts-autotag",
   },
   build = ":TSUpdate",
   config = function()
+    ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
+      sync_install = false,
+      highlight = { enable = true },
+      indent = { enable = true },
+      endwise = { enable = true },
+      autopairs = { enable = true },
       -- A list of parser names, or "all" (the listed parsers MUST always be installed)
       ensure_installed = {
         "bash",
@@ -26,22 +33,19 @@ return {
         "lua",
         "markdown",
         "markdown_inline",
-        "query",
         "python",
+        "query",
         "regex",
+        "ruby",
+        "sql",
         "terraform",
         "toml",
         "vim",
         "yaml",
-        "ruby",
       },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-      endwise = { enable = true },
-      autopairs = { enable = true },
     })
 
     require("nvim-ts-autotag").setup()
+    require("treesitter-context").setup()
   end,
 }
