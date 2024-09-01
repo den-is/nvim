@@ -125,6 +125,36 @@ return {
         })
       end,
 
+      -- lua ls specific configuration
+      -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
+      -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
+      -- https://microsoft.github.io/pyright/#/configuration
+      -- https://stackoverflow.com/questions/65847159/how-to-set-python-interpreter-in-neovim-for-python-language-server-depending-on/66559305#66559305
+      --
+      -- Example minimal pyrightconfig.json that worked for me:
+      -- {
+      --   "include": [
+      --     "./",
+      --   ]
+      -- }
+
+      ["pyright"] = function()
+        -- configure lua server (with special settings)
+        lspconfig["pyright"].setup({
+          capabilities = capabilities,
+          settings = {
+            ---- default settings https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly",
+              },
+            },
+          },
+        })
+      end,
+
       -- gopls specific configuration
       ["gopls"] = function()
         lspconfig["gopls"].setup({
