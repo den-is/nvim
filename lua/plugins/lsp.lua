@@ -1,7 +1,6 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/antosha417/nvim-lsp-file-operations
 -- https://github.com/hrsh7th/cmp-nvim-lsp
--- Config is influenced by Josean https://www.youtube.com/watch?v=6pAG3BHurdM
 -- :LspInfo - view configured LSP for current buffer
 return {
   "neovim/nvim-lspconfig",
@@ -41,7 +40,8 @@ return {
               border = "rounded",
               source = "always",
               prefix = " ",
-              scope = "cursor",
+              -- scope = "cursor",
+              scope = "line",
             }
             vim.diagnostic.open_float(nil, opts)
           end,
