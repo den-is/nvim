@@ -55,6 +55,12 @@ return {
         opts.desc = "Go to declaration"
         keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
+        --- Inlay hints should be enabled in LS for the language
+        -- opts.desc = "Enable Inlay hints"
+        -- keymap.set("n", "<leader>i", function()
+        --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        -- end, opts)
+
         opts.desc = "Show LSP definitions"
         keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
@@ -86,7 +92,7 @@ return {
         keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
         opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+        keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
       end,
     })
 

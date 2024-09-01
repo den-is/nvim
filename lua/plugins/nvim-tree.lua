@@ -47,14 +47,14 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open nvim-tree", noremap = true })
+    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Open nvim-tree", noremap = true })
     vim.keymap.set(
       "n",
       "<leader>ef",
       ":NvimTreeFindFileToggle<CR>",
       { desc = "Open nvim-tree at location of current file" }
     )
-    vim.keymap.set("n", "<leader>ec", ":NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
-    vim.keymap.set("n", "<leader>er", ":NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+    vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
+    vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end,
 }
