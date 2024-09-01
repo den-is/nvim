@@ -21,6 +21,8 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(args)
+        -- disable virtual_text diagnostic line side-by-side with the code line,
+        -- often does not fit on the screen. Show floating diagnostic work better
         vim.diagnostic.config({
           virtual_text = false,
           signs = true,
@@ -29,6 +31,7 @@ return {
           severity_sort = false,
         })
 
+        -- create autocmd to show floating diagnostic message on hover
         vim.api.nvim_create_autocmd("CursorHold", {
           buffer = args.buf,
           callback = function()
@@ -96,9 +99,9 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
+    -- used to enable autocompletion (assigned to every lsp server's config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
-    -- enabled folding managed by nvim-ufo
+    -- add folding capabilities (managed by nvim-ufo)
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
@@ -122,6 +125,18 @@ return {
         })
       end,
 
+      -- gopls specific configuration
+      ["gopls"] = function()
+        -- configure lua server (with special settings)
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+          settings = {
+            gopls = {
+              gofumpt = true,
+            },
+          },
+        })
+      end,
       -- lua ls specific configuration
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
@@ -132,7 +147,7 @@ return {
               -- make the language server recognize "vim" global
               diagnostics = {
                 globals = { "vim" },
-                -- disable next warnings for LuaLS globally
+                -- disable warnings for LuaLS globally
                 -- or use annotations `---@diagnostic disable-next-line: missing-fields` or `---@diagnostic disable: missing-fields`
                 --
                 -- disable = { "missing-parameters", "missing-fields" },
