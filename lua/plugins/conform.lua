@@ -31,7 +31,7 @@ return {
         json = { "prettier" },
         yaml = { "yamlfmt" },
         python = { "black", "ruff_organize_imports" },
-        go = { "goimports" },
+        go = { "gofumpt" },
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
       },

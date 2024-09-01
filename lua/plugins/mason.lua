@@ -43,25 +43,25 @@ return {
     mason_tool_installer.setup({
       -- check which linters are already available on system
       ensure_installed = {
-        -- Formatter
+        ---- Formatters
         "prettier",
         "stylua",
-        -- "shfmt",      -- system
-        -- Linters
-        -- "eslint_d",   -- system
-        -- "shellcheck", -- system
-        -- "tflint",     -- system
-        -- "yamllint",   -- system
-        -- "ruff",       -- system
-        -- "black",      -- system
-        -- Go ------------------
-        "gofumpt", -- Enforce a stricter format than gofmt
+        -- "shfmt",         -- system
+        ---- Linters
+        -- "eslint_d",      -- system
+        -- "shellcheck",    -- system
+        -- "tflint",        -- system
+        -- "yamllint",      -- system
+        -- "ruff",          -- system
+        -- "black",         -- system
+        ---- Go
+        -- "gofumpt",       -- system
         -- "goimports",     -- system
         -- "gomodifytags",  -- system
         -- "golangci-lint", -- system
-        -- "gotests", i     -- system -- go installation (probably VSCode/Vim requrested this)
-        -- "iferr",         -- system -- goiferr automatically inserts idiomatic error handling to given Go source code.
-        -- "impl",          -- system -- impl generates method stubs for implementing an interface.
+        -- "gotests", i     -- system
+        -- "iferr",         -- system
+        -- "impl",          -- system
       },
     })
   end,
