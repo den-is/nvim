@@ -127,7 +127,6 @@ return {
 
       -- gopls specific configuration
       ["gopls"] = function()
-        -- configure lua server (with special settings)
         lspconfig["gopls"].setup({
           capabilities = capabilities,
           settings = {
