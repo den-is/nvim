@@ -64,13 +64,34 @@ return {
       }),
 
       sources = cmp.config.sources({
-        { name = "luasnip" },
-        { name = "buffer" },
+        {
+          name = "path",
+          option = {
+            label_trailing_slash = true, -- Specify if directory names in the completion menu should include a trailing slash.
+            trailing_slash = true, -- Specify if completed directory names should include a trailing slash.
+          },
+        },
         { name = "nvim_lsp" }, -- dependency added in lsp.lua
-        { name = "path" },
+        { name = "luasnip" },
         { name = "calc" },
+        {
+          name = "buffer",
+          option = {
+            get_bufnrs = function()
+              --- to get only visible buffers
+              -- local bufs = {}
+              -- for _, win in ipairs(vim.api.nvim_list_wins()) do
+              --   bufs[vim.api.nvim_win_get_buf(win)] = true
+              -- end
+              -- return vim.tbl_keys(bufs)
+              --- to get all buffers
+              return vim.api.nvim_list_bufs()
+            end,
+          },
+        },
       }),
 
+      ---@diagnostic disable-next-line: missing-fields
       formatting = {
         -- fields = {},
         -- expandable_indicator = true,
@@ -95,9 +116,16 @@ return {
     -- also do not enable vim-native wildmenu
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
+      ---@diagnostic disable-next-line: missing-fields
       matching = { disallow_symbol_nonprefix_matching = false },
       sources = cmp.config.sources({
-        { name = "path" },
+        {
+          name = "path",
+          option = {
+            label_trailing_slash = true, -- Specify if directory names in the completion menu should include a trailing slash.
+            trailing_slash = true, -- Specify if completed directory names should include a trailing slash.
+          },
+        },
         { name = "cmdline" },
       }),
     })
