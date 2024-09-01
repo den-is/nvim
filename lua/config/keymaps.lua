@@ -8,11 +8,14 @@ map.set("n", "<leader>q", ":quit<CR>", { desc = "Quit buffer" })
 map.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- Check if have highlight enabled at all. See `:help hlsearch`
-map.set('n', '<Esc>', '<CMD>nohlsearch<CR>', { desc = "Clear search highlights" })
+map.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Indentations
 map.set("v", "<", "<gv")
 map.set("v", ">", ">gv")
+
+-- Select previous paste
+map.set("n", "gp", "`[v`]")
 
 -- increment/decrement numbers
 map.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
@@ -28,10 +31,10 @@ map.set("n", "<leader>sx", ":close<CR>", { desc = "Close current split" })
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-map.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-map.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-map.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-map.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Tabs management
 map.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
