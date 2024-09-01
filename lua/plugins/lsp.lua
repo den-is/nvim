@@ -58,11 +58,11 @@ return {
         opts.desc = "Go to declaration"
         keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-        --- Inlay hints should be enabled in LS for the language
-        -- opts.desc = "Enable Inlay hints"
-        -- keymap.set("n", "<leader>i", function()
-        --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        -- end, opts)
+        ---- Inlay hints should be enabled in LS for the language
+        opts.desc = "Enable Inlay hints"
+        keymap.set("n", "<leader>i", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, opts)
 
         opts.desc = "Show LSP definitions"
         keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
@@ -133,6 +133,37 @@ return {
           settings = {
             gopls = {
               gofumpt = true,
+              codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+              analyses = {
+                fieldalignment = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+              },
+              usePlaceholders = true,
+              completeUnimported = true,
+              staticcheck = true,
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+              semanticTokens = true,
             },
           },
         })
