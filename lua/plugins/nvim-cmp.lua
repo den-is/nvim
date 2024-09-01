@@ -66,9 +66,9 @@ return {
       sources = cmp.config.sources({
         { name = "luasnip" },
         { name = "buffer" },
+        { name = "nvim_lsp" }, -- dependency added in lsp.lua
         { name = "path" },
         { name = "calc" },
-        { name = "nvim_lsp" }, -- dependency added in lsp.lua
       }),
 
       formatting = {
@@ -92,14 +92,14 @@ return {
     })
 
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    -- also do not enable vim-native wildmenu
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
+      matching = { disallow_symbol_nonprefix_matching = false },
       sources = cmp.config.sources({
         { name = "path" },
-      }, {
         { name = "cmdline" },
       }),
-      matching = { disallow_symbol_nonprefix_matching = false },
     })
   end,
 }
