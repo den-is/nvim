@@ -17,6 +17,9 @@ map.set("v", ">", ">gv")
 -- Select previous paste
 map.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
 
+-- Select all
+map.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+
 -- increment/decrement numbers
 map.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 map.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
