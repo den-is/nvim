@@ -8,6 +8,7 @@ vim.opt.colorcolumn = "80,120" -- Visual line length guides
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.sidescrolloff = 5
 vim.opt.cursorline = true
+-- vim.opt.cursorcolumn = true -- lol. line+column=crosshair
 vim.opt.splitright = true -- natural window splitting
 vim.opt.splitbelow = true
 vim.opt.backspace = "indent,eol,start"
