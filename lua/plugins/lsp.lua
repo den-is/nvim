@@ -17,6 +17,7 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap
+    -- register keymaps only on LspAttach event
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(args)
@@ -41,7 +42,7 @@ return {
               source = "always",
               prefix = " ",
               -- scope = "cursor",
-              scope = "line",
+              scope = "line", -- pop-up diagnostic message on line instead of exact cursor position
             }
             vim.diagnostic.open_float(nil, opts)
           end,
