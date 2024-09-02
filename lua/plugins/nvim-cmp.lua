@@ -58,7 +58,8 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions TODO: what to do with mac using Ctrl-Space to change lanuages
+        --["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions TODO: what to do with mac using Ctrl-Space to change lanuages, i don't want to get rid of it. need some other shortcut
+        ["<C-S-x>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),

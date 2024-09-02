@@ -17,5 +17,9 @@ return {
   end,
   opts = {
     preset = "modern",
+    keys = {
+      scroll_down = "<c-d>",
+      scroll_up = "<c-u>",
+    },
   },
 }
