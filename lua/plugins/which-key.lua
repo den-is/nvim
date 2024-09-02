@@ -18,6 +18,8 @@ return {
   opts = {
     preset = "modern",
     keys = {
+      -- not working if neoscroll.vim is enabled
+      -- https://github.com/folke/which-key.nvim/issues/839
       scroll_down = "<c-d>",
       scroll_up = "<c-u>",
     },
