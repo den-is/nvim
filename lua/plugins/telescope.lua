@@ -29,9 +29,10 @@ return {
         },
       },
       pickers = {
-        diagnostics = {
-          bufnr = 0,
-        },
+        -- diagnostics = {
+        --   passed in key map
+        --   bufnr = 0,
+        -- },
         buffers = {
           -- Delete open buffers from telescope list sing Ctrl-d
           -- Select multiple buffers using Tab
@@ -86,7 +87,10 @@ return {
     map.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
-    map.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics for curent file" })
+    map.set("n", "<leader>fd", function()
+      builtin.diagnostics({ bufnr = 0 })
+    end, { desc = "Diagnostics for the current buffer" })
+    map.set("n", "<leader>fD", builtin.diagnostics, { desc = "Diagnostics from all open buffers" })
     map.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
   end,
 }
