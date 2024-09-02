@@ -46,10 +46,11 @@ map.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 map.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 map.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
 
--- Buffers management
--- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
-map.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
-map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+---- Buffers management
+---- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
+---- Tab strictly equals C-i so when you override Tab CTRL-I stops working
+-- map.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
+-- map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 
 -- Diagnostic keymaps
 -- TODO: figure out what is this. from neovim-kickstart
