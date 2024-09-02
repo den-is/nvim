@@ -23,5 +23,16 @@ return {
       scroll_down = "<c-d>",
       scroll_up = "<c-u>",
     },
+    spec = {
+      { "<leader>f", group = "Telescope" },
+      { "<leader>e", group = "File tree" },
+      { "<leader>h", group = "Git" },
+      { "<leader>x", group = "Dignostics" },
+      { "<leader>w", group = "Sessions" },
+    },
+    win = {
+      -- don't allow the popup to overlap with the cursor
+      no_overlap = true,
+    },
   },
 }

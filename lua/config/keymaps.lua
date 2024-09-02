@@ -3,16 +3,22 @@ vim.g.maplocalleader = " "
 
 local map = vim.keymap
 
+-- Remap for dealing with visual line wraps
+-- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
+map.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 map.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
 map.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 map.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
--- Check if have highlight enabled at all. See `:help hlsearch`
-map.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
-
--- Indentations
+-- Better Indentations
 map.set("v", "<", "<gv")
 map.set("v", ">", ">gv")
+
+-- paste over currently selected text without yanking it
+map.set("v", "p", '"_dp')
+map.set("v", "P", '"_dP')
 
 -- Select previous paste
 map.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
@@ -23,6 +29,9 @@ map.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 -- increment/decrement numbers
 map.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 map.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+
+-- Check if have highlight enabled at all. See `:help hlsearch`
+map.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Window management
 map.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
@@ -53,5 +62,4 @@ map.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in
 -- map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 
 -- Diagnostic keymaps
--- TODO: figure out what is this. from neovim-kickstart
--- map.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map.set("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
