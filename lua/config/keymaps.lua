@@ -1,59 +1,59 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local map = vim.keymap
+local keymap = vim.keymap
 
 -- Remap for dealing with visual line wraps
 -- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
-map.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
-map.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
-map.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
-map.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
-map.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
+keymap.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
+keymap.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
+keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- Better Indentations
-map.set("v", "<", "<gv")
-map.set("v", ">", ">gv")
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
 
 -- paste over currently selected text without yanking it
-map.set("v", "p", '"_dp')
-map.set("v", "P", '"_dP')
+keymap.set("v", "p", '"_dp')
+keymap.set("v", "P", '"_dP')
 
 -- Select previous paste
-map.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
+keymap.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
 
 -- Select all
-map.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- increment/decrement numbers
-map.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
-map.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 -- Check if have highlight enabled at all. See `:help hlsearch`
-map.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Window management
-map.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
-map.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
-map.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-map.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Tabs management
-map.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-map.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-map.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-map.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-map.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
 
 ---- Buffers management
 ---- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
@@ -61,5 +61,10 @@ map.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in
 -- map.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
 -- map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 
+keymap.set("n", "<leader>tw", function()
+  vim.api.nvim_notify("Toggling wrap", vim.log.levels.INFO, {})
+  vim.o.wrap = vim.o.wrap == false and true or false
+end, { desc = "Toggle wrap" })
+
 -- Diagnostic keymaps
-map.set("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+keymap.set("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })

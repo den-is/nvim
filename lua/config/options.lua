@@ -1,6 +1,3 @@
--- vim.opt if for things you would set in vimscript
--- vim.g  global vars. is for things you'd let
-
 -- UI -------------------------------------------------------------------------
 vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
@@ -53,7 +50,6 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
--- vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register (saw this line from Josean)
 
 -- Colors ---------------------------------------------------------------------
 vim.opt.termguicolors = true
@@ -66,6 +62,10 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.autoindent = true
 vim.opt.wrap = false
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.textwidth = 0
+vim.opt.wrapmargin = 0
 
 -- Search ---------------------------------------------------------------------
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
