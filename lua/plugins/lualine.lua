@@ -1,7 +1,10 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "AndreM222/copilot-lualine",
+  },
   event = "VeryLazy",
   config = function()
     local lualine = require("lualine")
@@ -18,6 +21,7 @@ return {
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
           },
+          "copilot",
           "encoding",
           "fileformat",
           "filetype",
