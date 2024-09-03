@@ -29,7 +29,7 @@ return {
         lua = { "stylua" },
         markdown = { "prettier" },
         json = { "prettier" },
-        yaml = { "yamlfmt" },
+        -- yaml = { "yamlfmt" },
         python = { "black", "ruff_organize_imports" },
         go = { "gofumpt" },
         sh = { "shfmt" },
@@ -43,12 +43,14 @@ return {
         stylua = {
           prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" }, -- 2 spaces instead of tab
         },
-        yamlfmt = {
-          prepend_args = {
-            "-formatter",
-            "indent=2,indentless_arrays=true,include_document_start=false,retain_line_breaks_single=true,eof_newline=true",
-          },
-        },
+        ---- Yamlfmt is buggy
+        ---- flattens array of arrays https://github.com/google/yamlfmt/issues/167
+        -- yamlfmt = {
+        --   prepend_args = {
+        --     "-formatter",
+        --     "indent=2,indentless_arrays=true,include_document_start=false,retain_line_breaks_single=true,eof_newline=true",
+        --   },
+        -- },
       },
     })
 
