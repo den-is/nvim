@@ -62,9 +62,10 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 
 keymap.set("n", "<leader>tw", function()
-  vim.api.nvim_notify("Toggling wrap", vim.log.levels.INFO, {})
-  vim.o.wrap = vim.o.wrap == false and true or false
-end, { desc = "Toggle wrap" })
+  local wrap_status = vim.o.wrap and "OFF" or "ON"
+  vim.api.nvim_notify("Toggling wrap " .. wrap_status, vim.log.levels.INFO, {})
+  vim.o.wrap = not vim.o.wrap
+end, { desc = "Toggle line wrap" })
 
 -- Diagnostic keymaps
 keymap.set("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
