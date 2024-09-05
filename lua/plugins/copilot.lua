@@ -4,6 +4,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
     event = "InsertEnter",
     build = ":Copilot auth",
     config = function()
@@ -37,6 +38,13 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
+    lazy = true,
+    event = "VeryLazy",
+    -- cmd = {
+    --   "CopilotChat",
+    --   "CopilotChatOpen",
+    --   "CopilotChatToggle",
+    -- },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
