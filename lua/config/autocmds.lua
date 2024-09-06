@@ -1,13 +1,11 @@
 local api = vim.api
 
-
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 api.nvim_create_autocmd("BufWritePre", {
   command = [[:%s/\s\+$//e]],
   group = TrimWhiteSpaceGrp,
 })
-
 
 -- Disable new line comment
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -16,7 +14,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
   desc = "Disable New Line Comment",
 })
-
 
 -- https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md
 -- expects a terraform filetype and not a tf filetype
@@ -28,7 +25,6 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "detect terraform filetype",
 })
 
-
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "terraform-vars",
   callback = function()
@@ -36,7 +32,6 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
   desc = "detect terraform vars",
 })
-
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
@@ -47,14 +42,12 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "fix terraform and hcl comment string",
 })
 
-
 api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
   desc = "highlight on yank",
 })
-
 
 api.nvim_create_autocmd("BufReadPost", {
   callback = function()
@@ -66,7 +59,6 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
   desc = "go to last loc when opening a buffer",
 })
-
 
 -- http://vimcasts.org/episodes/tabs-and-spaces/
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
@@ -90,4 +82,12 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt.expandtab = true
   end,
   desc = "Python Tabs configuration",
+})
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.txt", "*.md" },
+  callback = function()
+    vim.opt.spell = true
+  end,
+  desc = "Enable spell checking for certain file types",
 })

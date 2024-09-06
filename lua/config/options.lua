@@ -1,3 +1,7 @@
+-- useful debug commands
+-- :echo &runtimepath
+-- :new | put =split(&runtimepath, ',')
+
 -- UI -------------------------------------------------------------------------
 vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
@@ -73,6 +77,13 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true -- While typing a search command, show where the pattern, as it was typed so far, matches
 vim.opt.hlsearch = true -- Highlight all search matches
+
+-- Spellcheck -----------------------------------------------------------------
+-- more spell dictionaries can be found here:
+-- http://ftp.vim.org/pub/vim/runtime/spell/
+vim.opt.spelllang = "en_us,ru_ru"
+---- enabled individually per filetype by autocmd, or manually using <leader>ts
+-- vim.opt.spell = true
 
 -- Backups and undo history
 vim.opt.undofile = true -- Save undo history
