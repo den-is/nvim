@@ -18,7 +18,9 @@ return {
       -- ansible = { "ansible_lint" },
     }
 
-    lint.linters.yamllint.args = { "-d", "relaxed", "--format", "parsable", "-" }
+    -- setting `-d` will block config file (.yamllint) lookup
+    --lint.linters.yamllint.args = { "-d", "relaxed", "--format", "parsable", "-" }
+    lint.linters.yamllint.args = { "--format", "parsable", "-" }
 
     -- Auto lint on save
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
