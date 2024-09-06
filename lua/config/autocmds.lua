@@ -68,6 +68,7 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 4
     vim.opt.expandtab = false
+    -- do not display tab characters. UI becomes too noisy
     vim.opt.list = false
   end,
   desc = "Go Tabs configuration",

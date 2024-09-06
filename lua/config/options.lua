@@ -81,6 +81,8 @@ vim.opt.hlsearch = true -- Highlight all search matches
 -- Spellcheck -----------------------------------------------------------------
 -- more spell dictionaries can be found here:
 -- http://ftp.vim.org/pub/vim/runtime/spell/
+-- https://neovim.io/doc/user/spell.html#_spell-file-missing
+-- https://github.com/neovim/neovim/issues/7189
 vim.opt.spelllang = "en_us,ru_ru"
 ---- enabled individually per filetype by autocmd, or manually using <leader>ts
 -- vim.opt.spell = true
