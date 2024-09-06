@@ -26,17 +26,30 @@ return {
         svelte = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        lua = { "stylua" },
-        markdown = { "prettier" },
         json = { "prettier" },
-        -- yaml = { "yamlfmt" },
+        lua = { "stylua" },
         python = { "black", "ruff_organize_imports" },
         go = { "gofumpt" },
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
+        ---- flattens array of arrays https://github.com/google/yamlfmt/issues/167
+        -- yaml = { "yamlfmt" },
+        ----
+        ---- markdownfmt tested
+        ---- For some reason replaces spaces with tabs
+        ---- also splitting list items and list identifier with 4 spaces or tab
+        ---- I.e list item `- item` becomes `-    item`
+        ---- .editorconfig had influence on this, tab becomes 2 or 4 spaces
+        ---- but .editorconfig is was not able to make markdownfmt to use spaces instead of tabs
+        ----
+        ---- prettier works better and also uses .editorconfig in addition to .prettierrc and similar
+        markdown = { "prettier" },
       },
 
       formatters = {
+        -- prettier = {
+        --  prepend_args = { "--use-tabs", "false" },
+        -- },
         shfmt = {
           prepend_args = { "-i", "2" }, -- 2 spaces instead of tab
         },
