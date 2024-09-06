@@ -91,6 +91,12 @@ return {
       builtin.diagnostics({ bufnr = 0 })
     end, { desc = "Diagnostics for the current buffer" })
     map.set("n", "<leader>fD", builtin.diagnostics, { desc = "Diagnostics from all open buffers" })
+    map.set(
+      "n",
+      "<leader>fS",
+      builtin.spell_suggest,
+      { desc = "Lists spelling suggestions for the current word under the cursor" }
+    )
     map.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
   end,
 }
