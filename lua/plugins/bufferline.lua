@@ -6,6 +6,15 @@ return {
   opts = {
     options = {
       mode = "tabs",
+      -- numbers = "both",
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          text_align = "center",
+          separator = false,
+        },
+      },
     },
   },
 }
