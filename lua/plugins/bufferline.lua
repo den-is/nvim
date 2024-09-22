@@ -14,6 +14,12 @@ return {
           text_align = "center",
           separator = false,
         },
+        {
+          filetype = "undotree",
+          text = "Undo Tree",
+          text_align = "center",
+          separator = false,
+        },
       },
     },
   },
