@@ -11,7 +11,14 @@ return {
     event = { "CmdlineEnter" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     config = function()
-      require("go").setup()
+      require("go").setup({
+        lsp_cfg = false,
+        null_ls = false,
+        luasnip = false,
+        lsp_inlay_hints = {
+          enable = true,
+        },
+      })
     end,
   },
   -- https://github.com/olexsmir/gopher.nvim

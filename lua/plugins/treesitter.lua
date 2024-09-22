@@ -1,12 +1,14 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 -- https://github.com/RRethy/nvim-treesitter-endwise
 -- https://github.com/windwp/nvim-ts-autotag
+-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "RRethy/nvim-treesitter-endwise",
     "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
     "windwp/nvim-ts-autotag",
   },
   build = ":TSUpdate",

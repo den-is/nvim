@@ -46,6 +46,7 @@ return {
         ---- Formatters
         "prettier",
         "stylua",
+        -- I already have most of these install on my system, outside NVIM:
         -- "shfmt",         -- system
         ---- Linters
         -- "eslint_d",      -- system
