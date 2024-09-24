@@ -116,17 +116,16 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      -- configure language servers
-      mason_lspconfig.setup_handlers({
+      local handlers = {
 
-        -- generic language server configuration
+        -- Default configuration for Language Servers
         function(server_name)
           lspconfig[server_name].setup({
             capabilities = capabilities,
           })
         end,
 
-        -- lua ls specific configuration
+        -- Pyright configuration
         -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
         -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
         -- https://microsoft.github.io/pyright/#/configuration
@@ -141,7 +140,7 @@ return {
 
         ["pyright"] = function()
           -- configure lua server (with special settings)
-          lspconfig["pyright"].setup({
+          lspconfig.pyright.setup({
             capabilities = capabilities,
             settings = {
               ---- default settings https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua
@@ -156,9 +155,9 @@ return {
           })
         end,
 
-        -- gopls specific configuration
+        -- gopls configuration
         ["gopls"] = function()
-          lspconfig["gopls"].setup({
+          lspconfig.gopls.setup({
             capabilities = capabilities,
             settings = {
               gopls = {
@@ -198,10 +197,10 @@ return {
             },
           })
         end,
-        -- lua ls specific configuration
+        -- lua_ls configuration
         ["lua_ls"] = function()
           -- configure lua server (with special settings)
-          lspconfig["lua_ls"].setup({
+          lspconfig.lua_ls.setup({
             capabilities = capabilities,
             settings = {
               Lua = {
@@ -225,7 +224,7 @@ return {
         -- YAML LS configuration
         ["yamlls"] = function()
           -- configure lua server (with special settings)
-          lspconfig["yamlls"].setup({
+          lspconfig.yamlls.setup({
             capabilities = capabilities,
             settings = {
               yaml = {
@@ -263,9 +262,13 @@ return {
             },
           })
         end,
-      })
+      }
+
+      -- setup handlers for each lsp server
+      mason_lspconfig.setup_handlers(handlers)
     end,
   },
+  -- https://github.com/nvimdev/lspsaga.nvim
   {
     "nvimdev/lspsaga.nvim",
     dependencies = {
