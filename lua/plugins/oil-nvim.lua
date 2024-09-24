@@ -5,7 +5,7 @@ return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-    default_file_explorer = false,
+    default_file_explorer = false, -- using nvim-tree
     view_options = {
       show_hidden = true,
     },

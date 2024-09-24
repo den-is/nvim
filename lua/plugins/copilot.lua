@@ -1,6 +1,7 @@
 -- https://github.com/zbirenbaum/copilot.lua
 -- https://github.com/zbirenbaum/copilot-cmp
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+-- shortcuts alternative https://github.com/orgs/community/discussions/45434
 return {
   {
     "zbirenbaum/copilot.lua",
