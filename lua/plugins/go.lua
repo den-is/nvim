@@ -16,7 +16,8 @@ return {
         null_ls = false,
         luasnip = false,
         lsp_inlay_hints = {
-          enable = true,
+          -- controlled in lspconfig configuration, <leader>i to toggle hints
+          enable = false,
         },
       })
     end,
