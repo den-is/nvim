@@ -37,6 +37,7 @@ return {
         "terraformls",
         "yamlls",
         "pyright",
+        "vimls",
       },
     })
 
