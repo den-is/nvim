@@ -1,5 +1,6 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 -- https://github.com/RRethy/nvim-treesitter-endwise
+-- https://github.com/nvim-treesitter/nvim-treesitter-context
 -- https://github.com/windwp/nvim-ts-autotag
 -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 return {
@@ -34,7 +35,9 @@ return {
         "hcl",
         "html",
         "javascript",
-        "json",
+        "json5", -- https://json5.org
+        --"json",
+        --"jsonnet",
         "jsonc",
         "lua",
         "diff",

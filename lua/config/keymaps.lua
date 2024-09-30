@@ -8,6 +8,8 @@ local keymap = vim.keymap
 keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
+keymap.set("n", "x", '"_x', { desc = "Delete character and don't yank" })
+
 keymap.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
 keymap.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
@@ -57,9 +59,9 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 ---- Buffers management
 ---- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
----- Tab strictly equals C-i so when you override Tab CTRL-I stops working
--- map.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
--- map.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+---- Tab strictly equals C-i so when you override Tab, CTRL-I stops working if no option supplied
+-- keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
+-- keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
 
 keymap.set("n", "<leader>tw", function()
   local status = vim.o.wrap and "OFF" or "ON"
