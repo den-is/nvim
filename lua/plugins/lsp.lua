@@ -18,12 +18,13 @@ return {
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
       local keymap = vim.keymap
+
       -- register keymaps only on LspAttach event
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
-          -- disable virtual_text diagnostic line side-by-side with the code line,
-          -- often does not fit on the screen. Show floating diagnostic work better
+          -- Disabling virtual_text diagnostic line side-by-side with the code line
+          -- Often does not fit on the screen. Floating window with diagnostics works better
           vim.diagnostic.config({
             virtual_text = false,
             signs = true,
@@ -60,7 +61,7 @@ return {
           opts.desc = "Go to declaration"
           keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-          ---- Inlay hints should be enabled in LS for the language
+          ---- Inlay Hints are provided by Language Servers and should be enabled there
           opts.desc = "Enable Inlay hints"
           keymap.set("n", "<leader>i", function()
             local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
