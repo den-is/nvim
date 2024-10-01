@@ -1,7 +1,10 @@
 -- https://github.com/kevinhwang91/nvim-ufo
+-- https://neovim.io/doc/user/fold.html
 -- za - toggle fold
 -- zc - close fold
 -- zo - open fold
+-- zR - open all folds
+-- zM - close all folds
 return {
   "kevinhwang91/nvim-ufo",
   event = "UIEnter", -- needed for folds to load in time and comments closed
@@ -16,6 +19,7 @@ return {
     -- them to 99.
     vim.opt.foldlevel = 99
     vim.opt.foldlevelstart = 99
+    vim.opt.foldenable = true
   end,
   config = function()
     local ufo = require("ufo")
