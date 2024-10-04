@@ -121,15 +121,7 @@ return {
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",
             ["ac"] = "@class.outer",
-            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-            -- Or you can define your own textobjects like this
-            ["iF"] = {
-              python = "(function_definition) @function",
-              cpp = "(function_definition) @function",
-              c = "(function_definition) @function",
-              java = "(method_declaration) @function",
-              go = "(method_declaration) @function",
-            },
+            ["ic"] = "@class.inner",
           },
         },
 
