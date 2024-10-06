@@ -93,3 +93,8 @@ vim.opt.errorbells = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
+
+-- markdown -------------------------------------------------------------------
+-- https://www.reddit.com/r/neovim/comments/z2lhyz/when_i_insert_tab_it_expands_to_4_spaces_and_not/
+-- https://github.com/neovim/neovim/blob/d25889ab7607918a152bab5ce4d14e54575ec11b/runtime/ftplugin/markdown.vim
+vim.g.markdown_recommended_style = 0
