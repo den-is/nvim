@@ -53,9 +53,9 @@ return {
       startify.button("e", "New file", "<CMD>ene <CR>"),
       startify.button("q", "Quit Neovim", "<CMD>qa<CR>"),
       startify.button("SPC e", "Open file-explorer sidebar", "<CMD>NvimTreeToggle<CR>"),
-      startify.button("SPC ff", "File fuzzy-find in cwd", "<CMD>Telescope find_files<CR>"),
-      startify.button("SPC fs", "Word search in cwd", "<CMD>Telescope live_grep<CR>"),
-      startify.button("SPC wr", "Restore session for cwd", "<CMD>SessionRestore<CR>"),
+      startify.button("SPC ff", "File fuzzy-find in CWD", "<CMD>Telescope find_files<CR>"),
+      startify.button("SPC fs", "Word search in CWD", "<CMD>Telescope live_grep<CR>"),
+      startify.button("SPC wr", "Restore session for CWD", "<CMD>SessionRestore<CR>"),
     }
 
     local alpha = require("alpha")

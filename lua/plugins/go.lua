@@ -1,5 +1,5 @@
+-- https://github.com/ray-x/go.nvim
 return {
-  -- https://github.com/ray-x/go.nvim
   {
     "ray-x/go.nvim",
     dependencies = {
