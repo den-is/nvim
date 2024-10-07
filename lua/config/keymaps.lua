@@ -22,6 +22,10 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "p", '"_dp')
 keymap.set("v", "P", '"_dP')
 
+-- do not yank changed text - send to black hole
+keymap.set("n", "c", '"_c')
+keymap.set("n", "C", '"_C')
+
 -- Select previous paste
 keymap.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
 
