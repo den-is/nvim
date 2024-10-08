@@ -8,23 +8,22 @@ local keymap = vim.keymap
 keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
-keymap.set("n", "x", '"_x', { desc = "Delete character and don't yank" })
-
 keymap.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
 keymap.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
--- Better Indentations
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
+-- Better Indentations - continuous
+keymap.set("v", "<", "<gv", { desc = "Shift left in visual mode without going to Normal after first indent" })
+keymap.set("v", ">", ">gv", { desc = "Shift right in visual mode without going to Normal after first indent" })
 
 -- paste over currently selected text without yanking it
-keymap.set("v", "p", '"_dp')
-keymap.set("v", "P", '"_dP')
+keymap.set("v", "p", '"_dp', { desc = "Put the text [from register x] after the cursor, over selected text" })
+keymap.set("v", "P", '"_dP', { desc = "Put the text [from register x] before the cursor, over selected text" })
 
--- do not yank changed text - send to black hole
-keymap.set("n", "c", '"_c')
-keymap.set("n", "C", '"_C')
+keymap.set("n", "c", '"_c', { desc = "Change{motion} character and don't yank old text" })
+keymap.set("n", "C", '"_C', { desc = "Change to end of line and don't yank old text" })
+
+keymap.set("n", "x", '"_x', { desc = "Delete character and don't yank" })
 
 -- Select previous paste
 keymap.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
