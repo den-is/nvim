@@ -8,7 +8,6 @@ return {
     local harpoon = require("harpoon")
     harpoon:setup()
 
-    -- conflicts with treesitter-textobjects shortcut - "swap function args"
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
     end, { desc = "Harpoon append" })

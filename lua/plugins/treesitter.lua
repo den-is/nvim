@@ -147,15 +147,16 @@ return {
         },
 
         -- swap for example funtion args or params
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>a"] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>A"] = "@parameter.inner",
-          },
-        },
+        -- default keymap conflicts with Harpoon2 "append" action
+        -- swap = {
+        --   enable = true,
+        --   swap_next = {
+        --     ["<leader>a"] = "@parameter.inner",
+        --   },
+        --   swap_previous = {
+        --     ["<leader>A"] = "@parameter.inner",
+        --   },
+        -- },
       },
     })
 

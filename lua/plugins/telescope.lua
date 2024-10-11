@@ -34,6 +34,8 @@ return {
         --   bufnr = 0,
         -- },
         buffers = {
+          show_all_buffers = true,
+          sort_mru = true,
           -- Delete open buffers from telescope list sing Ctrl-d
           -- Select multiple buffers using Tab
           attach_mappings = function(prompt_bufnr, map)

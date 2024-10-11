@@ -23,7 +23,7 @@ keymap.set("v", "P", '"_dP', { desc = "Put the text [from register x] before the
 keymap.set("n", "c", '"_c', { desc = "Change{motion} character and don't yank old text" })
 keymap.set("n", "C", '"_C', { desc = "Change to end of line and don't yank old text" })
 
-keymap.set("n", "x", '"_x', { desc = "Delete character and don't yank" })
+keymap.set({ "n", "v" }, "x", '"_x', { desc = "Delete character and don't yank" })
 
 -- Select previous paste
 keymap.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
