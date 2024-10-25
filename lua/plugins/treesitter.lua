@@ -3,6 +3,8 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
 -- https://github.com/windwp/nvim-ts-autotag
 -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+-- use playground to test treesitter queries:
+-- https://tree-sitter.github.io/tree-sitter/playground
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
@@ -85,29 +87,6 @@ return {
           },
         },
 
-        keymaps = {
-          ["iL"] = {
-            -- you can define your own textobjects directly here
-            go = "(function_definition) @function",
-          },
-          -- or you use the queries from supported languages with textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["aC"] = "@class.outer",
-          ["iC"] = "@class.inner",
-          ["ac"] = "@conditional.outer",
-          ["ic"] = "@conditional.inner",
-          ["ae"] = "@block.outer",
-          ["ie"] = "@block.inner",
-          ["al"] = "@loop.outer",
-          ["il"] = "@loop.inner",
-          ["is"] = "@statement.inner",
-          ["as"] = "@statement.outer",
-          ["ad"] = "@comment.outer",
-          ["am"] = "@call.outer",
-          ["im"] = "@call.inner",
-        },
-
         select = {
           enable = true,
           -- Automatically jump forward to textobj, similar to targets.vim
@@ -120,8 +99,24 @@ return {
             -- You can use the capture groups defined in textobjects.scm
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
+            ["aC"] = "@class.outer",
+            ["iC"] = "@class.inner",
+            ["ac"] = "@conditional.outer",
+            ["ic"] = "@conditional.inner",
+            ["ae"] = "@block.outer",
+            ["ie"] = "@block.inner",
+            ["al"] = "@loop.outer",
+            ["il"] = "@loop.inner",
+            ["is"] = "@statement.inner",
+            ["as"] = "@statement.outer",
+            ["ad"] = "@comment.outer",
+            ["am"] = "@call.outer",
+            ["im"] = "@call.inner",
+            -- deprecated definition style. use textobjects.scm
+            -- ["iL"] = {
+            --   -- you can define your own textobjects directly here
+            --   go = "(function_definition) @function",
+            -- },
           },
         },
 
