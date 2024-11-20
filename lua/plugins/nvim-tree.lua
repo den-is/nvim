@@ -9,7 +9,6 @@ return {
   },
   init = function()
     -- disable netrw at the very start of your init.lua
-    -- after disabling this nvim started to remember last open file (or maybe this is auto session???)
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
   end,
