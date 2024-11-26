@@ -2,7 +2,7 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 return {
   "williamboman/mason.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy", -- vim fails to load LSPs if Mason is not loaded early enough
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
