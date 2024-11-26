@@ -33,14 +33,18 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
+    local auto_select = true
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
 
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        -- completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
       },
+
+      preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
 
       snippet = {
         expand = function(args)
@@ -54,14 +58,18 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-        ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), -- previous suggestion
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), -- next suggestion
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        -- ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions TODO: what to do with mac using Ctrl-Space to change languages, i don't want to get rid of it. need some other shortcut
-        ["<C-S-x>"] = cmp.mapping.complete(), -- show completion suggestions
+
+        -- show completion suggestions
+        -- On MacOS <C-Space> is used by the system to change the input language. Should use different keybinding
+        -- ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-S-x>"] = cmp.mapping.complete(),
+
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
       }),
 
       sources = cmp.config.sources({
