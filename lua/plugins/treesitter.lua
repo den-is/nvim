@@ -41,6 +41,7 @@ return {
         --"json",
         --"jsonnet",
         "jsonc",
+        "just",
         "lua",
         "diff",
         "gitcommit",
