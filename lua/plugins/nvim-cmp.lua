@@ -111,7 +111,7 @@ return {
       },
     })
 
-    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore)
+    -- Use buffer source for  searches using `/` and `?` (will not work if `native_menu` is enabled)
     -- Native-menu https://github.com/hrsh7th/nvim-cmp/discussions/1071
     -- by default nvim-cmp is using `custom` native-menu
     cmp.setup.cmdline({ "/", "?" }, {
