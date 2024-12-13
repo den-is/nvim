@@ -1,5 +1,5 @@
 -- https://github.com/zbirenbaum/copilot.lua
--- https://github.com/zbirenbaum/copilot-cmp
+-- https://github.com/zbirenbaum/copilot-cmp -- disable auto-suggest and rely on cmp, or enable auto-suggestions with ghost-text
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 -- shortcuts alternative https://github.com/orgs/community/discussions/45434
 return {
@@ -38,7 +38,8 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    enabled = true,
+    branch = "main",
     lazy = true,
     event = "VeryLazy",
     -- cmd = {
