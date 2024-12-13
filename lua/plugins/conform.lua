@@ -47,15 +47,18 @@ return {
       },
 
       formatters = {
-        -- prettier = {
-        --  prepend_args = { "--use-tabs", "false" },
-        -- },
+        black = {
+          prepend_args = { "--line-length", "99" },
+        },
         shfmt = {
-          prepend_args = { "-i", "2" }, -- 2 spaces instead of tab
+          prepend_args = { "--indent", "2" }, -- 2 spaces instead of tab
         },
         stylua = {
           prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" }, -- 2 spaces instead of tab
         },
+        -- prettier = {
+        --  prepend_args = { "--use-tabs", "false" },
+        -- },
         ---- Yamlfmt is buggy
         ---- flattens array of arrays https://github.com/google/yamlfmt/issues/167
         -- yamlfmt = {
