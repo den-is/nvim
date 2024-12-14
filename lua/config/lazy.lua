@@ -18,21 +18,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
   spec = {
-    {
-      "LazyVim/LazyVim",
-      -- do not import the default plugins provided by Lazy.nvim
-      -- we use our own plugins
-      -- import = "lazyvim.plugins"
-    },
     -- importing our plugins defined in "plugins" directory
     { import = "plugins" },
   },
 
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  -- install = {
-  --   colorscheme = { "habamax" }
-  -- },
+  install = {
+    -- colorscheme that will be used when installing plugins.
+    colorscheme = { "gruvbox" },
+  },
 
   -- automatically check for plugin updates
   checker = {
