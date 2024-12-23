@@ -34,26 +34,29 @@ return {
       },
       filters = {
         dotfiles = false,
+        git_ignored = false,
+        -- vim regex patterns list for files/dirs to ignore
+        -- https://vimregex.cm
         custom = {
-          ".DS_Store",
+          "\\.DS_Store",
           "__pycache__",
-          "pyc",
-          ".git",
+          "^.*\\.pyc$",
+          "^\\.git$",
         },
       },
       git = {
-        ignore = false,
+        enable = true,
       },
     })
 
-    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Open nvim-tree", noremap = true })
+    vim.keymap.set("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { desc = "Open nvim-tree", noremap = true })
     vim.keymap.set(
       "n",
       "<leader>ef",
-      ":NvimTreeFindFileToggle<CR>",
+      "<CMD>NvimTreeFindFileToggle<CR>",
       { desc = "Open nvim-tree at location of current file" }
     )
-    vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
-    vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+    vim.keymap.set("n", "<leader>ec", "<CMD>NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
+    vim.keymap.set("n", "<leader>er", "<CMD>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end,
 }
