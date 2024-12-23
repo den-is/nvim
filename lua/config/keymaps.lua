@@ -3,14 +3,14 @@ vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
 
--- Remap for dealing with visual line wraps
--- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
-keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
-keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-
 keymap.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
 keymap.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
+
+-- Remap for dealing with visual line wraps
+-- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
+keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Better Indentations - continuous
 keymap.set("v", "<", "<gv", { desc = "Shift left in visual mode without going to Normal after first indent" })
@@ -20,10 +20,11 @@ keymap.set("v", ">", ">gv", { desc = "Shift right in visual mode without going t
 keymap.set("v", "p", '"_dp', { desc = "Put the text [from register x] after the cursor, over selected text" })
 keymap.set("v", "P", '"_dP', { desc = "Put the text [from register x] before the cursor, over selected text" })
 
+-- breaks `xp` combination - swapping two adjacent characters
+keymap.set({ "n", "v" }, "x", '"_x', { desc = "Delete character and don't yank" })
+
 keymap.set("n", "c", '"_c', { desc = "Change{motion} character and don't yank old text" })
 keymap.set("n", "C", '"_C', { desc = "Change to end of line and don't yank old text" })
-
-keymap.set({ "n", "v" }, "x", '"_x', { desc = "Delete character and don't yank" })
 
 -- Select previous paste
 keymap.set("n", "gp", "`[v`]", { desc = "Select previous paste" })
