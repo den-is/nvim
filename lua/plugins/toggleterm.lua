@@ -8,6 +8,13 @@ return {
   config = function()
     local toggleterm = require("toggleterm")
     toggleterm.setup({
+      open_mapping = "<C-n>",
+      autochdir = true,
+      start_in_insert = true,
+      direction = "horizontal", -- 'vertical' | 'horizontal' | 'tab' | 'float',
+      shade_terminals = true,
+      shading_factor = "-10", -- the percentage by which to lighten dark terminal background, default: -30
+      persist_size = true,
       -- size can be a number or function which is passed the current terminal
       size = function(term)
         if term.direction == "horizontal" then
@@ -16,26 +23,17 @@ return {
           return vim.o.columns * 0.4
         end
       end,
-      open_mapping = "<C-n>",
-      start_in_insert = true,
-      persist_size = true,
-      shade_terminals = true,
-      shading_factor = "-10", -- the percentage by which to lighten dark terminal background, default: -30
-      direction = "horizontal", -- 'vertical' | 'horizontal' | 'tab' | 'float',
-      autochdir = true,
     })
 
-    local buf_map = vim.api.nvim_buf_set_keymap
-
-    local opts = { noremap = true }
-
     -- Better navigation to and from terminal
+    local buf_map = vim.api.nvim_buf_set_keymap
+    local map_opts = { noremap = true }
     local set_terminal_keymaps = function()
-      buf_map(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-      buf_map(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-      buf_map(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-      buf_map(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-      buf_map(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+      buf_map(0, "t", "<esc>", [[<C-\><C-n>]], map_opts)
+      buf_map(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], map_opts)
+      buf_map(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], map_opts)
+      buf_map(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], map_opts)
+      buf_map(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], map_opts)
     end
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.api.nvim_create_autocmd("TermOpen", {
@@ -47,6 +45,7 @@ return {
       desc = "Mappings for navigation with a terminal",
     })
 
+    -- Example Custom Neovim Commands - shortcuts to run predefined commands in the terminal
     vim.api.nvim_create_user_command("Exec", function(opts)
       require("toggleterm").exec(opts.args)
     end, { desc = "Run TermExec with the given command", nargs = "*" })
