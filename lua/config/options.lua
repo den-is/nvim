@@ -50,10 +50,40 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 -- Sync clipboard between OS and Neovim ---------------------------------------
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+--  See `:h clipboard`
 vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard:append("unnamedplus")
 end)
+
+-- More info on copying over SSH
+-- https://neovim.io/doc/user/provider.html#clipboard-osc52
+-- https://github.com/neovim/neovim/discussions/28010A
+-- https://www.reddit.com/r/neovim/comments/1d6wreh/tips_for_debugging_osc_52_not_detected_in_neovim/
+
+-- Tmux is its own clipboard provider which directly works.
+-- https://github.com/tmux/tmux/wiki/Clipboard#the-clipboard
+local is_tmux_session = vim.env.TERM_PROGRAM == "tmux"
+
+if vim.env.SSH_TTY and not is_tmux_session then
+  local function paste()
+    return {
+      vim.fn.split(vim.fn.getreg(""), "\n"),
+      vim.fn.getregtype(""),
+    }
+  end
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    -- use neovim native paste functionality
+    paste = {
+      ["+"] = paste,
+      ["*"] = paste,
+    },
+  }
+end
 
 -- Colors ---------------------------------------------------------------------
 vim.opt.termguicolors = true
