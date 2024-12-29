@@ -89,7 +89,10 @@ end
 
 -- Colors ---------------------------------------------------------------------
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
+-- :h background
+-- determine background automatically. depends on terminal GUI/terminal background
+-- Useful for myself when my terminal is dark but VSCode and its terminal are light
+-- vim.opt.background = "dark"
 
 -- Tab and Indentation --------------------------------------------------------
 vim.opt.expandtab = true

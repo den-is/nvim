@@ -1,7 +1,7 @@
 -- https://github.com/ellisonleao/gruvbox.nvim
 return {
   "ellisonleao/gruvbox.nvim",
-  enabled = true,
+  enabled = false,
   priority = 1000,
   init = function()
     vim.cmd.colorscheme("gruvbox")
