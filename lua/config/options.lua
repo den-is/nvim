@@ -14,6 +14,8 @@ vim.opt.splitright = true -- natural window splitting
 vim.opt.splitbelow = true
 vim.opt.backspace = "indent,eol,start"
 vim.opt.number = true
+-- :help hidden - you’re telling Vim that you can have unsaved worked that’s not displayed on your screen.
+--  allowing to open another buffer without saving the current one.
 vim.opt.hidden = true
 -- vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
