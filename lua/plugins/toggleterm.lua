@@ -30,6 +30,7 @@ return {
     local map_opts = { noremap = true }
     local set_terminal_keymaps = function()
       buf_map(0, "t", "<esc>", [[<C-\><C-n>]], map_opts)
+      buf_map(0, "t", "jj", [[<C-\><C-n>]], map_opts)
       buf_map(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], map_opts)
       buf_map(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], map_opts)
       buf_map(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], map_opts)
