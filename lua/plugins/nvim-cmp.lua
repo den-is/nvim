@@ -9,6 +9,8 @@
 -- https://github.com/onsails/lspkind.nvim
 -- https://www.reddit.com/r/neovim/comments/1bojtr0/please_share_your_nvimcmp_config/
 -- 'hrsh7th/cmp-nvim-lsp', -- added as a dependency in lsp.lua
+--
+-- :CmpStatus - check status
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -71,17 +73,18 @@ return {
       -- },
 
       mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = auto_select, behavior = cmp.ConfirmBehavior.Insert }),
-        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
         -- show completion suggestions
         -- On MacOS <C-Space> is used by the system to change the input language. Should use different keybinding
         -- ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-S-x>"] = cmp.mapping.complete(),
+
+        ["<CR>"] = cmp.mapping.confirm({ select = auto_select, behavior = cmp.ConfirmBehavior.Insert }),
+        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
       }),
 
       sources = cmp.config.sources({
