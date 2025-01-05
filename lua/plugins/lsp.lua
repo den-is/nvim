@@ -1,6 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/antosha417/nvim-lsp-file-operations
 -- https://github.com/hrsh7th/cmp-nvim-lsp
+-- https://neovim.io/doc/user/diagnostic.html
 -- :LspInfo - view configured LSP for current buffer
 return {
   {
@@ -55,28 +56,20 @@ return {
           local opts = { buffer = args.buf, silent = true }
 
           -- set keybinds
-          opts.desc = "Show LSP references"
-          keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-
           opts.desc = "Go to declaration"
           keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-          ---- Inlay Hints are provided by Language Servers and should be enabled there
-          opts.desc = "Enable Inlay hints"
-          keymap.set("n", "<leader>i", function()
-            local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
-            vim.api.nvim_notify("Toggling inlay hints " .. status, vim.log.levels.INFO, {})
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end, opts)
+          opts.desc = "Show LSP references"
+          keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
 
           opts.desc = "Show LSP definitions"
-          keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+          keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
 
           opts.desc = "Show LSP implementations"
-          keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+          keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
 
           opts.desc = "Show LSP type definitions"
-          keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+          keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts)
 
           opts.desc = "See available code actions"
           keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -97,7 +90,15 @@ return {
           keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
           opts.desc = "Restart LSP"
-          keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
+          keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
+
+          ---- Inlay Hints are provided by Language Servers and should be enabled there
+          opts.desc = "Enable Inlay hints"
+          keymap.set("n", "<leader>i", function()
+            local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
+            vim.api.nvim_notify("Toggling inlay hints " .. status, vim.log.levels.INFO, {})
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end, opts)
         end,
       })
 
@@ -272,6 +273,7 @@ return {
   -- https://github.com/nvimdev/lspsaga.nvim
   {
     "nvimdev/lspsaga.nvim",
+    after = "nvim-lspconfig",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
