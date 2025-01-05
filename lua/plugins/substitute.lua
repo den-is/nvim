@@ -1,6 +1,6 @@
 -- https://github.com/gbprod/substitute.nvim
 -- overrides default `s`, `S` keymaps. To review and play again later.
--- Default keymaps:
+-- Default vim keymaps:
 --  ["x]c{motion} - delete the text that {motion} moves over and start insert
 --  ["x]cc - Delete [count] lines [into register x] and start insert linewise.
 --  ["x]C - Delete from the cursor position to the end of the line and [count]-1 more lines [into register x], and start insert.
