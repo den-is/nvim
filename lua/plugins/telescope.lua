@@ -36,7 +36,7 @@ return {
         buffers = {
           show_all_buffers = true,
           sort_mru = true,
-          -- Delete open buffers from telescope list sing Ctrl-d
+          -- Delete open buffers from telescope list using Ctrl-d
           -- Select multiple buffers using Tab
           attach_mappings = function(prompt_bufnr, map)
             map({ "n", "i" }, "<C-d>", function()
@@ -82,11 +82,11 @@ return {
 
     local builtin = require("telescope.builtin")
     local map = vim.keymap
-    map.set("n", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    map.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    map.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    map.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-    map.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+    map.set("n", "<C-p>", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
+    map.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
+    map.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+    map.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in CWD" })
+    map.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in CWD" })
     map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
     map.set("n", "<leader>fd", function()
@@ -99,6 +99,6 @@ return {
       builtin.spell_suggest,
       { desc = "Lists spelling suggestions for the current word under the cursor" }
     )
-    map.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    map.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Find todos" })
   end,
 }
