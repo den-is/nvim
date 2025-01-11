@@ -61,7 +61,7 @@ return {
         map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Git - Toggle deleted" })
 
         -- Text object
-        map({ "o", "x" }, "ih", "<cmd><C-U>Gitsigns select_hunk<CR>", { desc = "Git - Select hunk" })
+        map({ "o", "x" }, "ih", "<CMD><C-U>Gitsigns select_hunk<CR>", { desc = "Git - Select hunk" })
       end,
     })
   end,
