@@ -18,9 +18,9 @@ return {
       -- ansible = { "ansible_lint" },
     }
 
-    -- setting `-d` will block config file (.yamllint) lookup
-    --lint.linters.yamllint.args = { "-d", "relaxed", "--format", "parsable", "-" }
-    lint.linters.yamllint.args = { "--format", "parsable", "-" }
+    -- setting `-d` will block config file (.yamllint) lookup ??? why did i make this comment. kinda works
+    lint.linters.yamllint.args = { "-d", "relaxed", "--format", "parsable", "-" }
+    -- lint.linters.yamllint.args = { "--format", "parsable", "-" }
 
     -- Auto lint on save
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
