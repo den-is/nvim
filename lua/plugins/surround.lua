@@ -1,4 +1,5 @@
 -- https://github.com/kylechui/nvim-surround
+-- alternative: https://github.com/echasnovski/mini.surround
 -- :h nvim-surround.usage
 -- :h nvim-surround.configuration
 --
