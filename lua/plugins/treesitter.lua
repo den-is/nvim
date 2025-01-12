@@ -59,6 +59,9 @@ return {
         "toml",
         "vim",
         "yaml",
+        "tmux",
+        "rust",
+        "zig",
       },
 
       incremental_selection = {
