@@ -22,7 +22,7 @@ return {
 
     { "S", mode = { "n", "x", "o" }, function() require("flash").treesieter() end, desc = "Flash Treesitter" },
 
-    -- jump somewhere (remove) do the thing and jump back
+    -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
 
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
