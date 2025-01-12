@@ -1,7 +1,10 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/antosha417/nvim-lsp-file-operations
 -- https://github.com/hrsh7th/cmp-nvim-lsp
+--
+-- https://neovim.io/doc/user/lsp.html
 -- https://neovim.io/doc/user/diagnostic.html
+--
 -- :LspInfo - view configured LSP for current buffer
 return {
   {
@@ -58,6 +61,12 @@ return {
           -- set keybinds
           opts.desc = "Go to declaration"
           keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+
+          opts.desc = "Go to defintion"
+          keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+
+          opts.desc = "Format code"
+          keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
 
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
