@@ -90,6 +90,7 @@ return {
     map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
     map.set("n", "<leader>fm", builtin.marks, { desc = "Fuzzy find marks" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
+    map.set("n", "<leader>fk", builtin.keymaps, { desc = "Fuzzy list keymaps" })
     map.set("n", "<leader>fd", function()
       builtin.diagnostics({ bufnr = 0 })
     end, { desc = "Diagnostics for the current buffer" })
