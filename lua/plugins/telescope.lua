@@ -88,6 +88,7 @@ return {
     map.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in CWD" })
     map.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in CWD" })
     map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
+    map.set("n", "<leader>fm", builtin.marks, { desc = "Fuzzy find marks" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
     map.set("n", "<leader>fd", function()
       builtin.diagnostics({ bufnr = 0 })
