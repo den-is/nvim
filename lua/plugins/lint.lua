@@ -1,5 +1,5 @@
 -- https://github.com/mfussenegger/nvim-lint
--- alternative https://github.com/nvimtools/none-ls.nvim -- wraps linters and formatters and creates LSP out of them
+-- alternative https://github.com/nvimtools/none-ls.nvim -- wraps linters and formatters and creates LSP out of them, so can be used with nvim-lsp and cmp
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
