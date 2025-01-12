@@ -82,25 +82,20 @@ return {
 
     local builtin = require("telescope.builtin")
     local map = vim.keymap
+    -- stylua: ignore start
     map.set("n", "<C-p>", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
     map.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
     map.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
     map.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in CWD" })
     map.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in CWD" })
-    map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
-    map.set("n", "<leader>fm", builtin.marks, { desc = "Fuzzy find marks" })
-    map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
+    map.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy list buffers" })
+    map.set("n", "<leader>fm", builtin.marks, { desc = "Fuzzy list marks" })
     map.set("n", "<leader>fk", builtin.keymaps, { desc = "Fuzzy list keymaps" })
-    map.set("n", "<leader>fd", function()
-      builtin.diagnostics({ bufnr = 0 })
-    end, { desc = "Diagnostics for the current buffer" })
+    map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
     map.set("n", "<leader>fD", builtin.diagnostics, { desc = "Diagnostics from all open buffers" })
-    map.set(
-      "n",
-      "<leader>fS",
-      builtin.spell_suggest,
-      { desc = "Lists spelling suggestions for the current word under the cursor" }
-    )
-    map.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Find todos" })
+    map.set("n", "<leader>fd", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Diagnostics for the current buffer" })
+    map.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Find TODOs" })
+    map.set("n", "<leader>fS", builtin.spell_suggest, { desc = "Lists spelling suggestions for word under cursor" })
+    -- stylua: ignore end
   end,
 }
