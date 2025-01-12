@@ -8,10 +8,10 @@ return {
   },
   config = true,
   keys = {
-    { ",d", "<cmd>DiffviewOpen<cr>", mode = { "n" }, desc = "Repo Diffview", nowait = true },
-    { ",hh", "<cmd>DiffviewFileHistory<cr>", mode = { "n" }, desc = "Repo history" },
-    { ",hf", "<cmd>DiffviewFileHistory --follow %<cr>", mode = { "n" }, desc = "File history" },
-    { ",hm", "<cmd>DiffviewOpen master<cr>", mode = { "n" }, desc = "Diff with master" },
+    { ",d", "<CMD>DiffviewOpen<CR>", mode = { "n" }, desc = "Repo Diffview", nowait = true },
+    { ",hh", "<CMD>DiffviewFileHistory<CR>", mode = { "n" }, desc = "Repo history" },
+    { ",hf", "<CMD>DiffviewFileHistory --follow %<CR>", mode = { "n" }, desc = "File history" },
+    { ",hm", "<CMD>DiffviewOpen master<CR>", mode = { "n" }, desc = "Diff with master" },
     {
       ",hl",
       function()
