@@ -20,7 +20,7 @@ return {
   keys = {
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
 
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesieter() end, desc = "Flash Treesitter" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
 
     -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
