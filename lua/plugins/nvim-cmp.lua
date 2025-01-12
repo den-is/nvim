@@ -10,6 +10,9 @@
 -- https://www.reddit.com/r/neovim/comments/1bojtr0/please_share_your_nvimcmp_config/
 -- 'hrsh7th/cmp-nvim-lsp', -- added as a dependency in lsp.lua
 --
+-- alternative: https://github.com/Saghen/blink.cmp
+--              https://cmp.saghen.dev/#compared-to-nvim-cmp
+--
 -- :CmpStatus - check status
 return {
   "hrsh7th/nvim-cmp",
