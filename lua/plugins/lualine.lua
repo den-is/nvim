@@ -15,6 +15,13 @@ return {
         disabled_filetypes = { "alpha", "dashboard", "NvimTree", "undotree" },
       },
       sections = {
+        lualine_c = {
+          {
+            "filename",
+            -- or press Ctrl+g - show full path
+            path = 1,
+          },
+        },
         lualine_x = {
           {
             lazy_status.updates,
