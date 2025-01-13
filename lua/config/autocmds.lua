@@ -22,31 +22,39 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   callback = function()
     vim.api.nvim_command("set filetype=terraform")
   end,
-  desc = "detect terraform filetype",
+  desc = "Detect terraform filetype",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "terraform-vars",
+  pattern = "*.tfvars",
   callback = function()
     vim.api.nvim_command("set filetype=hcl")
   end,
-  desc = "detect terraform vars",
+  desc = "Detect terraform vars",
+})
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },
+  callback = function()
+    vim.api.nvim_command("set filetype=hcl")
+  end,
+  desc = "Set terraformrc filetype to hcl",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
+  pattern = { "*tf", "*.hcl", "*.tfvars", ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },
   callback = function(ev)
     vim.bo[ev.buf].commentstring = "# %s"
   end,
-  pattern = { "*tf", "*.hcl" },
-  desc = "fix terraform and hcl comment string",
+  desc = "Fix terraform and hcl comment string",
 })
 
 api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
-  desc = "highlight on yank",
+  desc = "Highlight on Yank",
 })
 
 api.nvim_create_autocmd("BufReadPost", {

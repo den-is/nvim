@@ -36,6 +36,7 @@ return {
         "jsonls",
         "helm_ls",
         "terraformls",
+        "tflint",
         "yamlls",
         "pyright",
         "vimls",

@@ -34,7 +34,6 @@ return {
         "gosum",
         "gotmpl",
         "gowork",
-        "hcl",
         "html",
         "javascript",
         "json5", -- https://json5.org
@@ -55,6 +54,7 @@ return {
         "regex",
         "ruby",
         "sql",
+        "hcl",
         "terraform",
         "toml",
         "vim",
