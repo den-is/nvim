@@ -1,6 +1,10 @@
 -- https://github.com/folke/todo-comments.nvim
--- integrates with https://github.com/folke/trouble.nvim `<leader>xt`
--- and Telescope (<leader>ft)
+-- integrates with:
+-- - trouble.nvim `<leader>xt`
+-- - Telescope `<leader>ft`
+-- VSCode alternatives:
+-- - https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+-- - https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments
 
 return {
   "folke/todo-comments.nvim",
