@@ -136,6 +136,11 @@ return {
           })
         end,
 
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
+        ["terraformls"] = function()
+          lspconfig.terraformls.setup({})
+        end,
+
         -- Pyright configuration
         -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
         -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
@@ -154,7 +159,7 @@ return {
           lspconfig.pyright.setup({
             capabilities = capabilities,
             settings = {
-              ---- default settings https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua
+              -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
               python = {
                 analysis = {
                   autoSearchPaths = true,
