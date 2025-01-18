@@ -25,14 +25,15 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Detect terraform filetype",
 })
 
--- -- Detected automatically as terraform-vars filetype
--- api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
---   pattern = "*.tfvars",
---   callback = function()
---     vim.api.nvim_command("set filetype=hcl")
---   end,
---   desc = "Detect terraform vars",
--- })
+-- -- Detected automatically as terraform-vars filetype (probably integrated in terraform-ls)
+-- -- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.tfvars",
+  callback = function()
+    vim.api.nvim_command("set filetype=hcl")
+  end,
+  desc = "Detect terraform vars",
+})
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },

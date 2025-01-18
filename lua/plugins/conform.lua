@@ -32,6 +32,8 @@ return {
         go = { "gofumpt" },
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
+        hcl = { "terragrunt_hclfmt" },
+        -- hcl = { "terraform_fmt" },
         ---- flattens array of arrays https://github.com/google/yamlfmt/issues/167
         -- yaml = { "yamlfmt" },
         ----
