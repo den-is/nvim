@@ -40,6 +40,14 @@ keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 -- Check if have highlight enabled at all. See `:help hlsearch`
 keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlights" })
 
+-- Vertical scroll and center
+keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page DOWN and stay centered" })
+keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page UP and stay centered" })
+
+-- Jump seach occurrences and stay centered
+keymap.set("n", "n", "nzz", { desc = "Jump to next search occurrence and stay centered" })
+keymap.set("n", "N", "nzzzv", { desc = "Jump to previous search occurrence and stay centered" })
+
 -- Window management
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
