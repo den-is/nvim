@@ -13,7 +13,7 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
--- Better Indentations - continuous
+-- Better Indentations - stay in visual mode after indentation
 keymap.set("v", "<", "<gv", { desc = "Shift left in visual mode without going to Normal after first indent" })
 keymap.set("v", ">", ">gv", { desc = "Shift right in visual mode without going to Normal after first indent" })
 
@@ -49,10 +49,10 @@ keymap.set("n", "n", "nzz", { desc = "Jump to next search occurrence and stay ce
 keymap.set("n", "N", "nzzzv", { desc = "Jump to previous search occurrence and stay centered" })
 
 -- Window management
-keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>sv", "<CMD>vsplit<CR>", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<CMD>split<CR>", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap.set("n", "<leader>sx", "<CMD>close<CR>", { desc = "Close current split" })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -64,17 +64,19 @@ keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window"
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Tabs management
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
+keymap.set("n", "<leader>to", "<CMD>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>tn", "<CMD>tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<leader>tp", "<CMD>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<leader>tf", "<CMD>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
 
 ---- Buffers management
 ---- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
----- Tab strictly equals C-i so when you override Tab, CTRL-I stops working if no option supplied
--- keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
--- keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
+---- Terminals behavior - <Tab> == <C-i>
+---- Tab strictly equals C-i so when you override Tab, CTRL-i stops working if no option supplied
+---- https://vi.stackexchange.com/a/23343/6400
+-- keymap.set("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
+-- keymap.set("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
 
 keymap.set("n", "<leader>tw", function()
   local status = vim.o.wrap and "OFF" or "ON"
@@ -89,4 +91,5 @@ keymap.set("n", "<leader>ts", function()
 end, { desc = "Toggle spellcheck" })
 
 -- Diagnostic keymaps
+-- More diagnostics shortcuts are in plugin/trouble.lua|lsp.lua|telescope.lua
 keymap.set("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
