@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
+keymap.set("n", "<leader>wn", "<CMD>noautocmd write<CR>", { desc = "Save/write buffer w/o formatting" })
 keymap.set("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
