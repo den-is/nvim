@@ -13,6 +13,7 @@ This configuration is a continuous Work In Progress.
 
 The setup depends on several CLI tools and libraries available on your system.
 
+- [Nerd Fonts](https://www.nerdfonts.com) - for icons and symbols
 - [rg](https://github.com/BurntSushi/ripgrep) - many Neovim plugins rely on this great `grep` replacement.
 
 Additional tools may be required. Refer to [lua/plugins/conform.lua](lua/plugins/conform.lua), [lua/plugins/mason.lua](lua/plugins/mason.lua), or [lua/plugins/lint.lua](lua/plugins/lint.lua) for examples.
