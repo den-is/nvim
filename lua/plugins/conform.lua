@@ -31,6 +31,7 @@ return {
         python = { "black", "ruff_organize_imports" },
         go = { "gofumpt" },
         sh = { "shfmt" },
+        toml = { "taplo" },
         terraform = { "terraform_fmt" },
         hcl = { "terragrunt_hclfmt" },
         -- hcl = { "terraform_fmt" },

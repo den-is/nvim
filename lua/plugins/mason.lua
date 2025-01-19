@@ -58,6 +58,7 @@ return {
         -- "yamllint",      -- system
         -- "ruff",          -- system
         -- "black",         -- system
+        -- "taplo",         -- system
         ---- Go
         -- "gofumpt",       -- system
         -- "goimports",     -- system
