@@ -15,6 +15,7 @@ return {
       yaml = { "yamllint" },
       terraform = { "tflint" },
       bash = { "shellcheck" },
+      go = { "golangcilint" },
       -- ansible = { "ansible_lint" },
     }
 
