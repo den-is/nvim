@@ -29,7 +29,7 @@ return {
         json = { "prettier" },
         lua = { "stylua" },
         python = { "black", "ruff_organize_imports" },
-        go = { "gofumpt" },
+        go = { "golines", "gofumpt" },
         sh = { "shfmt" },
         toml = { "taplo" },
         terraform = { "terraform_fmt" },

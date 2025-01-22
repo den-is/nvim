@@ -60,11 +60,12 @@ return {
         -- "black",         -- system
         -- "taplo",         -- system
         ---- Go
+        -- "golines",       -- system
         -- "gofumpt",       -- system
         -- "goimports",     -- system
         -- "gomodifytags",  -- system
         -- "golangci-lint", -- system
-        -- "gotests", i     -- system
+        -- "gotests",       -- system
         -- "iferr",         -- system
         -- "impl",          -- system
       },
