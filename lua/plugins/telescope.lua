@@ -105,11 +105,12 @@ return {
     })
 
     telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
 
     local builtin = require("telescope.builtin")
     local map = vim.keymap
     -- stylua: ignore start
-    map.set("n", "<C-p>", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
+    map.set("n", "<C-p>", builtin.find_files, { desc = "Fuzzy find files in CWD" })
     map.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in CWD" })
     map.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
     map.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in CWD" })
