@@ -17,7 +17,7 @@ return {
 
     telescope.setup({
       defaults = {
-        path_display = { "smart" },
+        path_display = { truncate = 5 },
         preview = {
           filesize_limit = 0.1, -- MB
         },
@@ -65,6 +65,11 @@ return {
             return true
           end,
           previewer = false, -- Disable the previewer since C-d is used to scroll preview
+        },
+        oldfiles = {
+          prompt_title = "Recent Files",
+          theme = "dropdown",
+          previewer = false,
         },
         find_files = {
           theme = "dropdown",
