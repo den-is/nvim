@@ -18,7 +18,7 @@ vim.opt.number = true
 --  allowing to open another buffer without saving the current one.
 vim.opt.hidden = true
 -- vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "auto:1-2"
 -- TODO: disable mouse or enable in specific modes
 -- vim.opt.mouse         = 'a'
 vim.opt.mouse = "nvi"

@@ -1,6 +1,11 @@
 -- https://github.com/chentoast/marks.nvim
+-- https://neovim.io/doc/user/motion.html#_7.-marks
+-- https://vim.fandom.com/wiki/Using_marks
+--
 --   which-key opens UI if your press ' or `
 --   Telescope UI by pressing <leader>fm
+--   or :marks
+--
 -- Keymaps set by marks.nvim:
 -- mx              Set mark x
 -- m,              Set the next available alphabetical (lowercase) mark
@@ -27,6 +32,13 @@ return {
     require("marks").setup({
       default_mappings = true,
       builtin_marks = { ".", "<", ">", "^" },
+      -- default priorities. alter or configure signcolumn
+      sign_priority = {
+        lower = 10,
+        upper = 15,
+        builtin = 8,
+        bookmark = 20,
+      },
     })
   end,
 }
