@@ -4,28 +4,32 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   version = "*",
-  opts = {
-    options = {
-      -- mode = "tabs",
-      mode = "buffers",
-      close_command = "bdelete! %d",
-      show_tab_indicators = false,
+  config = function()
+    local bufferline = require("bufferline")
+    bufferline.setup({
+      options = {
+        -- mode = "tabs",
+        mode = "buffers",
+        close_command = "bdelete! %d",
+        show_tab_indicators = true,
 
-      -- numbers = "both",
-      offsets = {
-        {
-          filetype = "NvimTree",
-          text = "File Explorer",
-          text_align = "center",
-          separator = false,
-        },
-        {
-          filetype = "undotree",
-          text = "Undo Tree",
-          text_align = "center",
-          separator = false,
+        style_preset = bufferline.style_preset.no_italic,
+
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = "File Explorer",
+            text_align = "center",
+            separator = false,
+          },
+          {
+            filetype = "undotree",
+            text = "Undo Tree",
+            text_align = "center",
+            separator = false,
+          },
         },
       },
-    },
-  },
+    })
+  end,
 }
