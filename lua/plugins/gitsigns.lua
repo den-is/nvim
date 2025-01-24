@@ -5,7 +5,8 @@ return {
   opts = {},
   config = function()
     require("gitsigns").setup({
-
+      -- sign priority in signcolumn
+      sign_priority = 25,
       -- register keymappings
       on_attach = function(bufnr)
         local gitsigns = require("gitsigns")

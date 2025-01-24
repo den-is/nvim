@@ -7,7 +7,7 @@
 --   or :marks
 --
 -- Keymaps set by marks.nvim:
--- mx              Set mark x
+-- mx              Set mark `x`
 -- m,              Set the next available alphabetical (lowercase) mark
 -- m;              Toggle the next available mark at the current line
 -- dmx             Delete mark x
@@ -32,7 +32,7 @@ return {
     require("marks").setup({
       default_mappings = true,
       builtin_marks = { ".", "<", ">", "^" },
-      -- default priorities. alter or configure signcolumn
+      -- default priorities for signs in signcolumn
       sign_priority = {
         lower = 10,
         upper = 15,
