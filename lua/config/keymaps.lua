@@ -72,11 +72,11 @@ keymap.set("n", "<leader>tf", "<CMD>tabnew %<CR>", { desc = "Open current buffer
 
 ---- Buffers management
 ---- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
----- Terminals behavior - <Tab> == <C-i>
----- Tab strictly equals C-i so when you override Tab, CTRL-i stops working if no option supplied
+---- In a traditional terminal environment, both Tab and Ctrl+I generate the same ASCII character (0x09)
+---- So when you override Tab, Ctrl-i - jumplist navigation - is also overridden
 ---- https://vi.stackexchange.com/a/23343/6400
--- keymap.set("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
--- keymap.set("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
+keymap.set("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
+keymap.set("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
 
 keymap.set("n", "<leader>tw", function()
   local status = vim.o.wrap and "OFF" or "ON"
