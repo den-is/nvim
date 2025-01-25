@@ -1,5 +1,6 @@
 -- https://github.com/zbirenbaum/copilot.lua
--- https://github.com/zbirenbaum/copilot-cmp -- disable auto-suggest and rely on cmp, or enable auto-suggestions with ghost-text
+-- https://github.com/zbirenbaum/copilot-cmp -- show suggestions in CMP
+--                                              or get suggestions with ghost-text in-line
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 -- shortcuts alternative https://github.com/orgs/community/discussions/45434
 return {

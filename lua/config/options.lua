@@ -2,6 +2,13 @@
 -- :echo &runtimepath
 -- :new | put =split(&runtimepath, ',')
 
+-- required for https://github.com/CopilotC-Nvim/CopilotChat.nvim
+-- luarocks path --lr-cpath --lua-version 5.1
+-- :lua print(package.cpath)
+-- luarocks install --lua-version 5.1 tiktoken_core
+-- luarocks list --lua-version 5.1 tiktoken_core
+package.cpath = package.cpath .. ";" .. os.getenv("HOME") .. "/.luarocks/lib/lua/5.1/?.so"
+
 -- UI -------------------------------------------------------------------------
 vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
