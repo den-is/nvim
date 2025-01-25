@@ -6,7 +6,7 @@
 --    https://github.com/saadparwaiz1/cmp_luasnip
 -- https://github.com/L3MON4D3/LuaSnip
 --    https://github.com/rafamadriz/friendly-snippets
--- https://github.com/onsails/lspkind.nvim
+-- https://github.com/onsails/lspkind.nvim - vscode-like pictograms
 -- https://www.reddit.com/r/neovim/comments/1bojtr0/please_share_your_nvimcmp_config/
 -- 'hrsh7th/cmp-nvim-lsp', -- added as a dependency in lsp.lua
 --
@@ -84,8 +84,10 @@ return {
 
         ["<CR>"] = cmp.mapping.confirm({ select = auto_select, behavior = cmp.ConfirmBehavior.Insert }),
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
       }),
@@ -146,7 +148,10 @@ return {
         -- fields = {},
         -- expandable_indicator = true,
         format = lspkind.cmp_format({
-          maxwidth = 50,
+          maxwidth = {
+            menu = 50,
+            abbr = 50,
+          },
           -- ellipsis_char = "…",
           ellipsis_char = "...",
           menu = {
