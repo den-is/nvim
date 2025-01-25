@@ -3,6 +3,8 @@
 --                                              or get suggestions with ghost-text in-line
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 -- shortcuts alternative https://github.com/orgs/community/discussions/45434
+--
+-- alternative to review https://github.com/yetone/avante.nvim
 return {
   {
     "zbirenbaum/copilot.lua",
