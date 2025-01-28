@@ -75,5 +75,6 @@
   "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" },
   "vim-helm": { "branch": "master", "commit": "ae1ebc160d2b9b90108477ab10df7a4fc501e358" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
-  "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" }
+  "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" },
+  "yazi.nvim": { "branch": "main", "commit": "9a39d68534cb5ae7250aa50fcc233335843dd786" }
 }
