@@ -40,7 +40,17 @@ vim.opt.showmode = false
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = {
+  -- space = "·",
+  -- eol = "↲",
+  -- tab = "» ",
+  tab = "→ ",
+  trail = "·",
+  nbsp = "␣",
+  extends = ">",
+  precedes = "<",
+}
+-- vim.opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:"
 -- Enable break indent. Every wrapped line will continue visually indented
 -- (same amount of space as the beginning of that line)
 vim.opt.breakindent = true
