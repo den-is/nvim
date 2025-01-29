@@ -6,6 +6,7 @@
 -- https://neovim.io/doc/user/diagnostic.html
 --
 -- :LspInfo - view configured LSP for current buffer
+-- :h lspconfig-all
 return {
   {
     "neovim/nvim-lspconfig",
@@ -111,14 +112,6 @@ return {
         end,
       })
 
-      -- used to enable autocompletion (assigned to every lsp server's config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
-      -- add folding capabilities (managed by nvim-ufo)
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
       local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -126,6 +119,14 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
+
+      -- used to enable autocompletion (assigned to every lsp server's config)
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+      -- add folding capabilities (managed by nvim-ufo)
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
 
       local handlers = {
 
@@ -138,7 +139,9 @@ return {
 
         -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
         ["terraformls"] = function()
-          lspconfig.terraformls.setup({})
+          lspconfig.terraformls.setup({
+            capabilities = capabilities,
+          })
         end,
 
         -- Pyright configuration
