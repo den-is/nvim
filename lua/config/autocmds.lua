@@ -2,10 +2,10 @@ local api = vim.api
 
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
--- autocmd trims all filetypes
 -- api.nvim_create_autocmd("BufWritePre", {
 --   command = [[:%s/\s\+$//e]],
 --   group = TrimWhiteSpaceGrp,
+--   desc = "Trim trailing whitespace for all filetypes",
 -- })
 api.nvim_create_autocmd("BufWritePre", {
   group = TrimWhiteSpaceGrp,
@@ -14,6 +14,7 @@ api.nvim_create_autocmd("BufWritePre", {
       vim.cmd([[:%s/\s\+$//e]])
     end
   end,
+  desc = "Trim trailing whitespace for all filetypes (with exceptions)",
 })
 
 -- Disable new line comment
