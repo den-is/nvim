@@ -36,7 +36,7 @@ return {
       },
       ---- At the moment of writing 20240901:  Extensions are not working
       ---- https://github.com/nvim-lualine/lualine.nvim/issues/1262
-      -- extensions = { "lazy" },
+      -- extensions = { "lazy", "mason" },
     })
   end,
 }
