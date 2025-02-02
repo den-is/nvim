@@ -128,6 +128,7 @@ return {
         lineFoldingOnly = true,
       }
 
+      -- passed to mason_lspconfig.setup_handlers(handlers) below
       local handlers = {
 
         -- Default configuration for Language Servers
