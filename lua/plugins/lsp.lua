@@ -67,7 +67,7 @@ return {
           keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
 
           opts.desc = "Format code"
-          keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
+          keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
 
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
