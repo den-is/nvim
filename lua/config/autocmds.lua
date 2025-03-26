@@ -64,7 +64,7 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   desc = "Highlight on Yank",
 })
