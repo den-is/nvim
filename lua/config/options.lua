@@ -74,6 +74,10 @@ vim.schedule(function()
   vim.opt.clipboard:append("unnamedplus")
 end)
 
+-- Since 0.11 OSC 52 is used as a fallback clipboard provider
+-- when no other clipboard-tool is found, even when not using SSH
+-- https://neovim.io/doc/user/news-0.11.html#_tui
+--
 -- More info on copying over SSH
 -- https://neovim.io/doc/user/provider.html#clipboard-osc52
 -- https://github.com/neovim/neovim/discussions/28010A
