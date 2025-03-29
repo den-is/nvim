@@ -80,13 +80,13 @@ keymap.set("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer
 
 keymap.set("n", "<leader>tw", function()
   local status = vim.o.wrap and "OFF" or "ON"
-  vim.api.nvim_notify("Toggling wrap " .. status, vim.log.levels.INFO, {})
+  vim.api.nvim_echo({ { "Toggling wrap " .. status, "Normal" } }, true, {})
   vim.o.wrap = not vim.o.wrap
 end, { desc = "Toggle line wrap" })
 
 keymap.set("n", "<leader>ts", function()
   local status = vim.o.spell and "OFF" or "ON"
-  vim.api.nvim_notify("Toggling spellcheck " .. status, vim.log.levels.INFO, {})
+  vim.api.nvim_echo({ { "Toggling spellcheck " .. status, "Normal" } }, true, {})
   vim.o.spell = not vim.o.spell
 end, { desc = "Toggle spellcheck" })
 

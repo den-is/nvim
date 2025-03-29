@@ -106,7 +106,7 @@ return {
           opts.desc = "Enable Inlay hints"
           keymap.set("n", "<leader>i", function()
             local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
-            vim.api.nvim_notify("Toggling inlay hints " .. status, vim.log.levels.INFO, {})
+            vim.api.nvim_echo({ { "Toggling inlay hints " .. status, "Normal" } }, true, {})
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end, opts)
         end,
