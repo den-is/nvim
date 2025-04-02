@@ -1,7 +1,8 @@
 -- https://github.com/akinsho/toggleterm.nvim
--- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/toggleterm.lua
+-- https://github.com/Allaman/nvim/blob/v1/lua/core/plugins/toggleterm.lua
 return {
   "akinsho/toggleterm.nvim",
+  enabled = true,
   version = "*",
   cmd = "ToggleTerm",
   keys = "<C-n>",
