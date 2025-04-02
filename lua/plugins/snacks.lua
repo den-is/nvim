@@ -1,15 +1,11 @@
--- https://github.com/goolord/alpha-nvim
+-- https://github.com/folke/snacks.nvim
 return {
-  "goolord/alpha-nvim",
-  enabled = false,
-  event = "VimEnter",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
+  "folke/snacks.nvim",
+  enabled = true,
+  -- event = "VimEnter",
+  priority = 1000,
+  lazy = false,
   config = function()
-    local startify = require("alpha.themes.startify")
-    startify.file_icons.provider = "devicons"
-
     local logo1 = {
       [[ _______             ____   ____.__         ]],
       [[ \      \   ____  ___\   \ /   /|__| _____  ]],
@@ -48,18 +44,27 @@ return {
       [[                                                                       ]],
     }
 
-    startify.section.header.val = logo1
+    local snacks = require("snacks")
 
-    startify.section.top_buttons.val = {
-      startify.button("e", "New file", "<CMD>ene <CR>"),
-      startify.button("q", "Quit Neovim", "<CMD>qa<CR>"),
-      startify.button("SPC e", "Open file-explorer sidebar", "<CMD>NvimTreeToggle<CR>"),
-      startify.button("SPC ff", "File fuzzy-find in CWD", "<CMD>Telescope find_files<CR>"),
-      startify.button("SPC fs", "Word search in CWD", "<CMD>Telescope live_grep<CR>"),
-      startify.button("SPC wr", "Restore session for CWD", "<CMD>SessionRestore<CR>"),
-    }
-
-    local alpha = require("alpha")
-    alpha.setup(startify.config)
+    snacks.setup({
+      bigfile = { enabled = true },
+      dim = { enabled = false }, -- not working for me?
+      image = {}, -- for kitty, wezterm and ghostty
+      input = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      dashboard = { enabled = true },
+      indent = {
+        enabled = true,
+        indent = { only_scope = true }, -- only show indent where cursor is
+        chunk = { enabled = true }, -- indents are rendered as chunks
+        animate = { enabled = false }, -- do not animate -- feels slow for me
+      },
+      notifier = {
+        enabled = true,
+        timeout = 2000,
+      },
+    })
   end,
 }
