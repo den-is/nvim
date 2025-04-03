@@ -12,7 +12,7 @@ return {
 
     lualine.setup({
       options = {
-        disabled_filetypes = { "alpha", "dashboard", "NvimTree", "undotree" },
+        disabled_filetypes = { "alpha", "dashboard", "NvimTree", "undotree", "snacks_dashboard" },
       },
       sections = {
         lualine_c = {
