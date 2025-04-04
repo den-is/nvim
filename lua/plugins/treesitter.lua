@@ -28,6 +28,7 @@ return {
         "bash",
         "cmake",
         "css",
+        "comment",
         "dockerfile",
         "go",
         "gomod",
