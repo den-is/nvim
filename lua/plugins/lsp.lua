@@ -34,6 +34,7 @@ return {
             virtual_text = false,
             signs = {
               text = {
+                -- '', '', '', '' -- alternative icons
                 [vim.diagnostic.severity.ERROR] = " ",
                 [vim.diagnostic.severity.WARN] = " ",
                 [vim.diagnostic.severity.INFO] = " ",
