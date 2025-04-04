@@ -28,11 +28,26 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
-          -- Disabling virtual_text diagnostic line side-by-side with the code line
-          -- Often does not fit on the screen. Floating window with diagnostics works better
           vim.diagnostic.config({
+            -- Disabling virtual_text diagnostic line side-by-side with the code line
+            -- Often does not fit on the screen. Floating window with diagnostics works better
             virtual_text = false,
-            signs = true,
+            signs = {
+              text = {
+                [vim.diagnostic.severity.ERROR] = " ",
+                [vim.diagnostic.severity.WARN] = " ",
+                [vim.diagnostic.severity.INFO] = " ",
+                [vim.diagnostic.severity.HINT] = "󰠠 ",
+              },
+              linehl = {
+                [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+                [vim.diagnostic.severity.WARN] = "WarningMsg",
+              },
+              -- numhl = {
+              --   [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+              --   [vim.diagnostic.severity.WARN] = "WarningMsg",
+              -- },
+            },
             underline = true,
             update_in_insert = true,
             severity_sort = false,
@@ -115,14 +130,6 @@ return {
           end, opts)
         end,
       })
-
-      -- Change the Diagnostic symbols in the sign column (gutter)
-      -- (not in youtube nvim video)
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
 
       -- used to enable autocompletion (assigned to every lsp server's config)
       local capabilities = cmp_nvim_lsp.default_capabilities()
