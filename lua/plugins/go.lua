@@ -15,8 +15,10 @@ return {
         lsp_cfg = false,
         null_ls = false,
         luasnip = false,
+        diagnostic = false,
         lsp_inlay_hints = {
-          -- controlled in lspconfig configuration, <leader>i to toggle hints
+          -- configured in `neovim/nvim-lspconfig` (lsp.lua)
+          -- <leader>i to toggle hints
           enable = false,
         },
       })
