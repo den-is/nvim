@@ -8,68 +8,78 @@ local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear =
 --   desc = "Trim trailing whitespace for all filetypes",
 -- })
 api.nvim_create_autocmd("BufWritePre", {
+  desc = "Trim trailing whitespace for all filetypes (with exceptions)",
   group = TrimWhiteSpaceGrp,
   callback = function()
     if vim.bo.filetype ~= "markdown" then
       vim.cmd([[:%s/\s\+$//e]])
     end
   end,
-  desc = "Trim trailing whitespace for all filetypes (with exceptions)",
 })
 
 -- Disable new line comment
-vim.api.nvim_create_autocmd("BufEnter", {
+api.nvim_create_autocmd("BufEnter", {
+  desc = "Disable New Line comment",
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
-  desc = "Disable New Line Comment",
 })
 
 -- https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md
 -- expects a terraform filetype and not a tf filetype
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Detect terraform filetype",
   pattern = { "*.tf" },
   callback = function()
     vim.api.nvim_command("set filetype=terraform")
   end,
-  desc = "Detect terraform filetype",
 })
 
 -- -- Detected automatically as terraform-vars filetype (probably integrated in terraform-ls)
 -- -- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Detect terraform vars",
   pattern = "*.tfvars",
   callback = function()
     vim.api.nvim_command("set filetype=hcl")
   end,
-  desc = "Detect terraform vars",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Set terraformrc filetype to hcl",
   pattern = { ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },
   callback = function()
     vim.api.nvim_command("set filetype=hcl")
   end,
-  desc = "Set terraformrc filetype to hcl",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Set .conf.local filetype to conf",
+  pattern = { "*.conf.local" },
+  callback = function()
+    vim.api.nvim_command("set filetype=conf")
+  end,
+})
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Fix terraform and hcl comment string",
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
   pattern = { "*tf", "*.hcl", "*.tfvars", ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },
   callback = function(ev)
     vim.bo[ev.buf].commentstring = "# %s"
   end,
-  desc = "Fix terraform and hcl comment string",
 })
 
 api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight on Yank",
   callback = function()
     vim.hl.on_yank()
   end,
-  desc = "Highlight on Yank",
 })
 
+-- remember last position in file/buffer on nvim close and reopen
 api.nvim_create_autocmd("BufReadPost", {
+  desc = "go to last loc when opening a buffer",
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
@@ -77,11 +87,11 @@ api.nvim_create_autocmd("BufReadPost", {
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
-  desc = "go to last loc when opening a buffer",
 })
 
 -- http://vimcasts.org/episodes/tabs-and-spaces/
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Go Tabs configuration",
   pattern = { "*.go", "go.sum", "go.mod", "Makefile" },
   callback = function()
     vim.opt.tabstop = 4
@@ -91,10 +101,10 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     -- do not display tab characters. UI becomes too noisy
     vim.opt.list = false
   end,
-  desc = "Go Tabs configuration",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Python Tabs configuration",
   pattern = { "*.py" },
   callback = function()
     vim.opt.tabstop = 4
@@ -102,13 +112,12 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt.shiftwidth = 4
     vim.opt.expandtab = true
   end,
-  desc = "Python Tabs configuration",
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Enable spell checking for certain file types",
   pattern = { "*.txt", "*.md" },
   callback = function()
     vim.opt.spell = true
   end,
-  desc = "Enable spell checking for certain file types",
 })
