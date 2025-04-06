@@ -1,5 +1,19 @@
 local api = vim.api
 
+vim.filetype.add({
+  extension = {
+    env = "dotenv",
+  },
+  filename = {
+    [".env"] = "dotenv",
+    ["tsconfig.json"] = "jsonc",
+    [".yamlfmt"] = "yaml",
+  },
+  pattern = {
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  },
+})
+
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 -- api.nvim_create_autocmd("BufWritePre", {
