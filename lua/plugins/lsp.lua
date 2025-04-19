@@ -19,8 +19,6 @@ return {
 
     config = function()
       local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
       local keymap = vim.keymap
 
@@ -132,172 +130,176 @@ return {
         end,
       })
 
+      local servers = {
+        bashls = {},
+        dockerls = {},
+        templ = {},
+        tflint = {},
+        helm_ls = {},
+        vimls = {},
+        html = {},
+        ansiblels = {},
+        docker_compose_language_service = {},
+
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
+        terraformls = {},
+        gopls = {
+          settings = {
+            gofumpt = true,
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              fieldalignment = true,
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+            semanticTokens = true,
+          },
+        },
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
+        pyright = {
+          -- Pyright configuration
+          -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
+          -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
+          -- https://microsoft.github.io/pyright/#/configuration
+          -- https://stackoverflow.com/questions/65847159/how-to-set-python-interpreter-in-neovim-for-python-language-server-depending-on/66559305#66559305
+          --
+          -- Example minimal pyrightconfig.json that worked for me:
+          -- {
+          --   "include": [
+          --     "./",
+          --   ]
+          -- }
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly",
+              },
+            },
+          },
+        },
+        lua_ls = {
+          settings = {
+            diagnostics = {
+              -- make the language server recognize "vim" global
+              globals = { "vim" },
+              -- disable warnings for LuaLS globally
+              -- or use annotations `---@diagnostic disable-next-line: missing-fields` or `---@diagnostic disable: missing-fields`
+              --
+              -- disable = { "missing-parameters", "missing-fields" },
+            },
+            telemetry = { enable = false },
+            hint = { enable = true },
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              codeLens = {
+                enable = true,
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            redhat = { telemetry = { enabled = false } },
+            yaml = {
+              -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
+              -- mainly got this configs from:
+              -- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/lsp.lua
+              -- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/settings/yaml.lua
+              -- if we do not disable this we get error while trying to create/edit kubernetes manifest:
+              --   "Matches multiple schemas when only one must validate. yaml-schema: https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json"
+              format = { enabled = false },
+              validate = false,
+              -- completion = true,
+              hover = true,
+              schemaStore = {
+                enable = true,
+                url = "https://www.schemastore.org/api/json/catalog.json",
+              },
+              schemas = {
+                kubernetes = "*.{yml,yaml}",
+                ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "azure-pipelines*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = "roles/tasks/*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = "*play*.{yml,yaml}",
+                ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+              },
+            },
+          },
+        },
+      }
+
+      -- local mason_lspconfig = require("mason-lspconfig")
+      -- ensure_installed mason and mason_lspconfig are configured in mason.lua
+      -- local ensure_installed = vim.tbl_keys(servers or {})
+      -- require('mason-lspconfig').setup({
+      --   ensure_installed = ensure_installed
+      -- })
+
       -- used to enable autocompletion (assigned to every lsp server's config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       -- add folding capabilities (managed by nvim-ufo)
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
 
-      -- passed to mason_lspconfig.setup_handlers(handlers) below
-      local handlers = {
-
-        -- Default configuration for Language Servers
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
-        ["terraformls"] = function()
-          lspconfig.terraformls.setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        -- Pyright configuration
-        -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
-        -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
-        -- https://microsoft.github.io/pyright/#/configuration
-        -- https://stackoverflow.com/questions/65847159/how-to-set-python-interpreter-in-neovim-for-python-language-server-depending-on/66559305#66559305
-        --
-        -- Example minimal pyrightconfig.json that worked for me:
-        -- {
-        --   "include": [
-        --     "./",
-        --   ]
-        -- }
-
-        ["pyright"] = function()
-          -- configure lua server (with special settings)
-          lspconfig.pyright.setup({
-            capabilities = capabilities,
-            settings = {
-              -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
-              python = {
-                analysis = {
-                  autoSearchPaths = true,
-                  useLibraryCodeForTypes = true,
-                  diagnosticMode = "openFilesOnly",
-                },
-              },
-            },
-          })
-        end,
-
-        -- gopls configuration
-        ["gopls"] = function()
-          lspconfig.gopls.setup({
-            capabilities = capabilities,
-            settings = {
-              gopls = {
-                gofumpt = true,
-                codelenses = {
-                  gc_details = false,
-                  generate = true,
-                  regenerate_cgo = true,
-                  run_govulncheck = true,
-                  test = true,
-                  tidy = true,
-                  upgrade_dependency = true,
-                  vendor = true,
-                },
-                hints = {
-                  assignVariableTypes = true,
-                  compositeLiteralFields = true,
-                  compositeLiteralTypes = true,
-                  constantValues = true,
-                  functionTypeParameters = true,
-                  parameterNames = true,
-                  rangeVariableTypes = true,
-                },
-                analyses = {
-                  fieldalignment = true,
-                  nilness = true,
-                  unusedparams = true,
-                  unusedwrite = true,
-                  useany = true,
-                },
-                usePlaceholders = true,
-                completeUnimported = true,
-                staticcheck = true,
-                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-                semanticTokens = true,
-              },
-            },
-          })
-        end,
-        -- lua_ls configuration
-        ["lua_ls"] = function()
-          -- configure lua server (with special settings)
-          lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                -- make the language server recognize "vim" global
-                diagnostics = {
-                  globals = { "vim" },
-                  -- disable warnings for LuaLS globally
-                  -- or use annotations `---@diagnostic disable-next-line: missing-fields` or `---@diagnostic disable: missing-fields`
-                  --
-                  -- disable = { "missing-parameters", "missing-fields" },
-                },
-                telemetry = { enable = false },
-                hint = { enable = true },
-                completion = {
-                  callSnippet = "Replace",
-                },
-              },
-            },
-          })
-        end,
-        -- YAML LS configuration
-        ["yamlls"] = function()
-          -- configure lua server (with special settings)
-          lspconfig.yamlls.setup({
-            capabilities = capabilities,
-            settings = {
-              yaml = {
-                -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
-                -- mainly got this configs from:
-                -- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/lsp.lua
-                -- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/settings/yaml.lua
-                -- if we do not disable this we get error while trying to create/edit kubernetes manifest:
-                --   "Matches multiple schemas when only one must validate. yaml-schema: https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json"
-                format = { enabled = false },
-                validate = false,
-                -- completion = true,
-                hover = true,
-                schemaStore = {
-                  enable = true,
-                  url = "https://www.schemastore.org/api/json/catalog.json",
-                },
-                schemas = {
-                  kubernetes = "*.{yml,yaml}",
-                  ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                  ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "azure-pipelines*.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = "roles/tasks/*.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = "*play*.{yml,yaml}",
-                  ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                  ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-                  ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-                  ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-                  ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-                  ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
-                },
-              },
-            },
-          })
-        end,
-      }
-
-      -- setup handlers for each lsp server
-      mason_lspconfig.setup_handlers(handlers)
+      for server, server_opts in pairs(servers) do
+        server_opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_opts.capabilities or {})
+        vim.lsp.config(server, server_opts)
+        vim.lsp.enable(server)
+      end
     end,
   },
   -- https://github.com/nvimdev/lspsaga.nvim

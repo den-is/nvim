@@ -26,7 +26,6 @@ return {
       ensure_installed = {
         "html",
         "lua_ls",
-        "pyright",
         "ansiblels",
         "bashls",
         "docker_compose_language_service",
@@ -41,6 +40,7 @@ return {
         "pyright",
         "vimls",
       },
+      automatic_installation = false,
     })
 
     mason_tool_installer.setup({
