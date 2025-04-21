@@ -78,7 +78,7 @@ return {
       mapping = cmp.mapping.preset.insert({
 
         -- show completion suggestions
-        -- On MacOS <C-Space> is used by the system to change the input language. Should use different keybinding
+        -- On MacOS <C-Space> is used by the system to change the input language.
         -- ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-S-x>"] = cmp.mapping.complete(),
 

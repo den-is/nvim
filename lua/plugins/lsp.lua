@@ -121,6 +121,7 @@ return {
           keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
 
           ---- Inlay Hints are provided by Language Servers and should be enabled there
+          ---- Here we just toggle them on and off if they are available from a LS
           opts.desc = "Enable Inlay hints"
           keymap.set("n", "<leader>i", function()
             local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
@@ -303,6 +304,8 @@ return {
     end,
   },
   -- https://github.com/nvimdev/lspsaga.nvim
+  -- https://nvimdev.github.io/lspsaga/
+  -- Adds breadcrumbs and many other convenient features (:Lspsaga rename, :Lspsaga outline, etc.)
   {
     "nvimdev/lspsaga.nvim",
     after = "nvim-lspconfig",
