@@ -2,15 +2,15 @@ local api = vim.api
 
 vim.filetype.add({
   extension = {
-    env = "dotenv",
+    env = "sh",
   },
   filename = {
-    [".env"] = "dotenv",
+    [".env"] = "sh",
     ["tsconfig.json"] = "jsonc",
     [".yamlfmt"] = "yaml",
   },
   pattern = {
-    ["%.env%.[%w_.-]+"] = "dotenv",
+    ["%.env%.[%w_.-]+"] = "sh",
   },
 })
 
