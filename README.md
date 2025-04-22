@@ -1,23 +1,18 @@
 # Neovim IDE configuration
 
-This configuration is straightforward, without complex directory structures or dependencies.
-
-Although simple, it configures an **IDE** for a robust development environment.
-This is not just a basic `vim` setup for editing a few lines on a remote server.
-
-The setup is influenced by hundreds of articles, forum threads, Neovim setup videos, and my existing vim configuration.
-
-This configuration is a continuous Work In Progress.
+Simple and straightforward, but still quite complex Neovim configuration.
+This is not a plain `vim` setup for just editing a couple of lines, but more or less fully featured IDE.
 
 ## Requirements
 
-The setup depends on several CLI tools and libraries available on your system.
-
+- **[Neovim](https://neovim.io)** - **version 0.11.0 or higher**
 - [Nerd Fonts](https://www.nerdfonts.com) - for icons and symbols
 - [rg](https://github.com/BurntSushi/ripgrep) - many Neovim plugins rely on this great `grep` replacement
 
-Additional tools may be required. Refer to [lua/plugins/conform.lua](lua/plugins/conform.lua), [lua/plugins/mason.lua](lua/plugins/mason.lua), or [lua/plugins/lint.lua](lua/plugins/lint.lua) for examples.
-These plugin definitions list various external tools for linting and formatting. Neovim (via [Mason](https://github.com/williamboman/mason.nvim) plugin) can install them automatically, though many may already be available on your system.
+Additional tools may be required.  
+Refer to [lua/plugins/conform.lua](lua/plugins/conform.lua), [lua/plugins/mason.lua](lua/plugins/mason.lua), or [lua/plugins/lint.lua](lua/plugins/lint.lua) for examples.  
+These plugins definitions list various external tools for linting and formatting.  
+Neovim (via [Mason](https://github.com/williamboman/mason.nvim) plugin) can install them automatically, though many may already be available on your system, if you installed them via your package manager or manually.
 
 ## Installation
 
