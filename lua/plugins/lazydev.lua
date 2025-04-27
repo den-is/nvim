@@ -11,9 +11,10 @@ return {
       -- Or relative, which means they will be resolved as a plugin "LazyVim",
       -- When relative, you can also provide a path to the library in the plugin dir
       -- Load luvit types when the `vim.uv` word is found
-      {
-        path = "luvit-meta/library",
-        words = { "vim%.uv" },
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "snacks.nvim", words = { "Snacks" } },
+        { path = "lazy.nvim", words = { "LazyVim" } },
       },
     },
   },
