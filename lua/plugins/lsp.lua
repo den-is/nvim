@@ -122,12 +122,13 @@ return {
 
           ---- Inlay Hints are provided by Language Servers and should be enabled there
           ---- Here we just toggle them on and off if they are available from a LS
-          opts.desc = "Enable Inlay hints"
-          keymap.set("n", "<leader>i", function()
-            local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
-            vim.api.nvim_echo({ { "Toggling inlay hints " .. status, "Normal" } }, true, {})
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end, opts)
+          ---- Replaced by Snacks.toogle
+          -- opts.desc = "Enable Inlay hints"
+          -- keymap.set("n", "<leader>i", function()
+          --   local status = vim.lsp.inlay_hint.is_enabled() and "OFF" or "ON"
+          --   vim.api.nvim_echo({ { "Toggling inlay hints " .. status, "Normal" } }, true, {})
+          --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          -- end, opts)
         end,
       })
 
