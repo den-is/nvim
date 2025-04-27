@@ -1,71 +1,75 @@
 -- https://github.com/folke/snacks.nvim
+-- alternative logos:
+--   local logo1 = {
+--     [[ _______             ____   ____.__         ]],
+--     [[ \      \   ____  ___\   \ /   /|__| _____  ]],
+--     [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
+--     [[/    |    \  ___(  <_> )     /  |  |  Y Y  \]],
+--     [[\____|__  /\___  >____/ \___/   |__|__|_|  /]],
+--     [[        \/     \/                        \/ ]],
+--   }
+--
+--   local logo2 = {
+--     "                                                     ",
+--     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+--     "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+--     "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+--     "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+--     "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+--     "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+--     "                                                     ",
+--   }
+--   -- works with "FiraCode Nerd Font Mono"
+--   local logo3 = {
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                     ]],
+--     [[       ████ ██████           █████      ██                     ]],
+--     [[      ███████████             █████                             ]],
+--     [[      █████████ ███████████████████ ███   ███████████   ]],
+--     [[     █████████  ███    █████████████ █████ ██████████████   ]],
+--     [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+--     [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+--     [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--   }
 return {
   "folke/snacks.nvim",
   enabled = true,
   priority = 1000,
   lazy = false,
-  config = function()
-    local logo1 = {
-      [[ _______             ____   ____.__         ]],
-      [[ \      \   ____  ___\   \ /   /|__| _____  ]],
-      [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
-      [[/    |    \  ___(  <_> )     /  |  |  Y Y  \]],
-      [[\____|__  /\___  >____/ \___/   |__|__|_|  /]],
-      [[        \/     \/                        \/ ]],
-    }
-
-    local logo2 = {
-      "                                                     ",
-      "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-      "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-      "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-      "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-      "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-      "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                                                     ",
-    }
-    -- works with "FiraCode Nerd Font Mono"
-    local logo3 = {
-      [[                                                                       ]],
-      [[                                                                       ]],
-      [[                                                                       ]],
-      [[                                                                       ]],
-      [[                                                                     ]],
-      [[       ████ ██████           █████      ██                     ]],
-      [[      ███████████             █████                             ]],
-      [[      █████████ ███████████████████ ███   ███████████   ]],
-      [[     █████████  ███    █████████████ █████ ██████████████   ]],
-      [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-      [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-      [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-      [[                                                                       ]],
-      [[                                                                       ]],
-      [[                                                                       ]],
-    }
-
-    local snacks = require("snacks")
-
-    snacks.setup({
-      bigfile = { enabled = true },
-      dim = { enabled = false }, -- not working for me?
-      image = {}, -- for kitty, wezterm and ghostty
-      input = { enabled = true },
-      quickfile = { enabled = true },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
-      indent = {
-        enabled = true,
-        indent = { only_scope = true }, -- only show indent where cursor is
-        chunk = { enabled = true }, -- indents are rendered as chunks
-        animate = { enabled = false }, -- do not animate -- feels slow for me
-      },
-      notifier = {
-        enabled = true,
-        timeout = 2000,
-      },
-      dashboard = {
-        enabled = true,
-        preset = {
+  keys = {
+    -- stylua: ignore start
+    { "<leader>ut", function() Snacks.picker.undo() end, desc = "Undo Tree" },
+    -- { "<leader>sk", function() Snacks.picker.keymaps({ layout = 'select', plugs = true, }) end, desc = "Keymaps" }, -- Telescope without config feels much better
+    -- stylua: ignore end
+  },
+  ---@type snacks.Config
+  opts = {
+    bigfile = { enabled = true },
+    quickfile = { enabled = true },
+    dim = { enabled = false }, -- not working for me?
+    image = {}, -- for kitty, wezterm and ghostty
+    input = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    indent = {
+      enabled = true,
+      indent = { only_scope = true }, -- only show indent where cursor is
+      chunk = { enabled = true }, -- indents are rendered as chunks
+      animate = { enabled = false },
+    },
+    notifier = {
+      enabled = true,
+      timeout = 2000,
+    },
+    dashboard = {
+      enabled = true,
+      preset = {
           ---@type snacks.dashboard.Item[]
           -- stylua: ignore start
           pick = nil,
@@ -80,14 +84,13 @@ return {
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
             -- stylua: ignore end
           },
-        },
-        sections = {
-          { section = "header" },
-          { section = "keys", padding = { 1, 0 } },
-          { title = "Recent Files", section = "recent_files", limit = 8, cwd = true, padding = 1 },
-          { section = "startup" },
-        },
       },
-    })
-  end,
+      sections = {
+        { section = "header" },
+        { section = "keys", padding = { 1, 0 } },
+        { title = "Recent Files", section = "recent_files", limit = 8, cwd = true, padding = 1 },
+        { section = "startup" },
+      },
+    },
+  },
 }
