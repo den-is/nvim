@@ -1,6 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/antosha417/nvim-lsp-file-operations
 -- https://github.com/hrsh7th/cmp-nvim-lsp
+-- https://github.com/williamboman/mason-lspconfig.nvim
 --
 -- https://neovim.io/doc/user/lsp.html
 -- https://neovim.io/doc/user/diagnostic.html
@@ -15,11 +16,10 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- add source in nvim-cmp.lua
       { "antosha417/nvim-lsp-file-operations", config = true },
       "folke/lazydev.nvim",
+      "williamboman/mason-lspconfig.nvim",
     },
 
     config = function()
-      local lspconfig = require("lspconfig")
-
       local keymap = vim.keymap
 
       -- register keymaps only on LspAttach event
@@ -74,6 +74,9 @@ return {
           local opts = { buffer = args.buf, silent = true }
 
           -- set keybinds
+
+          -- gd and gD - are default keys in neovim
+          -- https://neovim.io/doc/user/pattern.html#gd
           opts.desc = "Go to declaration"
           keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
@@ -135,14 +138,15 @@ return {
       local servers = {
         bashls = {},
         dockerls = {},
+        docker_compose_language_service = {},
         templ = {},
         tflint = {},
         helm_ls = {},
         vimls = {},
         html = {},
+        jsonls = {},
+        jqls = {},
         ansiblels = {},
-        docker_compose_language_service = {},
-
         -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
         terraformls = {},
         gopls = {
@@ -302,6 +306,12 @@ return {
         vim.lsp.config(server, server_opts)
         vim.lsp.enable(server)
       end
+
+      require("mason-lspconfig").setup({
+        -- ensure_installed = { "html", "lua_ls", "ansiblels", "bashls", "docker_compose_language_service", "dockerls", "gopls", "jqls", "jsonls", "helm_ls", "terraformls", "tflint", "yamlls", "pyright", "vimls", },
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_installation = false,
+      })
     end,
   },
   -- https://github.com/nvimdev/lspsaga.nvim

@@ -1,15 +1,12 @@
 -- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
 return {
   "williamboman/mason.nvim",
   -- event = "VeryLazy", -- vim fails to load LSPs if Mason is not loaded early enough
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
     mason.setup({
@@ -20,27 +17,6 @@ return {
           package_uninstalled = "✗",
         },
       },
-    })
-
-    mason_lspconfig.setup({
-      ensure_installed = {
-        "html",
-        "lua_ls",
-        "ansiblels",
-        "bashls",
-        "docker_compose_language_service",
-        "dockerls",
-        "gopls",
-        "jqls",
-        "jsonls",
-        "helm_ls",
-        "terraformls",
-        "tflint",
-        "yamlls",
-        "pyright",
-        "vimls",
-      },
-      automatic_installation = false,
     })
 
     mason_tool_installer.setup({
