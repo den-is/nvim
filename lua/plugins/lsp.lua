@@ -16,7 +16,7 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- add source in nvim-cmp.lua
       { "antosha417/nvim-lsp-file-operations", config = true },
       "folke/lazydev.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
     },
 
     config = function()
@@ -122,6 +122,9 @@ return {
 
           opts.desc = "Restart LSP"
           keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
+
+          opts.desc = "Open Outline (Lspsaga)"
+          keymap.set("n", "<leader>o", "<CMD>Lspsaga outline<CR>", opts)
 
           ---- Inlay Hints are provided by Language Servers and should be enabled there
           ---- Here we just toggle them on and off if they are available from a LS
@@ -308,9 +311,8 @@ return {
       end
 
       require("mason-lspconfig").setup({
-        -- ensure_installed = { "html", "lua_ls", "ansiblels", "bashls", "docker_compose_language_service", "dockerls", "gopls", "jqls", "jsonls", "helm_ls", "terraformls", "tflint", "yamlls", "pyright", "vimls", },
         ensure_installed = vim.tbl_keys(servers),
-        automatic_installation = false,
+        automatic_enable = true,
       })
     end,
   },

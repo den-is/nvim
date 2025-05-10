@@ -19,6 +19,7 @@ return {
           "alpha",
           "dashboard",
           "snacks_dashboard",
+          "sagaoutline", -- LspSaga
         },
       },
       sections = {

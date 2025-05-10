@@ -1,6 +1,9 @@
+-- https://github.com/mason-org/mason.nvim
+-- https://github.com/mason-org/mason-lspconfig.nvim
+-- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 -- https://github.com/williamboman/mason.nvim
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   -- event = "VeryLazy", -- vim fails to load LSPs if Mason is not loaded early enough
   dependencies = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
