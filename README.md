@@ -1,5 +1,9 @@
 # Neovim IDE configuration
 
+<a href="https://dotfyle.com/den-is/nvim"><img src="https://dotfyle.com/den-is/nvim/badges/plugins?style=flat-square" /></a>
+<a href="https://dotfyle.com/den-is/nvim"><img src="https://dotfyle.com/den-is/nvim/badges/leaderkey?style=flat-square" /></a>
+<a href="https://dotfyle.com/den-is/nvim"><img src="https://dotfyle.com/den-is/nvim/badges/plugin-manager?style=flat-square" /></a>
+
 Simple and straightforward, but still quite complex Neovim configuration.
 This is not a plain `vim` setup for just editing a couple of lines, but more or less fully featured IDE.
 
