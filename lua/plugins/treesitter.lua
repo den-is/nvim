@@ -161,6 +161,9 @@ return {
     })
 
     require("nvim-ts-autotag").setup()
-    require("treesitter-context").setup()
+    require("treesitter-context").setup({
+      max_lines = 0,
+      multiline_threshold = 2,
+    })
   end,
 }
