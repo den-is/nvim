@@ -83,14 +83,11 @@ return {
           opts.desc = "Go to defintion"
           keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
 
-          opts.desc = "Format code"
-          keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
+          opts.desc = "Show LSP definitions"
+          keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
 
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
-
-          opts.desc = "Show LSP definitions"
-          keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
 
           opts.desc = "Show LSP implementations"
           keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
@@ -100,6 +97,9 @@ return {
 
           opts.desc = "See available code actions"
           keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+
+          opts.desc = "Format code"
+          keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
 
           opts.desc = "Smart rename"
           keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
