@@ -10,8 +10,11 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- Remap for dealing with visual line wraps
 -- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
-keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+-- https://github.com/LazyVim/LazyVim/blob/25abbf546d564dc484cf903804661ba12de45507/lua/lazyvim/config/keymaps.lua#L8-L11
+keymap({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+keymap({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+keymap({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+keymap({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Better Indentations - stay in visual mode after indentation
 keymap.set("v", "<", "<gv", { desc = "Shift left in visual mode without going to Normal after first indent" })
