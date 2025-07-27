@@ -73,7 +73,7 @@ return {
       },
     })
 
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+    vim.keymap.set({ "n", "v" }, "<leader>xf", function()
       conform.format({
         lsp_format = "fallback",
         async = false,
