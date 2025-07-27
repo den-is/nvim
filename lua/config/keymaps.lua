@@ -27,7 +27,7 @@ keymap("v", "P", '"_dP', { desc = "Put the text [from register x] before the cur
 -- breaks `xp` combination - swapping two adjacent characters
 keymap({ "n", "v" }, "x", '"_x', { desc = "Delete character and don't yank" })
 
-keymap("n", "c", '"_c', { desc = "Change{motion} character and don't yank old text" })
+keymap("n", "c", '"_c', { desc = "Change{motion} and don't yank old text" })
 keymap("n", "C", '"_C', { desc = "Change to end of line and don't yank old text" })
 
 -- Select previous paste
@@ -68,16 +68,16 @@ keymap("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Tabs management
 keymap("n", "<leader>to", "<CMD>tabnew<CR>", { desc = "Open new tab" })
-keymap("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" })
+keymap("n", "<leader>tf", "<CMD>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
 keymap("n", "<leader>tn", "<CMD>tabn<CR>", { desc = "Go to next tab" })
 keymap("n", "<leader>tp", "<CMD>tabp<CR>", { desc = "Go to previous tab" })
-keymap("n", "<leader>tf", "<CMD>tabnew %<CR>", { desc = "Open current buffer in a new tab" })
+keymap("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" })
 
----- Buffers management
----- Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
----- In a traditional terminal environment, both Tab and Ctrl+I generate the same ASCII character (0x09)
----- So when you override Tab, Ctrl-i - jumplist navigation - is also overridden
----- https://vi.stackexchange.com/a/23343/6400
+-- Buffers management
+--  Also don't forget about <C-i> and <C-o> to go forward/backward in the jumplist
+--  In a traditional terminal environment, both Tab and Ctrl+I generate the same ASCII character (0x09)
+--  So when you override Tab, Ctrl-i - jumplist navigation - is also overridden
+--  https://vi.stackexchange.com/a/23343/6400
 keymap("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
 keymap("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
 
