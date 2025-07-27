@@ -6,9 +6,9 @@
 -- `["x]S` - synonym for `cc`. delete N lines (into register x) and start insert
 --
 -- alternatives
---   - https://github.com/smoka7/hop.nvim
---   - https://github.com/ggandor/leap.nvim
---   - original idea: https://github.com/easymotion/vim-easymotion
+-- - https://github.com/smoka7/hop.nvim
+-- - https://github.com/ggandor/leap.nvim
+-- - original idea: https://github.com/easymotion/vim-easymotion
 
 return {
   "folke/flash.nvim",
