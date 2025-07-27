@@ -30,6 +30,6 @@ return {
     vim.keymap.set("n", "zR", ufo.openAllFolds, { desc = "Open All Folds" })
     vim.keymap.set("n", "zM", ufo.closeAllFolds, { desc = "Close All Folds" })
 
-    require("ufo").setup()
+    ufo.setup()
   end,
 }
