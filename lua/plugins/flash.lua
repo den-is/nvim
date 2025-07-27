@@ -1,8 +1,7 @@
 -- https://github.com/folke/flash.nvim
 -- https://www.youtube.com/watch?v=eJ3XV-3uoug
 --
--- Replaces default keymaps
--- Original keymaps purpose:
+-- Replaces default keymaps:
 -- `["x]s` - (substitute) delete N characters (into register x) and start insert
 -- `["x]S` - synonym for `cc`. delete N lines (into register x) and start insert
 --

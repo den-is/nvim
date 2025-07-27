@@ -1,4 +1,5 @@
 -- https://github.com/gbprod/substitute.nvim
+-- conflicts with flash.nvim that uses `s` and `S`
 -- overrides default `s`, `S` keymaps. To review and play again later.
 -- Default vim keymaps:
 --  ["x]c{motion} - delete the text that {motion} moves over and start insert
