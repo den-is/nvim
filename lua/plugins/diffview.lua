@@ -14,6 +14,8 @@ return {
     { ",hm", "<CMD>DiffviewOpen master<CR>", mode = { "n" }, desc = "Diff with master" },
     {
       ",hl",
+      mode = { "n" },
+      desc = "Line history",
       function()
         local current_line = vim.fn.line(".")
         local file = vim.fn.expand("%")
@@ -21,10 +23,11 @@ return {
         local cmd = string.format("DiffviewFileHistory --follow -L%s,%s:%s", current_line, current_line, file)
         vim.cmd(cmd)
       end,
-      desc = "Line history",
     },
     {
       ",hl",
+      mode = { "v" },
+      desc = "Range history",
       function()
         local v = require("utils.functions").get_visual_selection_info()
         local file = vim.fn.expand("%")
@@ -32,8 +35,6 @@ return {
         local cmd = string.format("DiffviewFileHistory --follow -L%s,%s:%s", v.start_row + 1, v.end_row + 1, file)
         vim.cmd(cmd)
       end,
-      mode = { "v" },
-      desc = "Range history",
     },
   },
 }
