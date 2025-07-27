@@ -6,6 +6,8 @@ return {
   keys = {
     {
       "<leader>sr",
+      mode = { "n", "v" },
+      desc = "Search and Replace (GrugFar)",
       function()
         local grug = require("grug-far")
         local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
@@ -16,8 +18,6 @@ return {
           },
         })
       end,
-      mode = { "n", "v" },
-      desc = "Search and Replace (GrugFar)",
     },
   },
   opts = {
