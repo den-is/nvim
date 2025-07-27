@@ -77,45 +77,54 @@ return {
 
           -- gd and gD - are default keys in neovim
           -- https://neovim.io/doc/user/pattern.html#gd
-          opts.desc = "Go to declaration"
-          keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+          -- gd - Goto local Declaration
+          -- gD - Goto global Declaration
 
-          opts.desc = "Go to defintion"
-          keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+          -- had to overwrite default keymap.
+          -- Default `gd` jumps to "opts" in function within autocmd from above,
+          -- instead of opts definition right above this list
+          opts.desc = "Go to defintion (local)"
+          keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
-          opts.desc = "Show LSP definitions"
-          keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
-
+          -- grr - default key (qfixlist)
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
 
-          opts.desc = "Show LSP implementations"
-          keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
+          -- gri - default key
+          -- opts.desc = "Show LSP implementations"
+          -- keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
 
-          opts.desc = "Show LSP type definitions"
-          keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts)
+          -- grt - default key
+          -- opts.desc = "Show LSP type definitions"
+          -- keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts)
 
-          opts.desc = "See available code actions"
-          keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+          -- gra - default key
+          -- opts.desc = "See available code actions"
+          -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
           opts.desc = "Format code"
           keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
 
-          opts.desc = "Smart rename"
-          keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+          -- grn - default key
+          -- opts.desc = "Smart rename"
+          -- keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
+          -- https://neovim.io/doc/user/lsp.html#_lua-module:-vim.lsp.diagnostic
+          -- https://neovim.io/doc/user/diagnostic.html#_defaults
+          -- <C-w>d - default key
           opts.desc = "Show line diagnostics"
           keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-          opts.desc = "Go to previous diagnostic"
-          keymap.set("n", "[d", function()
-            vim.diagnostic.jump({ count = -1, float = true })
-          end, opts)
-
-          opts.desc = "Go to next diagnostic"
-          keymap.set("n", "[d", function()
-            vim.diagnostic.jump({ count = 1, float = true })
-          end, opts)
+          -- default keys ]d, [d, ]D, [D
+          -- opts.desc = "Go to previous diagnostic"
+          -- keymap.set("n", "[d", function()
+          --   vim.diagnostic.jump({ count = -1, float = true })
+          -- end, opts)
+          --
+          -- opts.desc = "Go to next diagnostic"
+          -- keymap.set("n", "[d", function()
+          --   vim.diagnostic.jump({ count = 1, float = true })
+          -- end, opts)
 
           opts.desc = "Show documentation for what is under cursor"
           keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -319,15 +328,16 @@ return {
   -- https://github.com/nvimdev/lspsaga.nvim
   -- https://nvimdev.github.io/lspsaga/
   -- Adds breadcrumbs and many other convenient features (:Lspsaga rename, :Lspsaga outline, etc.)
+  -- outline instead of https://github.com/hedyhli/outline.nvim
+  -- breadcrumbs instead of https://github.com/Bekaboo/dropbar.nvim
   {
     "nvimdev/lspsaga.nvim",
     after = "nvim-lspconfig",
+    event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("lspsaga").setup({})
-    end,
+    opts = {},
   },
 }
