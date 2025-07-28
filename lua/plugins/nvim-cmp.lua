@@ -13,6 +13,10 @@
 -- alternative: https://github.com/Saghen/blink.cmp
 --              https://cmp.saghen.dev/#compared-to-nvim-cmp
 --
+-- Neovim native completion - Ctrl-X Ctrl-O
+--  https://neovim.io/doc/user/lsp.html#_lua-module:-vim.lsp.completion
+--  https://neovim.io/doc/user/insert.html#omnicompletion
+
 -- :CmpStatus - check status
 return {
   "hrsh7th/nvim-cmp",
