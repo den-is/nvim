@@ -1,5 +1,10 @@
 -- https://github.com/akinsho/toggleterm.nvim
 -- https://github.com/Allaman/nvim/blob/v1/lua/core/plugins/toggleterm.lua
+-- https://neovim.io/doc/user/terminal.html
+-- https://neovim.io/doc/user/options.html#'shell'
+-- https://neovim.io/doc/user/insert.html#inserting-file
+-- https://neovim.io/doc/user/various.html#%3A%21
+-- https://neovim.io/doc/user/various.html#K
 return {
   "akinsho/toggleterm.nvim",
   enabled = true,
@@ -48,6 +53,7 @@ return {
     })
 
     -- Example Custom Neovim Commands - shortcuts to run predefined commands in the terminal
+    -- Run them in the vim command line for the Terminal window `:Exec <command>`, or `:Tldr arg`
     vim.api.nvim_create_user_command("Exec", function(opts)
       require("toggleterm").exec(opts.args)
     end, { desc = "Run TermExec with the given command", nargs = "*" })
