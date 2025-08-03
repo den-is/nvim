@@ -8,6 +8,18 @@ keymap("n", "<leader>wn", "<CMD>noautocmd write<CR>", { desc = "Save/write buffe
 keymap("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
+-- https://github.com/jdhao/nvim-config/blob/a872921029c295672748e056f15fdaa1832dce76/lua/mappings.lua#L89-L98
+keymap("n", "<leader>so", function()
+  vim.cmd([[
+      update $MYVIMRC
+      source $MYVIMRC
+    ]])
+  vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+end, {
+  silent = true,
+  desc = "reload init.lua",
+})
+
 -- Remap for dealing with visual line wraps
 -- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
 -- https://github.com/LazyVim/LazyVim/blob/25abbf546d564dc484cf903804661ba12de45507/lua/lazyvim/config/keymaps.lua#L8-L11
