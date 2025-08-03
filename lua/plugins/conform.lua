@@ -10,6 +10,7 @@ return {
 
       -- Use `:ConformInfo` to see the location of the log file.
       -- log_level = vim.log.levels.TRACE,
+      log_level = vim.log.levels.DEBUG,
 
       format_on_save = {
         -- These options will be passed to conform.format()
@@ -29,7 +30,7 @@ return {
         json = { "prettier" },
         lua = { "stylua" },
         python = { "black", "ruff_organize_imports" },
-        go = { "golines", "gofumpt" },
+        go = { "gofumpt", "golines" },
         sh = { "shfmt" },
         toml = { "taplo" },
         terraform = { "terraform_fmt" },
@@ -50,10 +51,6 @@ return {
       },
 
       formatters = {
-        gofumpt = {
-          -- https://github.com/stevearc/conform.nvim/issues/387
-          args = { "$FILENAME" },
-        },
         black = {
           prepend_args = { "--line-length", "99" },
         },
