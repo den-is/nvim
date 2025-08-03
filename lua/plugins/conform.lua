@@ -50,6 +50,10 @@ return {
       },
 
       formatters = {
+        gofumpt = {
+          -- https://github.com/stevearc/conform.nvim/issues/387
+          args = { "$FILENAME" },
+        },
         black = {
           prepend_args = { "--line-length", "99" },
         },
