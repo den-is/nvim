@@ -104,31 +104,6 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- -- http://vimcasts.org/episodes/tabs-and-spaces/
--- api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
---   desc = "Go Tabs configuration",
---   pattern = { "*.go", "go.sum", "go.mod", "Makefile" },
---   callback = function()
---     vim.opt.tabstop = 4
---     vim.opt.softtabstop = 4
---     vim.opt.shiftwidth = 4
---     vim.opt.expandtab = false
---     -- do not display tab characters. UI becomes too noisy
---     vim.opt.list = false
---   end,
--- })
-
--- api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
---   desc = "Python Tabs configuration",
---   pattern = { "*.py" },
---   callback = function()
---     vim.opt.tabstop = 4
---     vim.opt.softtabstop = 4
---     vim.opt.shiftwidth = 4
---     vim.opt.expandtab = true
---   end,
--- })
-
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Enable spell checking for certain file types",
   pattern = { "*.txt", "*.md" },
