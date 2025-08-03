@@ -53,6 +53,9 @@ return {
           })
 
           -- create autocmd to show floating diagnostic message on hover
+          -- current basic setup conflicts with other hover Windows
+          -- for example `S-k` show docs hover is closed and diagnostic hover reappears
+          -- check lspsaga for better hovers
           vim.api.nvim_create_autocmd("CursorHold", {
             buffer = args.buf,
             callback = function()
@@ -73,7 +76,24 @@ return {
           -- See `:help vim.lsp.*` for docs on any of the below functions
           local opts = { buffer = args.buf, silent = true }
 
-          -- set keybinds
+          -- https://neovim.io/doc/user/lsp.html#_lua-module:-vim.lsp.diagnostic
+          -- https://neovim.io/doc/user/diagnostic.html#_defaults
+          -- <C-w>d - default key
+          -- useless since we always show diagnostics on hover (check above)
+          opts.desc = "Show line diagnostics"
+          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+
+          opts.desc = "Format code"
+          keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
+
+          -- C-s in Insert mode
+          opts.desc = "Show signature help"
+          keymap.set("n", "<C-k>", function()
+            vim.lsp.buf.signature_help({ border = "single", max_height = 25, max_width = 120 })
+          end, opts)
+
+          opts.desc = "Restart LSP"
+          keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
 
           -- gd and gD - are default keys in neovim
           -- https://neovim.io/doc/user/pattern.html#gd
@@ -102,18 +122,9 @@ return {
           -- opts.desc = "See available code actions"
           -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
-          opts.desc = "Format code"
-          keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
-
           -- grn - default key
           -- opts.desc = "Smart rename"
           -- keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-          -- https://neovim.io/doc/user/lsp.html#_lua-module:-vim.lsp.diagnostic
-          -- https://neovim.io/doc/user/diagnostic.html#_defaults
-          -- <C-w>d - default key
-          opts.desc = "Show line diagnostics"
-          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
           -- default keys ]d, [d, ]D, [D
           -- opts.desc = "Go to previous diagnostic"
@@ -126,14 +137,11 @@ return {
           --   vim.diagnostic.jump({ count = 1, float = true })
           -- end, opts)
 
-          opts.desc = "Show documentation for what is under cursor"
-          keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-          opts.desc = "Restart LSP"
-          keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
-
-          opts.desc = "Open Outline (Lspsaga)"
-          keymap.set("n", "<leader>o", "<CMD>Lspsaga outline<CR>", opts)
+          -- opts.desc = "Show documentation for what is under cursor"
+          -- keymap.set("n", "K", function()
+          --   vim.lsp.buf.hover({ border = "single", max_height = 25, max_width = 120 })
+          -- end, opts)
+          -- REPLACED by Lspsaga hover_doc
 
           ---- Inlay Hints are provided by Language Servers and should be enabled there
           ---- Here we just toggle them on and off if they are available from a LS
@@ -163,6 +171,7 @@ return {
         terraformls = {},
         gopls = {
           settings = {
+            -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
             gofumpt = true,
             codelenses = {
               gc_details = false,
@@ -337,6 +346,10 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      { "<leader>o", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "LSP Outline (Lspsaga)" },
+      { "K", "<CMD>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP Hover Doc (Lspsaga)" },
     },
     opts = {},
   },
