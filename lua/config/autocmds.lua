@@ -8,6 +8,7 @@ vim.filetype.add({
     [".env"] = "sh",
     ["tsconfig.json"] = "jsonc",
     [".yamlfmt"] = "yaml",
+    [".yamllint"] = "yaml",
   },
   pattern = {
     ["%.env%.[%w_.-]+"] = "sh",
@@ -49,8 +50,8 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- -- Detected automatically as terraform-vars filetype (probably integrated in terraform-ls)
--- -- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
+-- Detected automatically as terraform-vars filetype (probably integrated in terraform-ls)
+-- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Detect terraform vars",
   pattern = "*.tfvars",
@@ -68,19 +69,19 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  desc = "Set .conf.local filetype to conf",
-  pattern = { "*.conf.local" },
-  callback = function()
-    vim.api.nvim_command("set filetype=conf")
-  end,
-})
-
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Fix terraform and hcl comment string",
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
   pattern = { "*tf", "*.hcl", "*.tfvars", ".terraformrc", "terraform.rc", ".tofurc", "tofu.rc", "*.tfrc" },
   callback = function(ev)
     vim.bo[ev.buf].commentstring = "# %s"
+  end,
+})
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  desc = "Set .conf.local filetype to conf",
+  pattern = { "*.conf.local" },
+  callback = function()
+    vim.api.nvim_command("set filetype=conf")
   end,
 })
 
@@ -103,30 +104,30 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- http://vimcasts.org/episodes/tabs-and-spaces/
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  desc = "Go Tabs configuration",
-  pattern = { "*.go", "go.sum", "go.mod", "Makefile" },
-  callback = function()
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
-    vim.opt.expandtab = false
-    -- do not display tab characters. UI becomes too noisy
-    vim.opt.list = false
-  end,
-})
+-- -- http://vimcasts.org/episodes/tabs-and-spaces/
+-- api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--   desc = "Go Tabs configuration",
+--   pattern = { "*.go", "go.sum", "go.mod", "Makefile" },
+--   callback = function()
+--     vim.opt.tabstop = 4
+--     vim.opt.softtabstop = 4
+--     vim.opt.shiftwidth = 4
+--     vim.opt.expandtab = false
+--     -- do not display tab characters. UI becomes too noisy
+--     vim.opt.list = false
+--   end,
+-- })
 
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  desc = "Python Tabs configuration",
-  pattern = { "*.py" },
-  callback = function()
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
-    vim.opt.expandtab = true
-  end,
-})
+-- api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--   desc = "Python Tabs configuration",
+--   pattern = { "*.py" },
+--   callback = function()
+--     vim.opt.tabstop = 4
+--     vim.opt.softtabstop = 4
+--     vim.opt.shiftwidth = 4
+--     vim.opt.expandtab = true
+--   end,
+-- })
 
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Enable spell checking for certain file types",
