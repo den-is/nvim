@@ -1,4 +1,7 @@
 -- https://github.com/sindrets/diffview.nvim
+-- NVIM as a merge tool https://gist.github.com/Pagliacii/8fcb4dc64937305c19df9bb3137e4cad
+-- https://www.reddit.com/r/neovim/comments/1f7jj15/how_do_you_work_without_diffviewnvim/
+-- https://www.naseraleisa.com/posts/diff
 return {
   "sindrets/diffview.nvim",
   lazy = false,
@@ -8,14 +11,38 @@ return {
   },
   config = true,
   keys = {
-    { ",d", "<CMD>DiffviewOpen<CR>", mode = { "n" }, desc = "Repo Diffview", nowait = true },
-    { ",hh", "<CMD>DiffviewFileHistory<CR>", mode = { "n" }, desc = "Repo history" },
-    { ",hf", "<CMD>DiffviewFileHistory --follow %<CR>", mode = { "n" }, desc = "File history" },
-    { ",hm", "<CMD>DiffviewOpen master<CR>", mode = { "n" }, desc = "Diff with master" },
+    { "<leader>hq", "<CMD>DiffviewClose<CR>", mode = { "n" }, desc = "Diffview - Close" },
+    { "<leader>hd", "<CMD>DiffviewOpen<CR>", mode = { "n" }, desc = "Diffview - Repo Diffview", nowait = true },
+    { "<leader>hh", "<CMD>DiffviewFileHistory<CR>", mode = { "n" }, desc = "Diffview - Repo history" },
+    { "<leader>hf", "<CMD>DiffviewFileHistory --follow %<CR>", mode = { "n" }, desc = "Diffview - File history" },
     {
-      ",hl",
+      "<leader>hm",
+      desc = "Diffview - Diff with main branch (whatever main branch is)",
+      function()
+        -- get repo root
+        local git_root = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null"):gsub("\n", "")
+        if git_root == "" then
+          vim.notify("Not inside a Git repository", vim.log.levels.WARN)
+          return
+        end
+
+        -- get the default branch name
+        local origin_head =
+          vim.fn.system({ "git", "-C", git_root, "symbolic-ref", "--short", "refs/remotes/origin/HEAD" }):gsub("\n", "")
+        local branch = origin_head:match("origin/(.+)")
+        if not branch then
+          vim.notify("Unable to detect default origin branch", vim.log.levels.WARN)
+          return
+        end
+
+        -- diffview against main branch
+        vim.cmd("DiffviewOpen origin/" .. branch)
+      end,
+    },
+    {
+      "<leader>hl",
       mode = { "n" },
-      desc = "Line history",
+      desc = "Diffview - Line history",
       function()
         local current_line = vim.fn.line(".")
         local file = vim.fn.expand("%")
@@ -25,9 +52,9 @@ return {
       end,
     },
     {
-      ",hl",
+      "<leader>hl",
       mode = { "v" },
-      desc = "Range history",
+      desc = "Diffview - Range history",
       function()
         local v = require("utils.functions").get_visual_selection_info()
         local file = vim.fn.expand("%")

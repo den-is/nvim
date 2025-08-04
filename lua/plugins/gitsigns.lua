@@ -62,7 +62,7 @@ return {
         map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Git - Reset buffer" })
 
         map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git - Preview floating" })
-        map("n", "<leader>td", gitsigns.preview_hunk_inline, { desc = "Git - Preview inline" })
+        map("n", "<leader>hP", gitsigns.preview_hunk_inline, { desc = "Git - Preview inline" })
 
         map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, { desc = "Blame line" })
         map("n", "<leader>hB", gitsigns.toggle_current_line_blame, { desc = "Git - Toggle line blame" })
