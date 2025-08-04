@@ -61,13 +61,15 @@ return {
         map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "Git - Stage buffer" })
         map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Git - Reset buffer" })
 
-        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git - Preview hunk" })
+        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git - Preview floating" })
+        map("n", "<leader>td", gitsigns.preview_hunk_inline, { desc = "Git - Preview inline" })
 
         map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, { desc = "Blame line" })
         map("n", "<leader>hB", gitsigns.toggle_current_line_blame, { desc = "Git - Toggle line blame" })
-        map("n", "<leader>hd", gitsigns.diffthis, { desc = "Git - Diff this" })
-        map("n", "<leader>hD", function() gitsigns.diffthis("~") end, { desc = "Git - Diff this ~" })
-        map("n", "<leader>td", gitsigns.preview_hunk_inline, { desc = "Git - Toggle preview inline" })
+
+        -- Replaced by diffview.nvim <leader>hh <leader>hf
+        -- map("n", "<leader>hd", gitsigns.diffthis, { desc = "Git - Diff this against index" })
+        -- map("n", "<leader>hD", function() gitsigns.diffthis("~") end, { desc = "Git - Diff this against last commit ~" })
 
         -- Text object
         map({ "o", "x" }, "ih", "<CMD><C-U>Gitsigns select_hunk<CR>", { desc = "Git - Select hunk" })

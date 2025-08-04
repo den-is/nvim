@@ -61,7 +61,7 @@ keymap("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page UP and stay centered"
 
 -- Jump seach occurrences and stay centered
 keymap("n", "n", "nzz", { desc = "Jump to next search occurrence and stay centered" })
-keymap("n", "N", "nzzzv", { desc = "Jump to previous search occurrence and stay centered" })
+keymap("n", "N", "Nzzzv", { desc = "Jump to previous search occurrence and stay centered" })
 
 -- Window management
 keymap("n", "<leader>sv", "<CMD>vsplit<CR>", { desc = "Split window vertically" })
