@@ -61,8 +61,9 @@ return {
       pattern = "VeryLazy",
       callback = function()
         -- stylua: ignore start
-        Snacks.toggle.option("wrap", { name = "Line Wrap" }):map("<leader>tw")
-        Snacks.toggle.option("spell", { name = "Spell Check" }):map("<leader>ts")
+        Snacks.toggle.option("wrap", { name = "Line Wrap" }):map("<leader>uw")
+        Snacks.toggle.option("spell", { name = "Spell Check" }):map("<leader>us")
+        Snacks.toggle.option("cursorcolumn", { name = "Cursor Column" }):map("<leader>uc")
         Snacks.toggle.inlay_hints():map("<leader>uh")
         Snacks.toggle.dim():map("<leader>ud")
         -- stylua: ignore end
