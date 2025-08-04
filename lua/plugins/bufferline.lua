@@ -28,6 +28,12 @@ return {
             text_align = "center",
             separator = false,
           },
+          {
+            filetype = "copilot-chat",
+            text = "Copilot Chat",
+            text_align = "center",
+            separator = false,
+          },
         },
       },
     })

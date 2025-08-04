@@ -55,12 +55,45 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     build = "make tiktoken", -- Only on MacOS or Linux
+    keys = {
+      {
+        "<leader>cc",
+        mode = { "n" },
+        desc = "Copilot Chat Toggle",
+        function()
+          require("CopilotChat").toggle()
+        end,
+      },
+      {
+        "<leader>ccq",
+        mode = { "n" },
+        desc = "Copilot Quick Chat",
+        function()
+          local input = vim.fn.input("Copilot Chat: ")
+          if input ~= "" then
+            require("CopilotChat").ask(input, {
+              selection = require("CopilotChat.select").buffer,
+            })
+          end
+        end,
+      },
+    },
     opts = {
       debug = false,
+      log_level = "info",
+      model = "gpt-4o",
       window = {
-        layout = "float",
-        border = "rounded",
+        -- layout = "float",
+        -- border = "rounded",
+        layout = "vertical",
+        width = 0.3,
       },
+      headers = {
+        user = " You: ",
+        assistant = "󱙺 Copilot: ",
+        tool = " Tool: ",
+      },
+      separator = "━━",
     },
   },
 }

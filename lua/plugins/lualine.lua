@@ -20,6 +20,7 @@ return {
           "dashboard",
           "snacks_dashboard",
           "sagaoutline", -- LspSaga
+          "copilot-chat",
         },
       },
       sections = {
