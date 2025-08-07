@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "CopilotChat.nvim": { "branch": "main", "commit": "807c4a179d48aedaf9c5b5dd667486766411d81b" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "d4ed3fb40f301fc1ff32e0ff3b437b619112ce14" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "auto-session": { "branch": "main", "commit": "2374591ad5187e6697d9b4a683027ad33771381f" },
@@ -40,6 +40,7 @@
   "mason-tool-installer.nvim": { "branch": "main", "commit": "517ef5994ef9d6b738322664d5fdd948f0fdeb46" },
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
   "mini.move": { "branch": "main", "commit": "4fe4a855fee53c66b0f3255a4b54ddc2ae6b308c" },
+  "neominimap.nvim": { "branch": "main", "commit": "b2252300f753e3baf59545713ae53948df02325f" },
   "neoscroll.nvim": { "branch": "master", "commit": "1903517811aee8397367b0e73e94d01f5d2ee477" },
   "nvim": { "branch": "main", "commit": "76a8d0515024cc55d8bd26fc13f1af88faef3ebf" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
@@ -77,5 +78,5 @@
   "vim-helm": { "branch": "master", "commit": "cc5ac22444332381f38084a6c7f023c25eef6201" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
-  "yazi.nvim": { "branch": "main", "commit": "eaf0d686e3d43385375ac38235a2bfae0e2f6bd1" }
+  "yazi.nvim": { "branch": "main", "commit": "9d9abcd75dc1181bb083696590c5046a443f041a" }
 }
