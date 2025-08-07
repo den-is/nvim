@@ -337,6 +337,7 @@ return {
   -- https://github.com/nvimdev/lspsaga.nvim
   -- https://nvimdev.github.io/lspsaga/
   -- Adds breadcrumbs and many other convenient features (:Lspsaga rename, :Lspsaga outline, etc.)
+  -- outline instead of https://github.com/stevearc/aerial.nvim
   -- outline instead of https://github.com/hedyhli/outline.nvim
   -- breadcrumbs instead of https://github.com/Bekaboo/dropbar.nvim
   {

@@ -1,5 +1,6 @@
 -- https://github.com/hedyhli/outline.nvim
--- alternative for :Lspsaga outline
+-- alternative :Lspsaga outline
+-- alternative https://github.com/stevearc/aerial.nvim
 return {
   "hedyhli/outline.nvim",
   enabled = false,
