@@ -14,7 +14,7 @@ vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
 vim.opt.colorcolumn = "80,120" -- Visual line length guides
 vim.opt.scrolloff = 5 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.sidescrolloff = 5
+vim.opt.sidescrolloff = 20 -- if using minimap need to set to something more than 5, 20+
 vim.opt.cursorline = true
 -- vim.opt.cursorcolumn = true -- lol. line+column=crosshair
 vim.opt.splitright = true -- natural window splitting
