@@ -16,7 +16,7 @@ return {
     -- vim.opt.sidescrolloff = 36 -- Set a large value
 
     vim.g.neominimap = {
-      auto_enable = true,
+      auto_enable = false,
       exclude_filetypes = {
         "help",
         "bigfile", -- For Snacks.nvim
