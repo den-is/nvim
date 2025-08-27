@@ -278,7 +278,7 @@ return {
               -- https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/settings/yaml.lua
               -- if we do not disable this we get error while trying to create/edit kubernetes manifest:
               --   "Matches multiple schemas when only one must validate. yaml-schema: https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json"
-              format = { enabled = false },
+              format = { enable = false },
               validate = false,
               -- completion = true,
               hover = true,
