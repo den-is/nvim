@@ -50,7 +50,8 @@ return {
         ---- but .editorconfig is was not able to make markdownfmt to use spaces instead of tabs
         ----
         ---- prettier works better and also uses .editorconfig in addition to .prettierrc and similar
-        markdown = { "prettier" },
+        ---- DISABLED 2025-08-28 - indents inline yaml code blocks
+        -- markdown = { "prettier" },
       },
 
       formatters = {
