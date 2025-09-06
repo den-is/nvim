@@ -38,9 +38,10 @@ keymap("v", "P", '"_dP', { desc = "Put the text [from register x] before the cur
 
 -- breaks `xp` combination - swapping two adjacent characters
 keymap({ "n", "v" }, "x", '"_x', { desc = "Delete character and don't yank" })
+keymap({ "n", "v" }, "X", '"_D', { desc = "Delete until the end of line and don't yank" })
 
-keymap("n", "c", '"_c', { desc = "Change{motion} and don't yank old text" })
-keymap("n", "C", '"_C', { desc = "Change to end of line and don't yank old text" })
+keymap("n", "c", '"_c', { desc = "Change{motion} and don't yank" })
+keymap("n", "C", '"_C', { desc = "Change to end of line and don't yank" })
 
 -- Select previous paste
 keymap("n", "gp", "`[v`]", { desc = "Select previous paste" })
