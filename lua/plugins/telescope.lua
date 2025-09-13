@@ -120,6 +120,25 @@ return {
     map.set("n", "<leader>fk", builtin.keymaps, { desc = "Fuzzy list keymaps" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
     map.set("n", "<leader>fD", builtin.diagnostics, { desc = "Diagnostics from all open buffers" })
+    -- map.set("n", "<leader>fx", builtin.treesitter, { desc = "Fuzzy list Treesitter objects" })
+    map.set("n", "<leader>fx", function()
+      -- builtin.lsp_document_symbols()
+      builtin.lsp_document_symbols({
+        symbols = {
+          "Variable",
+          "Array",
+          "Class",
+          "Function",
+          "Method",
+          "Constructor",
+          "Interface",
+          "Module",
+          "Struct",
+          "Field",
+          "Property",
+        },
+      })
+    end, { desc = "Fuzzy list Document Symbols" })
     map.set("n", "<leader>fd", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Diagnostics for the current buffer" })
     map.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Find TODOs" })
     map.set("n", "<leader>fS", builtin.spell_suggest, { desc = "Lists spelling suggestions for word under cursor" })
