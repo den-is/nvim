@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "CopilotChat.nvim": { "branch": "main", "commit": "070e3022d8878567a089143e2672e8c06ab83be2" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "0514e7d1944f0caddca3fcb111a8d20c52a6dd18" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "auto-session": { "branch": "main", "commit": "4be42f3cc862f129c2f872145aa12a1f7ccaaed9" },
@@ -20,7 +20,7 @@
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
-  "gitsigns.nvim": { "branch": "main", "commit": "6e3c66548035e50db7bd8e360a29aec6620c3641" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5" },
   "go.nvim": { "branch": "master", "commit": "2f7cd3a20a2940320d5cad338722601ffa3ce31b" },
   "grug-far.nvim": { "branch": "main", "commit": "50d9ee2b5a19634670441948e7e4afaa042f1059" },
   "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
@@ -78,5 +78,5 @@
   "vim-helm": { "branch": "master", "commit": "cc5ac22444332381f38084a6c7f023c25eef6201" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
-  "yazi.nvim": { "branch": "main", "commit": "f3b810d647730906f5c60a5a67a095d20e8cfe5d" }
+  "yazi.nvim": { "branch": "main", "commit": "d044edea1cc9c5055d4dea0dd4384edaa75e674a" }
 }
