@@ -19,14 +19,30 @@ return {
   keys = {
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
 
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    -- Treesitter incremental selection - ; and , to increase/decrease selection
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection" },
 
     -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
 
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 
-    -- Toggle flash for search results / or ?. Search than press Ctrl-s to toggle flash
+    -- Toggle flash for search results / or ?. Initiate search than press Ctrl-s to toggle flash
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+
+    -- Treesitter incremental selection
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/8096#issuecomment-3236209267
+    -- {
+    --   "<leader>v",
+    --   mode = {"n", "o", "x"},
+    --   function()
+    --     require("flash").treesitter({
+    --       actions = {
+    --         ["<leader>v"] = "next",
+    --         ["<BS>"] = "prev",
+    --       }
+    --     })
+    --   end,
+    --   desc = "Treesitter Incremental Selection" },
   },
 }
