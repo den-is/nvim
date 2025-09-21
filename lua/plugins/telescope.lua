@@ -2,7 +2,9 @@
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  -- branch "0.1.x" is deprecated https://github.com/nvim-telescope/telescope.nvim/issues/3487
+  branch = "master",
+  version = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
