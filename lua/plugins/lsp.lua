@@ -157,7 +157,6 @@ return {
 
       local servers = {
         bashls = {},
-        dockerls = {},
         docker_compose_language_service = {},
         templ = {},
         tflint = {},
@@ -169,6 +168,18 @@ return {
         ansiblels = {},
         -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
         terraformls = {},
+        dockerls = {
+          -- https://github.com/rcjsuen/dockerfile-language-server/tree/master
+          settings = {
+            docker = {
+              languageserver = {
+                formatter = {
+                  ignoreMultilineInstructions = true,
+                },
+              },
+            },
+          },
+        },
         gopls = {
           settings = {
             -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
