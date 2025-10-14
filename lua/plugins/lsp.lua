@@ -181,11 +181,25 @@ return {
           },
         },
         gopls = {
+          -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+          -- https://github.com/golang/tools/tree/master/gopls
+          -- https://github.com/golang/tools/releases
+          -- https://go.dev/gopls/release/
+          -- https://tip.golang.org/gopls/release/
           settings = {
             -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
             gofumpt = true,
+            usePlaceholders = true,
+            semanticTokens = true,
+            staticcheck = true,
+            directoryFilters = {
+              "-.git",
+              "-.vscode",
+              "-.idea",
+              "-.vscode-test",
+              "-node_modules",
+            },
             codelenses = {
-              gc_details = false,
               generate = true,
               regenerate_cgo = true,
               run_govulncheck = true,
@@ -204,17 +218,11 @@ return {
               rangeVariableTypes = true,
             },
             analyses = {
-              fieldalignment = true,
               nilness = true,
               unusedparams = true,
               unusedwrite = true,
               useany = true,
             },
-            usePlaceholders = true,
-            completeUnimported = true,
-            staticcheck = true,
-            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-            semanticTokens = true,
           },
         },
         -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
