@@ -1,3 +1,7 @@
+-- https://neovim.io/doc/user/vimindex.html#index
+-- https://neovim.io/doc/user/quickref.html#quickref
+-- https://neovim.io/doc/user/news-0.11.html#_defaults
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
