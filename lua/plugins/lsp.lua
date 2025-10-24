@@ -110,6 +110,7 @@ return {
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
 
+          -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
           -- gri - default key
           -- opts.desc = "Show LSP implementations"
           -- keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
@@ -186,6 +187,7 @@ return {
           -- https://github.com/golang/tools/releases
           -- https://go.dev/gopls/release/
           -- https://tip.golang.org/gopls/release/
+          -- https://github.com/golang/vscode-go/wiki/settings
           settings = {
             -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
             gofumpt = true,
@@ -193,20 +195,24 @@ return {
             semanticTokens = true,
             staticcheck = true,
             directoryFilters = {
-              "-.git",
-              "-.vscode",
-              "-.idea",
-              "-.vscode-test",
-              "-node_modules",
+              "-**/.git",
+              "-**/.vscode",
+              "-**/.vscode-test",
+              "-**/.idea",
+              "-**/vendor",
+              "-**/node_modules",
+              "-**/dist",
+              "-**/tmp",
+              "-**/logs",
             },
             codelenses = {
+              tidy = true,
+              test = true,
+              vendor = true,
               generate = true,
               regenerate_cgo = true,
               run_govulncheck = true,
-              test = true,
-              tidy = true,
               upgrade_dependency = true,
-              vendor = true,
             },
             hints = {
               assignVariableTypes = true,
@@ -221,7 +227,6 @@ return {
               nilness = true,
               unusedparams = true,
               unusedwrite = true,
-              useany = true,
             },
           },
         },
