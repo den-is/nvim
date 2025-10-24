@@ -15,61 +15,96 @@ return {
     build = ":TSUpdate",
     dependencies = { "RRethy/nvim-treesitter-endwise" },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter").setup({
+      local ensureInstalled = {
+        "bash",
+        "c",
+        "cmake",
+        "comment",
+        "css",
+        "diff",
+        "dockerfile",
+        "git_config",
+        "git_rebase",
+        "gitcommit",
+        "gitignore",
+        "go",
+        "gomod",
+        "gosum",
+        "gotmpl",
+        "gowork",
+        "hcl",
+        "html",
+        "javascript",
+        "jsdoc",
+        --"json",
+        --"jsonnet",
+        "json5", -- https://json5.org
+        "jsonc",
+        "jsonc",
+        "just",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "ruby",
+        "rust",
+        "sql",
+        "terraform",
+        "tmux",
+        "toml",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+        "zig",
+      }
+      local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+      local parsersToInstall = vim
+        .iter(ensureInstalled)
+        :filter(function(parser)
+          return not vim.tbl_contains(alreadyInstalled, parser)
+        end)
+        :totable()
+      require("nvim-treesitter").install(parsersToInstall)
 
-        indent = { enable = true }, -- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
-        highlight = { enable = true },
-        folds = { enable = true },
-
-        -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-        ensure_installed = {
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
           "bash",
-          "cmake",
+          "c",
           "css",
-          "comment",
-          "dockerfile",
-          "go",
-          "gomod",
-          "gosum",
-          "gotmpl",
-          "gowork",
-          "html",
-          "typescript",
-          "javascript",
-          "json5", -- https://json5.org
-          --"json",
-          --"jsonnet",
-          "jsonc",
-          "jsdoc",
-          "jsonc",
-          "just",
-          "lua",
-          "luadoc",
-          "diff",
           "gitcommit",
           "gitignore",
-          "git_rebase",
-          "git_config",
+          "go",
+          "html",
+          "javascript",
+          "json",
+          "just",
+          "lua",
           "markdown",
-          "markdown_inline",
           "python",
-          "printf",
           "query",
-          "regex",
           "ruby",
+          "rust",
+          "sh",
           "sql",
-          "hcl",
           "terraform",
+          "tmux",
           "toml",
-          "vim",
-          "vimdoc",
+          "typescript",
           "xml",
           "yaml",
-          "tmux",
-          "rust",
           "zig",
         },
+        callback = function()
+          vim.treesitter.start()
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
     end,
   },
