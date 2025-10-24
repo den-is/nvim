@@ -20,7 +20,10 @@ return {
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
 
     -- Treesitter incremental selection - ; and , to increase/decrease selection
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection" },
+    -- to be potentially replaced in 0.12 with "an", "in" in visual mode:
+    -- https://github.com/neovim/neovim/pull/34011
+    -- https://neovim.io/doc/user/lsp.html#_global-defaults
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection - ;/, - inc/dec" },
 
     -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },

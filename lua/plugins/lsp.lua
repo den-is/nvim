@@ -111,6 +111,7 @@ return {
           keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
 
           -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
+          -- https://neovim.io/doc/user/lsp.html#_global-defaults
           -- gri - default key
           -- opts.desc = "Show LSP implementations"
           -- keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
