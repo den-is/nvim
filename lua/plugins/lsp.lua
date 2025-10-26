@@ -107,12 +107,12 @@ return {
           keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
           -- grr - default key (qfixlist)
-          opts.desc = "Show LSP references"
+          -- opts.desc = "Show LSP references"
           -- Deprecated Telescope in favor of folke/Snacks.nvim pickers
           -- keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
-          keymap.set("n", "gR", function()
-            Snacks.picker.lsp_references()
-          end, opts)
+          -- keymap.set("n", "gR", function()
+          --   Snacks.picker.lsp_references()
+          -- end, opts)
 
           -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
           -- https://neovim.io/doc/user/lsp.html#_global-defaults
@@ -378,6 +378,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
+      -- outline can be also shown by Snacks <leader>ls lsp_symbols for doc or <leader>lS for workspace
       { "<leader>o", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "LSP Outline (Lspsaga)" },
       { "K", "<CMD>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP Hover Doc (Lspsaga)" },
     },
