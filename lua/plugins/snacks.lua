@@ -1,20 +1,126 @@
 -- https://github.com/folke/snacks.nvim
+-- default Pickers keymaps https://github.com/folke/snacks.nvim/blob/f33aa2017/docs/picker.md?plain=1#L216-L266
+
+-- list all styles for windows https://github.com/folke/snacks.nvim/blob/main/docs/styles.md
+-- :lua Snacks.picker.picker_layouts() list all layouts
+-- :lua Snacks.picker.pickers() list all pickers
+
 return {
   "folke/snacks.nvim",
   enabled = true,
   priority = 1000,
   lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "nvim-lua/plenary.nvim",
+    "folke/todo-comments.nvim",
+  },
   keys = {
     -- stylua: ignore start
+    -- Files
+    { "<leader>ff", function() Snacks.picker.files({
+      filter = {cwd = true},
+      layout = {preset = "vscode"},
+      -- defaul commands args https://github.com/folke/snacks.nvim/blob/f33aa2017a2671fb4a0e71316f385c8010c8b81b/lua/snacks/picker/source/files.lua#L13
+      cmd = "rg",
+      hidden = true,
+      ignored = true,
+      exclude = {
+        -- ".git", -- excluded by default
+        "node_modules",
+        ".venv",
+        ".direnv",
+        "__pycache__",
+      },
+    }) end, desc = "Find files in CWD" },
+    { "<leader>fr", function() Snacks.picker.recent({ filter = {cwd = true}, layout = {preset = "vscode"} }) end, desc = "Recent files in CWD" },
+    { "<leader>fz", function() Snacks.picker.zoxide() end, desc = "Open project from Zoxide" },
+
+    -- Grep
+    { "<leader>fl", function() Snacks.picker.lines() end, desc = "Find line in Buffer" },
+    { "<leader>fs", function() Snacks.picker.grep({
+      hidden = true,
+      ignored = true,
+      exclude = {
+        -- ".git", -- excluded by default
+        "node_modules",
+        ".venv",
+        ".direnv",
+        "__pycache__",
+      },
+    }) end, desc = "Grep" },
+    { "<leader>fw", function() Snacks.picker.grep_word({
+      hidden = true,
+      ignored = true,
+      exclude = {
+        "node_modules",
+        ".venv",
+        ".direnv",
+        "__pycache__",
+      },
+    }) end, desc = "Grep word or visual selection, in CWD", mode = { "n", "x" } },
+
+    -- Buffers
+    { "<leader>fb", function() Snacks.picker.buffers({layout = {preset = "vscode"}}) end, desc = "Buffers list (C-x - :bd)" },
+    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>ut", function() Snacks.picker.undo() end, desc = "Undo Tree" },
-    -- { "<leader>sk", function() Snacks.picker.keymaps({ layout = 'select', plugs = true, }) end, desc = "Keymaps" }, -- Telescope without config feels much better
+    { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+
+    -- LSP
+    -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
+    { "<leader>ls", function() Snacks.picker.lsp_symbols({
+      tree = true,
+      filter = {
+        markdown = true,
+        help = true,
+        default = {
+          "Variable",
+          "Array",
+          "Class",
+          "Function",
+          "Method",
+          "Constructor",
+          "Interface",
+          "Module",
+          "Struct",
+          "Field",
+          "Enum",
+          "Namespace",
+          "Property",
+          "Trait",
+          -- "Package", -- remove package since luals uses it for control flow structures. Use per filetype filter
+        }
+      }
+    }) end, desc = "LSP - Document symbols" },
+    { "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP - Workspace Symbols" },
+    { "<leader>lr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "LSP - References" }, -- grr - default qflist
+    { "<leader>ld", function() Snacks.picker.lsp_definitions() end, desc = "LSP - Definition" }, -- grt
+    { "<leader>lI", function() Snacks.picker.lsp_implementations() end, desc = "LSP - Implementation" }, -- gri
+    { "<leader>lt", function() Snacks.picker.lsp_type_definitions() end, desc = "LSP - Type Definition" }, -- grt
+    { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+    { "<leader>fD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+
+    -- Git
+    { "<leader>go", mode = {"n", "v"}, function() Snacks.gitbrowse() end, desc = "Open git link" },
+    { "<leader>gc", mode = {"n", "v"}, function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })end, desc = "Copy git link" },
+
+    -- Var
+    { "<leader>ft", function() Snacks.picker.todo_comments({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Todo" },
+    { "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+    { "<leader>fS", function() Snacks.picker.spelling() end, desc = "Spelling" },
+    { "<leader>fk", function() Snacks.picker.keymaps({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Keymaps" },
+    { "<leader>fh", function() Snacks.picker.help() end, desc = "Find help tags" },
+    { "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
+    { "<leader>un", function() Snacks.picker.notifications({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Marks" },
+    { "<leader>sR", function() Snacks.picker.resume() end, desc = "Snacks Resume picker" },
+    -- { "<c-n>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     -- stylua: ignore end
   },
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     quickfile = { enabled = true },
-    dim = { enabled = false }, -- not working for me?
+    dim = { enabled = false }, -- <leader>ud toggle
     image = {}, -- for kitty, wezterm and ghostty
     input = { enabled = true },
     statuscolumn = { enabled = true },
@@ -54,6 +160,11 @@ return {
         { title = "Recent Files", section = "recent_files", limit = 8, cwd = true, padding = 1 },
         { section = "startup" },
       },
+    },
+    ---@class snacks.picker.Config
+    picker = {
+      enabled = true,
+      ui_select = true,
     },
   },
   init = function()
