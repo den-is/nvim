@@ -24,7 +24,7 @@ return {
       scroll_up = "<c-s-u>",
     },
     spec = {
-      { "<leader>f", group = "Telescope" },
+      { "<leader>f", group = "Pickers" },
       { "<leader>e", group = "File tree" },
       { "<leader>h", group = "Git" },
       { "<leader>x", group = "Dignostics" },
