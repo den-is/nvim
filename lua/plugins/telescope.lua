@@ -1,7 +1,13 @@
+--
+--
+-- Deprecating Telescope in favor of "folke/Snacks.nvim" pickers
+--
+--
 -- https://github.com/nvim-telescope/telescope.nvim
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
 return {
   "nvim-telescope/telescope.nvim",
+  enabled = false,
   -- branch "0.1.x" is deprecated https://github.com/nvim-telescope/telescope.nvim/issues/3487
   branch = "master",
   version = false,
@@ -121,6 +127,7 @@ return {
     map.set("n", "<leader>fm", builtin.marks, { desc = "Fuzzy list marks" })
     map.set("n", "<leader>fk", builtin.keymaps, { desc = "Fuzzy list keymaps" })
     map.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
+    map.set("n", "<leader>fd", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Diagnostics for the current buffer" })
     map.set("n", "<leader>fD", builtin.diagnostics, { desc = "Diagnostics from all open buffers" })
     -- map.set("n", "<leader>fx", builtin.treesitter, { desc = "Fuzzy list Treesitter objects" })
     map.set("n", "<leader>fx", function()
@@ -141,7 +148,6 @@ return {
         },
       })
     end, { desc = "Fuzzy list Document Symbols" })
-    map.set("n", "<leader>fd", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Diagnostics for the current buffer" })
     map.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Find TODOs" })
     map.set("n", "<leader>fS", builtin.spell_suggest, { desc = "Lists spelling suggestions for word under cursor" })
     -- stylua: ignore end
