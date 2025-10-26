@@ -18,6 +18,7 @@ return {
           "Outline",
           "alpha",
           "dashboard",
+          "snacks_layout_box",
           "snacks_dashboard",
           "sagaoutline", -- LspSaga
           "copilot-chat",
