@@ -2,6 +2,7 @@ return {
   -- https://github.com/mikavilpas/yazi.nvim
   -- https://github.com/sxyazi/yazi
   {
+    -- Don't forget to set correct theme if needed. E.g. https://github.com/catppuccin/yazi
     "mikavilpas/yazi.nvim",
     lazy = true, -- use `event = "VeryLazy"` for netrw replacement
     keys = {

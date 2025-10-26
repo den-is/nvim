@@ -14,17 +14,32 @@ return {
       },
       default_integrations = false,
       integrations = {
-        alpha = true,
         cmp = true,
         gitsigns = true,
         nvimtree = true,
-        treesitter = true,
-        indent_blankline = { enabled = true },
-        markdown = true,
+        -- treesitter = true,
+        treesitter_context = true,
+        render_markdown = true,
         mason = true,
-        mini = true,
-        telescope = true,
         which_key = true,
+        indent_blankline = {
+          enabled = true,
+          scope_color = "flamingo", -- catppuccin color (eg. `lavender`)
+          colored_indent_levels = false,
+        },
+        mini = {
+          enabled = true,
+          indentscope_color = "flamingo", -- catppuccin color (eg. `lavender`)
+        },
+        snacks = {
+          enabled = false,
+          indent_scope_color = "flamingo", -- catppuccin color (eg. `lavender`)
+        },
+        -- disabled stuff
+        alpha = false,
+        telescope = {
+          enabled = false,
+        },
       },
     })
 
