@@ -141,7 +141,7 @@ return {
         ts_move.goto_next_start("@parameter.inner", "textobjects")
       end, { desc = "Next parameter start", silent = true })
       -- ]b is Nvim default https://neovim.io/doc/user/news-0.11.html#_defaults
-      vim.keymap.set({ "n", "x", "o" }, "]x", function()
+      vim.keymap.set({ "n", "x", "o" }, "]w", function()
         ts_move.goto_next_start("@block.outer", "textobjects")
       end, { desc = "Next block start", silent = true })
       vim.keymap.set({ "n", "x", "o" }, "]k", function()
@@ -170,7 +170,7 @@ return {
         ts_move.goto_previous_start("@parameter.inner", "textobjects")
       end, { desc = "Previous parameter start", silent = true })
       -- [b is Nvim default https://neovim.io/doc/user/news-0.11.html#_defaults
-      vim.keymap.set({ "n", "x", "o" }, "[x", function()
+      vim.keymap.set({ "n", "x", "o" }, "[w", function()
         ts_move.goto_previous_start("@block.outer", "textobjects")
       end, { desc = "Previous block start", silent = true })
       vim.keymap.set({ "n", "x", "o" }, "[k", function()
