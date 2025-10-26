@@ -108,7 +108,11 @@ return {
 
           -- grr - default key (qfixlist)
           opts.desc = "Show LSP references"
-          keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
+          -- Deprecated Telescope in favor of folke/Snacks.nvim pickers
+          -- keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
+          keymap.set("n", "gR", function()
+            Snacks.picker.lsp_references()
+          end, opts)
 
           -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
           -- https://neovim.io/doc/user/lsp.html#_global-defaults
