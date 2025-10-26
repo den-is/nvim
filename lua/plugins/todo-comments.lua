@@ -1,7 +1,7 @@
 -- https://github.com/folke/todo-comments.nvim
 -- integrates with:
 -- - trouble.nvim `<leader>xt`
--- - Telescope `<leader>ft`
+-- - Snacks picker `<leader>ft`
 -- VSCode alternatives:
 -- - https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 -- - https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments
