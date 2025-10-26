@@ -59,6 +59,9 @@ return {
           "TelescopePrompt",
           "undotree",
           "flutterToolsOutline",
+          "snacks_dashboard",
+          "snacks_input",
+          "snacks_picker_input",
           "", -- for all buffers without a file type
         },
         buftypes = {
