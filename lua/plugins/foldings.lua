@@ -3,6 +3,9 @@
 -- za - toggle fold
 -- zc - close fold
 -- zo - open fold
+-- zi - toggle folding under cursor only if fold exists
+-- zx - update folds (resets view, unfolds)
+-- zA - toggle all folds under cursor
 -- zR - open all folds
 -- zM - close all folds
 return {
