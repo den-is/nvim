@@ -1,4 +1,7 @@
 -- https://github.com/folke/snacks.nvim
+
+-- highly depends on `rg` ripgrep beind installed
+
 -- default Pickers keymaps https://github.com/folke/snacks.nvim/blob/f33aa2017/docs/picker.md?plain=1#L216-L266
 
 -- list all styles for windows https://github.com/folke/snacks.nvim/blob/main/docs/styles.md
@@ -145,10 +148,49 @@ return {
           -- for now using Telescope instead of Snacks.picker
           -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart({filter = {cwd = true}, layout = 'default'})" },
           -- { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.picker.grep({layout = 'default'})" },
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          -- { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "b", desc = "File browser", action = function()  require("yazi").yazi(nil, vim.fn.getcwd()) end},
+          {
+            icon = " ",
+            key = "f",
+            desc = "Find File in CWD",
+            action = function()
+              Snacks.picker.files({
+                filter = {cwd = true},
+                layout = {preset = "vscode"},
+                cmd = "rg",
+                hidden = true,
+                ignored = true,
+                exclude = {
+                  -- ".git", -- excluded by default
+                  "node_modules",
+                  ".venv",
+                  ".direnv",
+                  "__pycache__",
+                },
+              })
+            end
+          },
+          {
+            icon = " ",
+            key = "g",
+            desc = "Find Text in CWD",
+            action = function()
+              Snacks.picker.grep({
+                hidden = true,
+                ignored = true,
+                exclude = {
+                  -- ".git", -- excluded by default
+                  "node_modules",
+                  ".venv",
+                  ".direnv",
+                  "__pycache__",
+                },
+              })
+            end
+          },
+          { icon = " ", key = "b", desc = "File browser", action = function() require("yazi").yazi(nil, vim.fn.getcwd()) end},
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy check", enabled = package.loaded.lazy },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           -- stylua: ignore end
