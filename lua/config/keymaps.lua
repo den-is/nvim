@@ -96,9 +96,8 @@ keymap("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" })
 --  So when you override Tab, Ctrl-i - jumplist navigation - is also overridden
 --  https://vi.stackexchange.com/a/23343/6400
 -- neovim 0.11 introduced [b ]b [B ]B https://neovim.io/doc/user/news-0.11.html#_defaults
--- but I have ]b [b for treesitter textobjects motion
-keymap("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
-keymap("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
+-- keymap("n", "<Tab>", "<CMD>bnext<CR>", { desc = "Go to next buffer", noremap = true, silent = true })
+-- keymap("n", "<S-Tab>", "<CMD>bprevious<CR>", { desc = "Go to previous buffer", noremap = true, silent = true })
 
 -- Replaced by Snacks.toogle
 -- keymap.set("n", "<leader>tw", function()
