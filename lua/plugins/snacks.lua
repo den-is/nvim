@@ -114,7 +114,7 @@ return {
     { "<leader>fk", function() Snacks.picker.keymaps({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Keymaps" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "Find help tags" },
     { "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
-    { "<leader>un", function() Snacks.picker.notifications({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Marks" },
+    { "<leader>un", function() Snacks.picker.notifications({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Notifications" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Snacks Resume picker" },
     -- { "<c-n>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     -- stylua: ignore end

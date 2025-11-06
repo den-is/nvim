@@ -5,8 +5,8 @@ return {
   lazy = false,
   keys = {
     { "<leader>mm", "<cmd>Neominimap Toggle<cr>", desc = "Toggle global minimap" },
-    { "<leader>mo", "<cmd>Neominimap Enable<cr>", desc = "Enable global minimap" },
-    { "<leader>mc", "<cmd>Neominimap Disable<cr>", desc = "Disable global minimap" },
+    { "<leader>mo", "<cmd>Neominimap Enable<cr>", desc = "Open global minimap" },
+    { "<leader>mc", "<cmd>Neominimap Disable<cr>", desc = "Close global minimap" },
     { "<leader>mr", "<cmd>Neominimap Refresh<cr>", desc = "Refresh global minimap" },
   },
   init = function()
