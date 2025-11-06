@@ -114,5 +114,5 @@ keymap("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" })
 -- end, { desc = "Toggle spellcheck" })
 
 -- Diagnostic keymaps
--- More diagnostics shortcuts are in plugin/trouble.lua|lsp.lua|telescope.lua
+-- More diagnostics shortcuts are in plugin/trouble.lua|lsp.lua|snacks.lua|telescope.lua
 keymap("n", "<leader>xD", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
