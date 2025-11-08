@@ -3,6 +3,12 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    -- stylua: ignore start
+    { "<leader>xl", function() require("lint").try_lint() end, desc = "Lint current buffer", mode = { "n" } },
+    -- stylua: ignore end
+  },
+
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
@@ -15,35 +21,10 @@ return {
       yaml = { "yamllint" },
       terraform = { "tflint" },
       bash = { "shellcheck" },
-      go = { "golangcilint" },
+      -- Disabled in favor of native Gopls LSP diagnostics
+      -- -- with golangci-lint + gopls enabled i was getting same Diagnostic messages doubled
+      -- go = { "golangcilint" },
       -- ansible = { "ansible_lint" },
-    }
-
-    -- at the moment of writing golangci-lint is v2.2.2
-    -- nvim-lint still supports only v2.0
-    -- https://github.com/mfussenegger/nvim-lint/issues/829
-    lint.linters.golangcilint.args = {
-      "run",
-      "--issues-exit-code=0",
-      "--show-stats=false",
-      "--output.json.path=stdout",
-      -- Get absolute path of the linted file
-      "--path-mode=abs",
-      -- extras
-      "--output.text.print-issued-lines=false",
-      "--output.text.print-linter-name=false",
-      -- Overwrite values possibly set in .golangci.yml
-      "--output.text.path=",
-      "--output.tab.path=",
-      "--output.html.path=",
-      "--output.checkstyle.path=",
-      "--output.code-climate.path=",
-      "--output.junit-xml.path=",
-      "--output.teamcity.path=",
-      "--output.sarif.path=",
-      function()
-        return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
-      end,
     }
 
     -- setting `-d` blocks config file (.yamllint) lookup
@@ -58,9 +39,5 @@ return {
         lint.try_lint()
       end,
     })
-
-    vim.keymap.set("n", "<leader>xl", function()
-      lint.try_lint()
-    end, { desc = "Trigger linting for current file" })
   end,
 }
