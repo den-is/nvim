@@ -65,6 +65,7 @@ return {
                 border = "rounded",
                 source = "always",
                 prefix = " ",
+                header = "",
                 -- scope = "cursor",
                 scope = "line", -- pop-up diagnostic message on line instead of exact cursor position
               }
@@ -204,6 +205,7 @@ return {
               "-**/.vscode",
               "-**/.vscode-test",
               "-**/.idea",
+              "-**/.direnv",
               "-**/vendor",
               "-**/node_modules",
               "-**/dist",
@@ -211,6 +213,7 @@ return {
               "-**/logs",
             },
             codelenses = {
+              -- https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
               tidy = true,
               test = true,
               vendor = true,
@@ -220,6 +223,7 @@ return {
               upgrade_dependency = true,
             },
             hints = {
+              -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
               assignVariableTypes = true,
               compositeLiteralFields = true,
               compositeLiteralTypes = true,
@@ -229,6 +233,8 @@ return {
               rangeVariableTypes = true,
             },
             analyses = {
+              -- if golangci-lint is enabled it overlaps and shows duplicate messages, if bellow defaults are enabled
+              -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
               nilness = true,
               unusedparams = true,
               unusedwrite = true,
