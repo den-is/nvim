@@ -1,7 +1,6 @@
 -- https://github.com/zbirenbaum/copilot.lua
 -- https://github.com/zbirenbaum/copilot-cmp -- show suggestions in CMP
 --                                              or get suggestions with ghost-text in-line
--- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 -- shortcuts alternative https://github.com/orgs/community/discussions/45434
 --
 -- alternative to review https://github.com/yetone/avante.nvim
@@ -13,6 +12,7 @@ return {
     build = ":Copilot auth",
     config = function()
       require("copilot").setup({
+        panel = { enabled = false },
         suggestion = {
           auto_trigger = true,
           keymap = {
@@ -24,8 +24,12 @@ return {
             dismiss = "<C-]>",
           },
         },
-        panel = { enabled = false },
         filetypes = {
+          python = true,
+          javascript = true,
+          typescript = true,
+          lua = true,
+          go = true,
           yaml = true,
           markdown = true,
           help = false,
@@ -40,6 +44,7 @@ return {
     end,
   },
   {
+    -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
     "CopilotC-Nvim/CopilotChat.nvim",
     enabled = true,
     branch = "main",
@@ -64,24 +69,15 @@ return {
           require("CopilotChat").toggle()
         end,
       },
-      {
-        "<leader>ccq",
-        mode = { "n" },
-        desc = "Copilot Quick Chat",
-        function()
-          local input = vim.fn.input("Copilot Chat: ")
-          if input ~= "" then
-            require("CopilotChat").ask(input, {
-              selection = require("CopilotChat.select").buffer,
-            })
-          end
-        end,
-      },
     },
     opts = {
       debug = false,
       log_level = "info",
-      model = "gpt-4o",
+      model = "gpt-4.1",
+      resources = {
+        "buffer",
+        "selection",
+      },
       window = {
         -- layout = "float",
         -- border = "rounded",
