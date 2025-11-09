@@ -121,7 +121,18 @@ return {
   },
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
+    bigfile = {
+      enabled = true,
+      notify = true,
+      size = 1 * 1024 * 1024, -- 1 MB
+      line_length = 1000,
+      -- setup = function(ctx)
+      --   -- ...
+      --   -- tresitter already not starting for `bigfile` filetype
+      --   -- vim.treesitter.stop(ctx.buf)
+      --   -- ...
+      -- end,
+    },
     quickfile = { enabled = true },
     dim = { enabled = false }, -- <leader>ud toggle
     image = {}, -- for kitty, wezterm and ghostty
