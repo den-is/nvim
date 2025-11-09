@@ -40,6 +40,13 @@ return {
           cvs = false,
           ["."] = false,
         },
+        server_opts_overrides = {
+          settings = {
+            telemetry = {
+              telemetryLevel = "off",
+            },
+          },
+        },
       })
     end,
   },
