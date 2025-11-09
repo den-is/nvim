@@ -40,7 +40,6 @@ return {
         --"jsonnet",
         "json5", -- https://json5.org
         "jsonc",
-        "jsonc",
         "just",
         "lua",
         "luadoc",
