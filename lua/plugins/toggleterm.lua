@@ -40,6 +40,7 @@ return {
       buf_map(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], map_opts)
       buf_map(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], map_opts)
       buf_map(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], map_opts)
+      -- this breaks C-l "clear" command in terminal mode
       buf_map(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], map_opts)
     end
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
