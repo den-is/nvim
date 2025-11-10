@@ -108,8 +108,6 @@ return {
     { "<leader>gc", mode = {"n", "v"}, function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })end, desc = "Copy git link" },
 
     -- Var
-    { "<leader>ft", function() Snacks.picker.todo_comments({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Todo" },
-    { "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
     { "<leader>fS", function() Snacks.picker.spelling() end, desc = "Spelling" },
     { "<leader>fk", function() Snacks.picker.keymaps({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Keymaps" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "Find help tags" },
