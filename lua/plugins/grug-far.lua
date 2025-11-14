@@ -7,15 +7,41 @@ return {
     {
       "<leader>sr",
       mode = { "n", "v" },
-      desc = "Search and Replace (GrugFar)",
+      desc = "Search and Replace in project (GrugFar)",
       function()
-        local grug = require("grug-far")
-        local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-        grug.open({
+        require("grug-far").open({ transient = true })
+      end,
+    },
+    {
+      "<leader>sb",
+      mode = { "n", "v" },
+      desc = "Search and Replace in buffer (GrugFar)",
+      function()
+        require("grug-far").open({
           transient = true,
-          prefills = {
-            filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-          },
+          prefills = { paths = vim.fn.expand("%") },
+        })
+      end,
+    },
+    {
+      "<leader>sw",
+      mode = { "n", "v" },
+      desc = "Search and Replace word (GrugFar)",
+      function()
+        require("grug-far").open({
+          transient = true,
+          prefills = { search = vim.fn.expand("<cword>") },
+        })
+      end,
+    },
+    {
+      "<leader>sg",
+      mode = { "n", "v" },
+      desc = "Search and Replace selection (GrugFar)",
+      function()
+        require("grug-far").with_visual_selection({
+          transient = true,
+          prefills = { paths = vim.fn.expand("%") },
         })
       end,
     },
