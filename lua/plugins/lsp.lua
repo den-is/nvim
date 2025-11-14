@@ -304,6 +304,14 @@ return {
           },
         },
         yamlls = {
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+              },
+            },
+          },
           settings = {
             redhat = { telemetry = { enabled = false } },
             yaml = {
