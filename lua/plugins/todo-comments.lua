@@ -10,7 +10,10 @@ return {
   "folke/todo-comments.nvim",
   enabled = true,
   events = { "BufReadPre", "BufNewFile" },
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "folke/snacks.nvim",
+  },
   lazy = false,
   keys = {
     -- stylua: ignore start

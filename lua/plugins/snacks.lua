@@ -16,7 +16,6 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "nvim-lua/plenary.nvim",
-    "folke/todo-comments.nvim",
   },
   keys = {
     -- stylua: ignore start
