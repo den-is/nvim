@@ -13,16 +13,15 @@
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  ---@type Flash.Config
-  opts = {},
-  -- stylua: ignore
   keys = {
+    -- stylua: ignore start
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
 
     -- Treesitter incremental selection - ; and , to increase/decrease selection
     -- to be potentially replaced in 0.12 with "an", "in" in visual mode:
     -- https://github.com/neovim/neovim/pull/34011
     -- https://neovim.io/doc/user/lsp.html#_global-defaults
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/8096#issuecomment-3236209267
     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection - ;/, - inc/dec" },
 
     -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
@@ -33,19 +32,18 @@ return {
     -- Toggle flash for search results / or ?. Initiate search than press Ctrl-s to toggle flash
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 
-    -- Treesitter incremental selection
-    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/8096#issuecomment-3236209267
-    -- {
-    --   "<leader>v",
-    --   mode = {"n", "o", "x"},
-    --   function()
-    --     require("flash").treesitter({
-    --       actions = {
-    --         ["<leader>v"] = "next",
-    --         ["<BS>"] = "prev",
-    --       }
-    --     })
-    --   end,
-    --   desc = "Treesitter Incremental Selection" },
+    -- stylua: ignore end
+  },
+  ---@type Flash.Config
+  opts = {
+    modes = {
+      char = {
+        -- disable Flash for `f`, `F`, `t`, `T` motions
+        -- https://github.com/folke/flash.nvim/discussions/19#discussioncomment-11566691
+        enabled = true,
+        jump_labels = false,
+        search = { wrap = false },
+      },
+    },
   },
 }
