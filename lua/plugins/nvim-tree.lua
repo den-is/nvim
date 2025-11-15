@@ -7,6 +7,14 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
+  keys = {
+    -- stylua: ignore start
+    { "<leader>e", "<CMD>NvimTreeFindFileToggle<CR>", desc = "Open File Explorer - at current file location" },
+    { "<leader>et", "<CMD>NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
+    { "<leader>ec", "<CMD>NvimTreeCollapse<CR>", desc = "Collapse File Explorer" },
+    { "<leader>er", "<CMD>NvimTreeRefresh<CR>", desc = "Refresh File Explorer" },
+    -- stylua: ignore end
+  },
   init = function()
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
@@ -25,6 +33,11 @@ return {
           enable = true,
         },
       },
+      -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#filter-directories-with-live-filter
+      live_filter = {
+        prefix = "[FILTER]: ",
+        always_show_folders = false, -- Turn into false from true by default
+      },
       actions = {
         open_file = {
           window_picker = {
@@ -38,25 +51,15 @@ return {
         -- vim regex patterns list for files/dirs to ignore
         -- https://vimregex.cm
         custom = {
-          "\\.DS_Store",
+          ".DS_Store",
           "__pycache__",
-          "^.*\\.pyc$",
-          "^\\.git$",
+          "^.*.pyc$",
+          "^.git$",
         },
       },
       git = {
         enable = true,
       },
     })
-
-    vim.keymap.set("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { desc = "Open nvim-tree", noremap = true })
-    vim.keymap.set(
-      "n",
-      "<leader>ef",
-      "<CMD>NvimTreeFindFileToggle<CR>",
-      { desc = "Open nvim-tree at location of current file" }
-    )
-    vim.keymap.set("n", "<leader>ec", "<CMD>NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
-    vim.keymap.set("n", "<leader>er", "<CMD>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end,
 }
