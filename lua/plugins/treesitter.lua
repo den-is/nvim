@@ -127,6 +127,7 @@ return {
       local ts_select = require("nvim-treesitter-textobjects.select")
 
       -- TODO refactor with function
+
       -- probably something like this: https://github.com/LazyVim/LazyVim/blob/b4606f9df3395a261bb6a09acc837993da5d8bfc/lua/lazyvim/plugins/treesitter.lua#L117
       ---- MOVE ---------------------------------------------------------------
       --------- got_next_start
@@ -136,9 +137,9 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "]c", function()
         ts_move.goto_next_start("@class.outer", "textobjects")
       end, { desc = "Next class start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]a", function()
-        ts_move.goto_next_start("@parameter.inner", "textobjects")
-      end, { desc = "Next parameter start", silent = true })
+      -- vim.keymap.set({ "n", "x", "o" }, "]a", function()
+      --   ts_move.goto_next_start("@parameter.inner", "textobjects")
+      -- end, { desc = "Next parameter start", silent = true })
       -- ]b is Nvim default https://neovim.io/doc/user/news-0.11.html#_defaults
       vim.keymap.set({ "n", "x", "o" }, "]w", function()
         ts_move.goto_next_start("@block.outer", "textobjects")
@@ -154,9 +155,9 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "]C", function()
         ts_move.goto_next_end("@class.outer", "textobjects")
       end, { desc = "Next class end", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]A", function()
-        ts_move.goto_next_end("@parameter.inner", "textobjects")
-      end, { desc = "Next parameter end", silent = true })
+      -- vim.keymap.set({ "n", "x", "o" }, "]A", function()
+      --   ts_move.goto_next_end("@parameter.inner", "textobjects")
+      -- end, { desc = "Next parameter end", silent = true })
 
       --------- goto_previous_start
       vim.keymap.set({ "n", "x", "o" }, "[f", function()
@@ -165,9 +166,9 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "[c", function()
         ts_move.goto_previous_start("@class.outer", "textobjects")
       end, { desc = "Previous class start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[a", function()
-        ts_move.goto_previous_start("@parameter.inner", "textobjects")
-      end, { desc = "Previous parameter start", silent = true })
+      -- vim.keymap.set({ "n", "x", "o" }, "[a", function()
+      --   ts_move.goto_previous_start("@parameter.inner", "textobjects")
+      -- end, { desc = "Previous parameter start", silent = true })
       -- [b is Nvim default https://neovim.io/doc/user/news-0.11.html#_defaults
       vim.keymap.set({ "n", "x", "o" }, "[w", function()
         ts_move.goto_previous_start("@block.outer", "textobjects")
@@ -183,9 +184,9 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "[C", function()
         ts_move.goto_previous_end("@class.outer", "textobjects")
       end, { desc = "Previous class end", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[A", function()
-        ts_move.goto_previous_end("@parameter.inner", "textobjects")
-      end, { desc = "Previous parameter end", silent = true })
+      -- vim.keymap.set({ "n", "x", "o" }, "[A", function()
+      --   ts_move.goto_previous_end("@parameter.inner", "textobjects")
+      -- end, { desc = "Previous parameter end", silent = true })
 
       -- Go to either the start or the end, whichever is closer.
       -- Use if you want more granular movements
@@ -221,7 +222,7 @@ return {
       vim.keymap.set({ "x", "o" }, "il", function()
         ts_select.select_textobject("@loop.inner", "textobjects")
       end, { desc = "Select inside loop", silent = true })
-      vim.keymap.set({ "x", "o" }, "ad", function()
+      vim.keymap.set({ "x", "o" }, "ak", function()
         ts_select.select_textobject("@comment.outer", "textobjects")
       end, { desc = "Select around comment", silent = true })
       vim.keymap.set({ "x", "o" }, "as", function()
