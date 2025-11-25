@@ -12,7 +12,21 @@ return {
     build = ":Copilot auth",
     config = function()
       require("copilot").setup({
-        panel = { enabled = false },
+        panel = {
+          enabled = true,
+          auto_refresh = false,
+          keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<CR>",
+            refresh = "gr",
+            open = "<M-CR>",
+          },
+          layout = {
+            position = "bottom", -- | top | left | right | bottom |
+            ratio = 0.4,
+          },
+        },
         suggestion = {
           auto_trigger = true,
           keymap = {
@@ -25,19 +39,22 @@ return {
           },
         },
         filetypes = {
-          python = true,
-          javascript = true,
-          typescript = true,
-          lua = true,
-          go = true,
-          yaml = true,
-          markdown = true,
-          help = false,
+          conf = true,
+          dosini = true,
           gitcommit = true,
+          go = true,
+          hcl = true,
+          javascript = true,
+          lua = true,
+          make = true,
+          markdown = true,
+          python = true,
+          sh = true,
+          terraform = true,
+          typescript = true,
+          yaml = true,
           gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
+          help = false,
           ["."] = false,
         },
         server_opts_overrides = {
