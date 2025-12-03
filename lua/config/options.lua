@@ -10,6 +10,9 @@
 package.cpath = package.cpath .. ";" .. os.getenv("HOME") .. "/.luarocks/lib/lua/5.1/?.so"
 
 -- UI -------------------------------------------------------------------------
+
+local env = vim.env
+
 vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
 vim.opt.colorcolumn = "80,120" -- Visual line length guides
@@ -85,9 +88,13 @@ end)
 
 -- Tmux is its own clipboard provider which directly works.
 -- https://github.com/tmux/tmux/wiki/Clipboard#the-clipboard
-local is_tmux_session = vim.env.TERM_PROGRAM == "tmux"
 
-if vim.env.SSH_TTY and not is_tmux_session then
+local in_ssh = env.SSH_TTY ~= nil or env.SSH_CONNECTION ~= nil
+local in_tmux = env.TMUX ~= nil
+local has_display = env.DISPLAY ~= nil or env.WAYLAND_DISPLAY ~= nil
+
+-- Remote, no X/Wayland, not inside tmux: use builtin OSC52 provider
+if in_ssh and not has_display and not in_tmux then
   vim.g.clipboard = "osc52"
 end
 
