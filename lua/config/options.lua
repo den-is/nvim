@@ -88,24 +88,7 @@ end)
 local is_tmux_session = vim.env.TERM_PROGRAM == "tmux"
 
 if vim.env.SSH_TTY and not is_tmux_session then
-  local function paste()
-    return {
-      vim.fn.split(vim.fn.getreg(""), "\n"),
-      vim.fn.getregtype(""),
-    }
-  end
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    -- use neovim native paste functionality
-    paste = {
-      ["+"] = paste,
-      ["*"] = paste,
-    },
-  }
+  vim.g.clipboard = "osc52"
 end
 
 -- Colors ---------------------------------------------------------------------
