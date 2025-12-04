@@ -61,6 +61,7 @@ return {
         "xml",
         "yaml",
         "zig",
+        "zsh",
       }
       local alreadyInstalled = require("nvim-treesitter.config").get_installed()
       local parsersToInstall = vim
@@ -98,6 +99,7 @@ return {
           "xml",
           "yaml",
           "zig",
+          "zsh",
         },
         callback = function()
           vim.treesitter.start()
