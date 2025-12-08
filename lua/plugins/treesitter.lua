@@ -36,10 +36,9 @@ return {
         "html",
         "javascript",
         "jsdoc",
-        --"json",
+        "json",
         --"jsonnet",
-        "json5", -- https://json5.org
-        "jsonc",
+        -- "json5", -- https://json5.org
         "just",
         "lua",
         "luadoc",
