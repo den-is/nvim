@@ -10,6 +10,7 @@ vim.filetype.add({
     -- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
     tfvars = "hcl",
     tfrc = "hcl",
+    psql = "sql",
   },
   filename = {
     [".env"] = "sh",
@@ -20,6 +21,7 @@ vim.filetype.add({
     ["terraform.rc"] = "hcl",
     [".tofurc"] = "hcl",
     ["tofu.rc"] = "hcl",
+    [".psqlrc"] = "sql",
   },
   pattern = {
     ["%.env%.[%w_.-]+"] = "sh",
