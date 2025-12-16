@@ -15,6 +15,7 @@ return {
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     config = function()
       require("go").setup({
+        dap_debug = false,
         -- we use nvim-lspconfig for completion and LSP configuration
         lsp_cfg = false,
         -- nvim-cmd + luasnip + friendly-snippets for snippets
