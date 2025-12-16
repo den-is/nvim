@@ -15,7 +15,11 @@ return {
     build = ":TSUpdate",
     dependencies = { "RRethy/nvim-treesitter-endwise" },
     config = function()
-      local ensureInstalled = {
+      local ts = require("nvim-treesitter")
+      local ts_cfg = require("nvim-treesitter.config")
+      local parsers = require("nvim-treesitter.parsers")
+
+      local ensure_installed = {
         "bash",
         "c",
         "cmake",
@@ -62,46 +66,54 @@ return {
         "zig",
         "zsh",
       }
-      local alreadyInstalled = require("nvim-treesitter.config").get_installed()
-      local parsersToInstall = vim
-        .iter(ensureInstalled)
+      local installed = ts_cfg.get_installed()
+      local to_install = vim
+        .iter(ensure_installed)
         :filter(function(parser)
-          return not vim.tbl_contains(alreadyInstalled, parser)
+          return not vim.tbl_contains(installed, parser)
         end)
         :totable()
-      require("nvim-treesitter").install(parsersToInstall)
+
+      if #to_install > 0 then
+        ts.install(to_install)
+      end
+
+      local ignore_filetype = {
+        "checkhealth",
+        "lazy",
+        "mason",
+        "snacks_dashboard",
+        "snacks_notif",
+        "snacks_win",
+        "snacks_input",
+        "snacks_picker_input",
+        "TelescopePrompt",
+        "alpha",
+        "dashboard",
+        "spectre_panel",
+        "NvimTree",
+        "undotree",
+        "Outline",
+        "sagaoutline",
+        "copilot-chat",
+      }
+
+      local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
 
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "bash",
-          "c",
-          "css",
-          "gitcommit",
-          "gitignore",
-          "go",
-          "html",
-          "javascript",
-          "json",
-          "just",
-          "lua",
-          "markdown",
-          "python",
-          "query",
-          "ruby",
-          "rust",
-          "sh",
-          "sql",
-          "terraform",
-          "tmux",
-          "toml",
-          "typescript",
-          "xml",
-          "yaml",
-          "zig",
-          "zsh",
-        },
-        callback = function()
-          vim.treesitter.start()
+        group = group,
+        desc = "Enable TreeSitter highlighting and indentation",
+        callback = function(ev)
+          local ft = ev.match
+
+          if vim.tbl_contains(ignore_filetype, ft) then
+            return
+          end
+
+          local lang = vim.treesitter.language.get_lang(ft) or ft
+          local buf = ev.buf
+          pcall(vim.treesitter.start, buf, lang)
+
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
