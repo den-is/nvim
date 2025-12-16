@@ -11,6 +11,7 @@ vim.filetype.add({
     tfvars = "hcl",
     tfrc = "hcl",
     psql = "sql",
+    jenkins = "groovy",
   },
   filename = {
     [".env"] = "sh",
@@ -22,6 +23,7 @@ vim.filetype.add({
     [".tofurc"] = "hcl",
     ["tofu.rc"] = "hcl",
     [".psqlrc"] = "sql",
+    ["Jenkinsfile"] = "groovy",
   },
   pattern = {
     ["%.env%.[%w_.-]+"] = "sh",

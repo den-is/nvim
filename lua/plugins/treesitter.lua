@@ -36,6 +36,7 @@ return {
         "gosum",
         "gotmpl",
         "gowork",
+        "groovy",
         "hcl",
         "html",
         "javascript",
