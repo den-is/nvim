@@ -97,6 +97,7 @@ return {
         "Outline",
         "sagaoutline",
         "copilot-chat",
+        "vscode-diff-explorer",
       }
 
       local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })

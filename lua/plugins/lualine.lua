@@ -22,6 +22,7 @@ return {
           "snacks_dashboard",
           "sagaoutline", -- LspSaga
           "copilot-chat",
+          "vscode-diff-explorer",
         },
       },
       sections = {

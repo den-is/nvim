@@ -40,6 +40,12 @@ return {
             text_align = "center",
             separator = false,
           },
+          {
+            filetype = "vscode-diff-explorer",
+            text = "Diff Explorer",
+            text_align = "center",
+            separator = false,
+          },
         },
       },
     })
