@@ -449,6 +449,8 @@ return {
       -- force consistent position encoding across ALL clients
       -- https://github.com/neovim/nvim-lspconfig/issues/2184
       -- https://www.reddit.com/r/neovim/comments/17m7hu2/nvchad_multiple_different_client_offset_encodings/
+      -- to check current client encodings use:
+      -- :lua for _,c in ipairs(vim.lsp.get_clients({bufnr=0})) do print(c.id, c.name, c.offset_encoding) end
       capabilities.general = capabilities.general or {}
       capabilities.general.positionEncodings = { "utf-16" }
 
