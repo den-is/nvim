@@ -42,7 +42,7 @@ return {
         "javascript",
         "jsdoc",
         "json",
-        --"jsonnet",
+        -- "jsonnet",
         -- "json5", -- https://json5.org
         "just",
         "lua",

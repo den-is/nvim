@@ -28,6 +28,7 @@ return {
         css = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
+        -- json5 = { "prettier" },
         lua = { "stylua" },
         python = { "black", "ruff_organize_imports" },
         -- Go formatting is done using gopls
