@@ -445,6 +445,13 @@ return {
 
       -- used to enable autocompletion (assigned to every lsp server's config)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- force consistent position encoding across ALL clients
+      -- https://github.com/neovim/nvim-lspconfig/issues/2184
+      -- https://www.reddit.com/r/neovim/comments/17m7hu2/nvchad_multiple_different_client_offset_encodings/
+      capabilities.general = capabilities.general or {}
+      capabilities.general.positionEncodings = { "utf-16" }
+
       -- add folding capabilities (managed by nvim-ufo)
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
@@ -459,7 +466,8 @@ return {
 
       require("mason-lspconfig").setup({
         ensure_installed = vim.tbl_keys(servers),
-        automatic_enable = true,
+        -- we enable servers above - stop double-enabling
+        automatic_enable = false,
       })
     end,
   },
