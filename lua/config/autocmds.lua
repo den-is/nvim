@@ -24,6 +24,7 @@ vim.filetype.add({
     ["tofu.rc"] = "hcl",
     [".psqlrc"] = "sql",
     ["Jenkinsfile"] = "groovy",
+    ["pyrightconfig.json"] = "jsonc",
   },
   pattern = {
     ["%.env%.[%w_.-]+"] = "sh",
@@ -48,7 +49,6 @@ api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- Disable new line comment
 api.nvim_create_autocmd("BufEnter", {
   desc = "Disable new line comments",
   callback = function()
