@@ -241,30 +241,115 @@ return {
             },
           },
         },
-        -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
-        pyright = {
-          -- Pyright configuration
-          -- you need to provide pyrightconfig.json in your projects/workspaces root directories for pyright to work with virtualenvs
-          -- https://microsoft.github.io/pyright/#/getting-started?id=_1-initial-type-checking
-          -- https://microsoft.github.io/pyright/#/configuration
-          -- https://stackoverflow.com/questions/65847159/how-to-set-python-interpreter-in-neovim-for-python-language-server-depending-on/66559305#66559305
-          --
-          -- Example minimal pyrightconfig.json that worked for me:
-          -- {
-          --   "include": [
-          --     "./",
-          --   ]
-          -- }
+        -- https://docs.astral.sh/ruff/editors/setup/
+        -- ruff = {},
+        ty = {
+          -- https://docs.astral.sh/ty/reference/editor-settings/
+          -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ty.lua
           settings = {
-            python = {
-              analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "openFilesOnly",
+            ty = {
+              disableLanguageServices = false,
+              diagnosticMode = "openFilesOnly",
+              inlayHints = {
+                variableTypes = true,
+                callArgumentNames = true,
+              },
+              completions = {
+                autoImport = true,
               },
             },
           },
         },
+        -- basedpyright = {
+        --   -- https://docs.basedpyright.com/latest/
+        --   -- https://docs.basedpyright.com/latest/configuration/language-server-settings/
+        --   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
+        --   -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/basedpyright.lua
+        --   -- rules --
+        --   -- https://docs.basedpyright.com/latest/benefits-over-pyright/new-diagnostic-rules/
+        --   -- https://microsoft.github.io/pyright/#/configuration?id=type-check-rule-overrides
+        --   --
+        --   -- add pyrightconfig.json where needed
+        --   -- pyrightconfig.json needed for multiroot, monorepo projects and venvs outside of project folder
+        --   -- pyrightconfig.json has higher precedence over LSP settings or pyproject.toml
+        --   -- so bellow settings might have no effect if pyrightconfig.json is present
+        --   settings = {
+        --     basedpyright = {
+        --       disableLanguageServices = false,
+        --       disableOrganizeImports = true,
+        --       analysis = {
+        --         -- typeCheckingMode = "off",
+        --         -- typeCheckingMode = "recommended",
+        --         typeCheckingMode = "standard",
+        --         autoSearchPaths = true,
+        --         useLibraryCodeForTypes = true,
+        --         diagnosticMode = "openFilesOnly",
+        --       },
+        --     },
+        --   },
+        -- },
+        -- pyright = {
+        --   -- add pyrightconfig.json where needed
+        --   -- pyrightconfig.json has higher precedence over LSP settings or pyproject.toml
+        --   -- so bellow settings might have no effect if pyrightconfig.json is present
+        --   --
+        --   -- https://microsoft.github.io/pyright/
+        --   -- https://microsoft.github.io/pyright/#/configuration
+        --   -- https://microsoft.github.io/pyright/#/settings
+        --   -- https://github.com/microsoft/pyright
+        --   -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+        --   --
+        --   -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyright.lua
+        --   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pyright
+        --   --
+        --   -- https://stackoverflow.com/questions/65847159/how-to-set-python-interpreter-in-neovim-for-python-language-server-depending-on/66559305#66559305
+        --   --
+        --   -- Example minimal pyrightconfig.json that worked for me:
+        --   -- {
+        --   --   "include": [
+        --   --     "./",
+        --   --   ]
+        --   -- }
+        --   -- Extended example:
+        --   -- // vim: filetype=jsonc
+        --   -- {
+        --   --   "include": [
+        --   --     "./"
+        --   --   ],
+        --   --   "venvPath": "./.direnv",
+        --   --   "venv": "python-3.13",
+        --   --   // "recommended" is from basedpyright
+        --   --   //"typeCheckingMode": "recommended",
+        --   --   "typeCheckingMode": "standard"
+        --   --   // "typeCheckingMode": "off",
+        --   --   //"reportMissingTypeStubs": "none",
+        --   --   //"reportMissingParameterType": "none",
+        --   --   //"reportUnknownParameterType": "none",
+        --   --   //"reportUnknownVariableType": "none",
+        --   --   //"reportUnknownArgumentType": "none",
+        --   --   //"reportUnknownMemberType": "none",
+        --   --   //"reportAttributeAccessIssue": "none",
+        --   --   //"reportUnusedCallResult": "none",
+        --   --   // "reportArgumentType": "none",
+        --   --   // "reportMissingImports": "none",
+        --   --   // basedpyright reports
+        --   --   //"reportAny": "none"
+        --   -- }
+        --
+        --   settings = {
+        --     python = {
+        --       disableLanguageServices = false,
+        --       disableOrganizeImports = true,
+        --       analysis = {
+        --         typeCheckingMode = "standard",
+        --         -- typeCheckingMode = "off",
+        --         autoSearchPaths = true,
+        --         useLibraryCodeForTypes = true,
+        --         diagnosticMode = "openFilesOnly",
+        --       },
+        --     },
+        --   },
+        -- },
         lua_ls = {
           settings = {
             diagnostics = {
