@@ -30,6 +30,9 @@ return {
             -- Disabling virtual_text diagnostic line side-by-side with the code line
             -- Often does not fit on the screen. Floating window with diagnostics works better
             virtual_text = false,
+            underline = true,
+            update_in_insert = true,
+            severity_sort = true,
             signs = {
               text = {
                 -- '', '', '', '' -- alternative icons
@@ -47,9 +50,6 @@ return {
               --   [vim.diagnostic.severity.WARN] = "WarningMsg",
               -- },
             },
-            underline = true,
-            update_in_insert = true,
-            severity_sort = false,
           })
 
           -- create autocmd to show floating diagnostic message on hover
