@@ -7,6 +7,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    enabled = vim.g.ai_enabled,
     cmd = "Copilot",
     event = "InsertEnter",
     build = ":Copilot auth",
@@ -70,7 +71,7 @@ return {
   {
     -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
     "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = true,
+    enabled = vim.g.ai_enabled,
     branch = "main",
     lazy = true,
     event = "VeryLazy",
