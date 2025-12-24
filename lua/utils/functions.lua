@@ -1,6 +1,6 @@
 local M = {}
 
-M.env_truthy = function(name, default)
+M.env_bool = function(name, default)
   local v = vim.env[name]
   if v == nil then
     return default or false

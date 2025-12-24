@@ -1,10 +1,5 @@
 local U = require("utils.functions")
-vim.g.ai_enabled = U.env_truthy("NVIM_AI", false)
-
-require("config.options")
-require("config.autocmds")
-require("config.keymaps")
-require("config.lazy")
+vim.g.ai_enabled = U.env_bool("NVIM_AI", false)
 
 -- Hack for MacOS brew installed lua/luarocks
 -- required for https://github.com/CopilotC-Nvim/CopilotChat.nvim
@@ -16,3 +11,8 @@ require("config.lazy")
 if vim.uv.os_uname().sysname == "Darwin" then
   package.cpath = package.cpath .. ";" .. os.getenv("HOME") .. "/.luarocks/lib/lua/5.1/?.so"
 end
+
+require("config.options")
+require("config.autocmds")
+require("config.keymaps")
+require("config.lazy")
