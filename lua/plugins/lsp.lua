@@ -495,6 +495,7 @@ return {
     keys = {
       -- outline can be also shown by Snacks <leader>ls lsp_symbols for doc or <leader>lS for workspace
       { "<leader>o", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "LSP Outline (Lspsaga)" },
+      -- doube press K to scroll hover window
       { "K", "<CMD>Lspsaga hover_doc<CR>", mode = "n", desc = "LSP Hover Doc (Lspsaga)" },
     },
     opts = {},
