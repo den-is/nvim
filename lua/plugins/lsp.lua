@@ -187,6 +187,9 @@ return {
             },
           },
         },
+        --     rustaceanvim used instead
+        -- bacon_ls = { enabled = false },
+        -- rust_analyzer = { enabled = false },
         gopls = {
           -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
           -- https://github.com/golang/tools/tree/master/gopls
