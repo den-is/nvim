@@ -10,6 +10,8 @@ local keymap = vim.keymap.set
 keymap("n", "<leader>w", "<CMD>write<CR>", { desc = "Save/write buffer" })
 keymap("n", "<leader>wn", "<CMD>noautocmd write<CR>", { desc = "Save/write buffer w/o formatting" })
 keymap("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
+
+-- jj is disable for yazi and lazygit filetypes in autocmds.lua
 keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- https://github.com/jdhao/nvim-config/blob/a872921029c295672748e056f15fdaa1832dce76/lua/mappings.lua#L89-L98

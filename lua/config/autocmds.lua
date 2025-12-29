@@ -32,6 +32,14 @@ vim.filetype.add({
   },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable insert-mode jj mapping for lazygit and yazi filetypes",
+  pattern = { "lazygit", "yazi" },
+  callback = function(ev)
+    pcall(vim.keymap.del, "i", "jj", { buffer = ev.buf })
+  end,
+})
+
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 -- api.nvim_create_autocmd("BufWritePre", {
