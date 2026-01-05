@@ -6,6 +6,7 @@
 
 local env = vim.env
 
+vim.o.winborder = "rounded" -- nvim 0.11+ https://github.com/hrsh7th/nvim-cmp/issues/2210
 vim.opt.encoding = "utf-8" -- The encoding displayed
 vim.opt.fileencoding = "utf-8" -- The encoding written to file
 vim.opt.colorcolumn = "80,120" -- Visual line length guides

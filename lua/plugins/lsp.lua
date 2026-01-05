@@ -62,7 +62,7 @@ return {
               local opts = {
                 focusable = false,
                 close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                border = "rounded",
+                -- border = "rounded", -- controlled by global vim.o.winborder = "rounded"
                 source = "always",
                 prefix = " ",
                 header = "",
