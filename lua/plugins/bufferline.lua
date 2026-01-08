@@ -41,7 +41,7 @@ return {
             separator = false,
           },
           {
-            filetype = "vscode-diff-explorer",
+            filetype = "codediff-explorer",
             text = "Diff Explorer",
             text_align = "center",
             separator = false,
