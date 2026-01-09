@@ -107,6 +107,7 @@ return {
     { "<leader>gc", mode = {"n", "v"}, function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })end, desc = "Copy git link" },
 
     -- Var
+    { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
     { "<leader>fS", function() Snacks.picker.spelling() end, desc = "Spelling" },
     { "<leader>fk", function() Snacks.picker.keymaps({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "Keymaps" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "Find help tags" },
@@ -244,9 +245,14 @@ return {
         -- stylua: ignore start
         Snacks.toggle.option("wrap", { name = "Line Wrap" }):map("<leader>uw")
         Snacks.toggle.option("spell", { name = "Spell Check" }):map("<leader>us")
-        Snacks.toggle.option("cursorcolumn", { name = "Cursor Column" }):map("<leader>uc")
+        Snacks.toggle.diagnostics():map("<leader>ud")
+        Snacks.toggle.line_number():map("<leader>ul")
+        Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+        Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.inlay_hints():map("<leader>uh")
-        Snacks.toggle.dim():map("<leader>ud")
+        Snacks.toggle.dim():map("<leader>uD")
+        Snacks.toggle.indent():map("<leader>ug")
+        Snacks.toggle.option("cursorcolumn", { name = "Cursor Column" }):map("<leader>uc")
         -- stylua: ignore end
       end,
     })
