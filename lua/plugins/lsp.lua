@@ -30,6 +30,8 @@ return {
             -- Disabling virtual_text diagnostic line side-by-side with the code line
             -- Often does not fit on the screen. Floating window with diagnostics works better
             virtual_text = false,
+            -- or
+            virtual_lines = false,
             underline = true,
             update_in_insert = true,
             severity_sort = true,
