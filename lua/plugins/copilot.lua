@@ -98,7 +98,8 @@ return {
     opts = {
       debug = false,
       log_level = "info",
-      model = "gpt-4.1",
+      -- model = "gpt-4.1",
+      model = "gpt-5-mini",
       resources = {
         "buffer",
         "selection",
