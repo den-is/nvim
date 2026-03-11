@@ -24,7 +24,7 @@ require("lazy").setup({
 
   install = {
     -- colorscheme that will be used when installing plugins.
-    colorscheme = { "gruvbox" },
+    colorscheme = { "catppuccin" },
   },
 
   -- automatically check for plugin updates
