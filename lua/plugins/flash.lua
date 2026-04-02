@@ -17,12 +17,12 @@ return {
     -- stylua: ignore start
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
 
+    -- replaced in 0.12 with "an", "in", "]n", "[n" in Visual mode (x,o):
     -- Treesitter incremental selection - ; and , to increase/decrease selection
-    -- to be potentially replaced in 0.12 with "an", "in" in visual mode:
     -- https://github.com/neovim/neovim/pull/34011
     -- https://neovim.io/doc/user/lsp.html#_global-defaults
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/8096#issuecomment-3236209267
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection - ;/, - inc/dec" },
+    -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Incremental Selection - ;/, - inc/dec" },
 
     -- jump somewhere (remove) do the thing and jump back - `o`perator mode (e.g. `c..`, `y..`, `d..`, etc )
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
