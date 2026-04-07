@@ -4,10 +4,10 @@ return {
   version = "v3.x.x",
   lazy = false,
   keys = {
-    { "<leader>mm", "<cmd>Neominimap Toggle<cr>", desc = "Toggle global minimap" },
-    { "<leader>mo", "<cmd>Neominimap Enable<cr>", desc = "Open global minimap" },
-    { "<leader>mc", "<cmd>Neominimap Disable<cr>", desc = "Close global minimap" },
-    { "<leader>mr", "<cmd>Neominimap Refresh<cr>", desc = "Refresh global minimap" },
+    { "<leader>mm", "<CMD>Neominimap Toggle<CR>", desc = "Toggle global minimap" },
+    { "<leader>mo", "<CMD>Neominimap Enable<CR>", desc = "Open global minimap" },
+    { "<leader>mc", "<CMD>Neominimap Disable<CR>", desc = "Close global minimap" },
+    { "<leader>mr", "<CMD>Neominimap Refresh<CR>", desc = "Refresh global minimap" },
   },
   init = function()
     -- The following options are recommended when layout == "float"
