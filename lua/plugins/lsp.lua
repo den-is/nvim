@@ -24,7 +24,7 @@ return {
 
       -- register keymaps only on LspAttach event
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
         callback = function(args)
           vim.diagnostic.config({
             -- Disabling virtual_text diagnostic line side-by-side with the code line
@@ -54,6 +54,13 @@ return {
             },
           })
 
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+          -- Enable CodeLens only for servers which support it
+          if client and client:supports_method("textDocument/codeLens") then
+            vim.lsp.codelens.enable(true, { client_id = client.id })
+          end
+
           -- create autocmd to show floating diagnostic message on hover
           -- current basic setup conflicts with other hover Windows
           -- for example `S-k` show docs hover is closed and diagnostic hover reappears
@@ -77,7 +84,10 @@ return {
 
           -- Buffer local mappings.
           -- See `:help vim.lsp.*` for docs on any of the below functions
-          local opts = { buffer = args.buf, silent = true }
+          local opts = { buf = args.buf, silent = true }
+
+          opts.desc = "Run CodeLens"
+          keymap.set("n", "<leader>cL", vim.lsp.codelens.run, opts)
 
           -- https://neovim.io/doc/user/lsp.html#_lua-module:-vim.lsp.diagnostic
           -- https://neovim.io/doc/user/diagnostic.html#_defaults
