@@ -32,23 +32,22 @@ return {
     })
 
     -- Better navigation to and from terminal
-    local buf_map = vim.api.nvim_buf_set_keymap
-    local map_opts = { noremap = true }
     local set_terminal_keymaps = function()
-      buf_map(0, "t", "<esc>", [[<C-\><C-n>]], map_opts)
-      buf_map(0, "t", "jj", [[<C-\><C-n>]], map_opts)
-      buf_map(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], map_opts)
-      buf_map(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], map_opts)
-      buf_map(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], map_opts)
+      local opts = { noremap = true, buffer = true }
+      vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+      vim.keymap.set("t", "jj", [[<C-\><C-n>]], opts)
+      vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+      vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+      vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
       -- this breaks C-l "clear" command in terminal mode
-      buf_map(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], map_opts)
+      vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
     end
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.api.nvim_create_autocmd("TermOpen", {
       pattern = "term://*",
       callback = function()
         set_terminal_keymaps()
-        vim.cmd([[setlocal nospell]])
+        vim.opt_local.spell = false
       end,
       desc = "Mappings for navigation with a terminal",
     })
