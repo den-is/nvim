@@ -5,6 +5,9 @@
 -- https://neovim.io/doc/user/insert.html#inserting-file
 -- https://neovim.io/doc/user/various.html#%3A%21
 -- https://neovim.io/doc/user/various.html#K
+--
+-- C-n to toggle terminal. N+C-n to open a new terminal N.
+-- :TermSelect to select from open terminals.
 return {
   "akinsho/toggleterm.nvim",
   enabled = true,
