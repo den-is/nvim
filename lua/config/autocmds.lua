@@ -25,10 +25,13 @@ vim.filetype.add({
     [".psqlrc"] = "sql",
     ["Jenkinsfile"] = "groovy",
     ["pyrightconfig.json"] = "jsonc",
+    [".pgpass"] = "pgpass",
+    ["pgpass.conf"] = "pgpass",
   },
   pattern = {
     ["%.env%.[%w_.-]+"] = "sh",
     [".*%.conf%.local"] = "conf",
+    [".*/%.pgpass"] = "pgpass",
   },
 })
 
@@ -70,6 +73,16 @@ api.nvim_create_autocmd("FileType", {
   pattern = { "hcl", "terraform", "terraform-vars" },
   callback = function(ev)
     vim.bo[ev.buf].commentstring = "# %s"
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Set pgpass comment string",
+  group = vim.api.nvim_create_augroup("PgpassCommentString", { clear = true }),
+  pattern = "pgpass",
+  callback = function(ev)
+    vim.bo[ev.buf].commentstring = "# %s"
+    vim.bo[ev.buf].comments = "b:#"
   end,
 })
 

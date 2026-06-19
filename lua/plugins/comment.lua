@@ -13,11 +13,25 @@ return {
   },
   config = function()
     local comment = require("Comment")
+    local ft = require("Comment.ft")
+
+    -- Comment.nvim-specific fallback.
+    -- No space here; Comment.nvim adds padding itself.
+    ft.set("pgpass", "#%s")
+
     local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
+
+    local ts_pre_hook = ts_context_commentstring.create_pre_hook()
 
     ---@diagnostic disable-next-line: missing-fields
     comment.setup({
-      pre_hook = ts_context_commentstring.create_pre_hook(),
+      pre_hook = function(ctx)
+        if vim.bo.filetype == "pgpass" then
+          return "# %s"
+        end
+
+        return ts_pre_hook(ctx)
+      end,
     })
   end,
 }
