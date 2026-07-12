@@ -390,7 +390,7 @@ return {
                 disable = { "missing-fields" },
               },
               codeLens = {
-                enable = true,
+                enable = false,
               },
               doc = {
                 privateName = { "^_" },
