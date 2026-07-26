@@ -57,7 +57,6 @@ return {
         "rust",
         "sql",
         "terraform",
-        "tmux",
         "toml",
         "typescript",
         "vim",
