@@ -9,12 +9,12 @@
 return {
   "folke/todo-comments.nvim",
   enabled = true,
-  events = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile" },
+  cmd = { "TodoQuickFix", "TodoLocList", "TodoTrouble" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "folke/snacks.nvim",
   },
-  lazy = false,
   keys = {
     -- stylua: ignore start
     { "]t", function() require("todo-comments").jump_next() end, desc = "Next TODO comment" },
@@ -23,6 +23,9 @@ return {
     { "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "TODO/FIX/FIXME List only" },
     -- stylua: ignore end
   },
+  config = function(_, opts)
+    require("todo-comments").setup(opts)
+  end,
   opts = {
     keywords = {
       FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
