@@ -9,7 +9,7 @@ This is not a plain `vim` setup for just editing a couple of lines, but more or 
 
 ## Requirements
 
-- **[Neovim](https://neovim.io)** - **version 0.11.0 or higher**
+- **[Neovim](https://neovim.io)** - **version 0.12.0 or higher**
 - [Nerd Fonts](https://www.nerdfonts.com) - for icons and symbols
 - [rg](https://github.com/BurntSushi/ripgrep) - many Neovim plugins rely on this great `grep` replacement
 
