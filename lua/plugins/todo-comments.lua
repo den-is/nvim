@@ -20,7 +20,7 @@ return {
     { "]t", function() require("todo-comments").jump_next() end, desc = "Next TODO comment" },
     { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous TODO comment" },
     { "<leader>ft", function() Snacks.picker.todo_comments({layout = {preset = "ivy", hidden = {"preview"},}}) end, desc = "TODO List" },
-    { "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "TODO/FIX/FIXME List only" },
+    { "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" }, layout = {preset = "ivy", hidden = {"preview"}} }) end, desc = "TODO/FIX/FIXME List only" },
     -- stylua: ignore end
   },
   config = function(_, opts)
