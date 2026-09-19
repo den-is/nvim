@@ -105,6 +105,7 @@ return {
     -- Git
     { "<leader>go", mode = {"n", "v"}, function() Snacks.gitbrowse() end, desc = "Open git link" },
     { "<leader>gc", mode = {"n", "v"}, function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })end, desc = "Copy git link" },
+    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
 
     -- Var
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
