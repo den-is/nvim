@@ -253,6 +253,7 @@ return {
         Snacks.toggle.dim():map("<leader>uD")
         Snacks.toggle.indent():map("<leader>ug")
         Snacks.toggle.option("cursorcolumn", { name = "Cursor Column" }):map("<leader>uc")
+        Snacks.toggle.zoom():map("<leader>sm")
         -- stylua: ignore end
       end,
     })
