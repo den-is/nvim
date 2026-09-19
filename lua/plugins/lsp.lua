@@ -210,49 +210,49 @@ return {
           -- https://tip.golang.org/gopls/release/
           -- https://github.com/golang/vscode-go/wiki/settings
           settings = {
-            -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
-            gofumpt = true,
-            usePlaceholders = true,
-            semanticTokens = true,
-            staticcheck = true,
-            directoryFilters = {
-              "-**/.git",
-              "-**/.vscode",
-              "-**/.vscode-test",
-              "-**/.idea",
-              "-**/.direnv",
-              "-**/vendor",
-              "-**/node_modules",
-              "-**/dist",
-              "-**/tmp",
-              "-**/logs",
-            },
-            codelenses = {
-              -- https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
-              tidy = true,
-              test = true,
-              vendor = true,
-              generate = true,
-              regenerate_cgo = true,
-              run_govulncheck = true,
-              upgrade_dependency = true,
-            },
-            hints = {
-              -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-            analyses = {
-              -- if golangci-lint is enabled it overlaps and shows duplicate messages, if bellow defaults are enabled
-              -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-              nilness = true,
-              unusedparams = true,
-              unusedwrite = true,
+            gopls = {
+              -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#vim
+              gofumpt = true,
+              usePlaceholders = true,
+              staticcheck = true,
+              directoryFilters = {
+                "-**/.git",
+                "-**/.vscode",
+                "-**/.vscode-test",
+                "-**/.idea",
+                "-**/.direnv",
+                "-**/vendor",
+                "-**/node_modules",
+                "-**/dist",
+                "-**/tmp",
+                "-**/logs",
+              },
+              codelenses = {
+                -- https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
+                tidy = true,
+                vendor = true,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                upgrade_dependency = true,
+              },
+              hints = {
+                -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+              analyses = {
+                -- if golangci-lint is enabled it overlaps and shows duplicate messages, if bellow defaults are enabled
+                -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+              },
             },
           },
         },
