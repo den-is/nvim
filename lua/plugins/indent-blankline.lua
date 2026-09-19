@@ -1,4 +1,5 @@
 -- https://github.com/lukas-reineke/indent-blankline.nvim
+-- Snacks indent adds chunk/context grouping visualization. IBL adds colorful indentation guidelines
 return {
   "lukas-reineke/indent-blankline.nvim",
   event = { "BufReadPre", "BufNewFile" },

@@ -150,8 +150,10 @@ return {
     words = { enabled = true },
     indent = {
       enabled = true,
-      indent = { only_scope = true }, -- only show indent where cursor is
-      chunk = { enabled = true }, -- indents are rendered as chunks
+      -- indent = { only_scope = true }, -- only show indent where cursor is
+      indent = { enabled = false }, -- colored indent guides are managed by indent-blankline
+      scope = { enabled = true, hl = "RainbowViolet" }, -- draws minimalistic vertical line for current scope. chunk takes over if enabled
+      chunk = { enabled = false }, -- draws braket around scope/chunk
       animate = { enabled = false },
     },
     notifier = {
