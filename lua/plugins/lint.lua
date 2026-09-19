@@ -11,6 +11,21 @@ return {
 
   config = function()
     local lint = require("lint")
+
+    local shellcheck = lint.linters.shellcheck
+    if type(shellcheck) == "function" then
+      shellcheck = shellcheck()
+    end
+
+    local function shellcheck_with_dialect(dialect)
+      local linter = vim.deepcopy(shellcheck)
+      table.insert(assert(linter.args), 1, "--shell=" .. dialect)
+      return linter
+    end
+
+    lint.linters.shellcheck_sh = shellcheck_with_dialect("sh")
+    lint.linters.shellcheck_bash = shellcheck_with_dialect("bash")
+
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
@@ -20,7 +35,8 @@ return {
       python = { "ruff" },
       yaml = { "yamllint" },
       terraform = { "tflint" },
-      bash = { "shellcheck" },
+      sh = { "shellcheck_sh" },
+      bash = { "shellcheck_bash" },
       -- Disabled in favor of native Gopls LSP diagnostics
       -- -- with golangci-lint + gopls enabled i was getting same Diagnostic messages doubled
       -- go = { "golangcilint" },
