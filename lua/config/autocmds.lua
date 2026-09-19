@@ -6,9 +6,6 @@ vim.filetype.add({
     -- https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md
     -- expects a terraform filetype and not a tf filetype
     tf = "terraform",
-    -- Detected automatically as terraform-vars filetype (probably integrated in terraform-ls)
-    -- can't add `terraform-vars` to conform.nvim formatters_by_ft table for autoformatting
-    tfvars = "hcl",
     tfrc = "hcl",
     psql = "sql",
     jenkins = "groovy",

@@ -38,6 +38,7 @@ return {
         sh = { "shfmt" },
         toml = { "taplo" },
         terraform = { "terraform_fmt" },
+        ["terraform-vars"] = { "terraform_fmt" },
         hcl = { "terragrunt_hclfmt" },
         -- hcl = { "terraform_fmt" },
         ---- flattens array of arrays https://github.com/google/yamlfmt/issues/167
