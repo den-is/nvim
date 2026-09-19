@@ -487,7 +487,6 @@ return {
   -- breadcrumbs instead of https://github.com/Bekaboo/dropbar.nvim
   {
     "nvimdev/lspsaga.nvim",
-    after = "nvim-lspconfig",
     event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
