@@ -16,7 +16,6 @@ return {
           "NvimTree",
           "undotree",
           "Outline",
-          "alpha",
           "dashboard",
           "snacks_layout_box",
           "snacks_dashboard",

@@ -16,7 +16,7 @@ return {
       auto_save = false,
       auto_restore = false,
       suppressed_dirs = { "~/", "~/Downloads", "~/Desktop", "~/Documents" },
-      bypass_save_filetypes = { "alpha", "dashboard", "snacks_dashboard" },
+      bypass_save_filetypes = { "dashboard", "snacks_dashboard" },
       legacy_cmds = false,
       session_lens = {
         picker = "snacks",

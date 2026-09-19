@@ -87,8 +87,6 @@ return {
         "snacks_win",
         "snacks_input",
         "snacks_picker_input",
-        "TelescopePrompt",
-        "alpha",
         "dashboard",
         "spectre_panel",
         "NvimTree",

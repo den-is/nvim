@@ -3,7 +3,7 @@
 -- https://vim.fandom.com/wiki/Using_marks
 --
 --   which-key opens UI if your press ' or `
---   Telescope UI by pressing <leader>fm
+--   Snacks picker by pressing <leader>fm
 --   or :marks
 --
 -- Keymaps set by marks.nvim:

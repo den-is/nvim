@@ -171,10 +171,9 @@ return {
       enabled = true,
       preset = {
         ---@type snacks.dashboard.Item[]
-        pick = nil, -- for now using Telescope
+        pick = nil,
         keys = {
           -- stylua: ignore start
-          -- for now using Telescope instead of Snacks.picker
           -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart({filter = {cwd = true}, layout = 'default'})" },
           -- { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.picker.grep({layout = 'default'})" },
           -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },

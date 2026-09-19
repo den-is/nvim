@@ -122,23 +122,13 @@ return {
           opts.desc = "Go to defintion (local)"
           keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
-          -- grr - default key (qfixlist)
-          -- opts.desc = "Show LSP references"
-          -- Deprecated Telescope in favor of folke/Snacks.nvim pickers
-          -- keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
-          -- keymap.set("n", "gR", function()
-          --   Snacks.picker.lsp_references()
-          -- end, opts)
-
           -- Default keys since neovim 0.11 https://neovim.io/doc/user/news-0.11.html#_defaults
           -- https://neovim.io/doc/user/lsp.html#_global-defaults
           -- gri - default key
           -- opts.desc = "Show LSP implementations"
-          -- keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
 
           -- grt - default key
           -- opts.desc = "Show LSP type definitions"
-          -- keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts)
 
           -- gra - default key
           -- opts.desc = "See available code actions"

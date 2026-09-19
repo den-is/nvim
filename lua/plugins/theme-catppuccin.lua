@@ -36,10 +36,6 @@ return {
           indent_scope_color = "flamingo", -- catppuccin color (eg. `lavender`)
         },
         -- disabled stuff
-        alpha = false,
-        telescope = {
-          enabled = false,
-        },
       },
     })
 

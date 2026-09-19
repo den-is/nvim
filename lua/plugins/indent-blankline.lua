@@ -56,7 +56,6 @@ return {
           "neo-tree",
           "peekaboo",
           "git",
-          "TelescopePrompt",
           "undotree",
           "flutterToolsOutline",
           "snacks_dashboard",

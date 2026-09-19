@@ -11,8 +11,6 @@ return {
     local autopairs = require("nvim-autopairs")
     autopairs.setup({
       disable_filetype = {
-        "TelescopePrompt",
-        "alpha",
         "dashboard",
         "spectre_panel",
         "snacks_dashboard",
