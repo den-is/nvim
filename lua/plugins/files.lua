@@ -9,7 +9,9 @@ return {
       { "<leader>ya", "<CMD>Yazi<CR>", desc = "Yazi - file manager" },
     },
     opts = {
-      open_for_directories = true,
+      -- Set to true to open directories in Yazi instead of the default file explorer
+      -- currently handled by nvim-tree
+      open_for_directories = false,
     },
   },
   -- https://github.com/stevearc/oil.nvim
