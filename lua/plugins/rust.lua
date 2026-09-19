@@ -3,7 +3,7 @@ return {
     -- https://github.com/mrcjkb/rustaceanvim
     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/rust.lua
     "mrcjkb/rustaceanvim",
-    version = "^7",
+    version = "^9",
     lazy = false,
     enabled = true,
     ft = { "rust" },
@@ -17,7 +17,6 @@ return {
           ["rust-analyzer"] = {
             cargo = {
               allFeatures = true,
-              loadOutDirsFromCheck = true,
               buildScripts = { enable = true },
             },
             completion = {
