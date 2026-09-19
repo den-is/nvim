@@ -21,39 +21,40 @@ return {
 
     config = function()
       local keymap = vim.keymap
+      local diagnostics_group = vim.api.nvim_create_augroup("UserLspDiagnostics", { clear = true })
+
+      vim.diagnostic.config({
+        -- Disabling virtual_text diagnostic line side-by-side with the code line
+        -- Often does not fit on the screen. Floating window with diagnostics works better
+        virtual_text = false,
+        -- or
+        virtual_lines = false,
+        underline = true,
+        update_in_insert = true,
+        severity_sort = true,
+        signs = {
+          text = {
+            -- '', '', '', '' -- alternative icons
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+          },
+          linehl = {
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            [vim.diagnostic.severity.WARN] = "WarningMsg",
+          },
+          -- numhl = {
+          --   [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          --   [vim.diagnostic.severity.WARN] = "WarningMsg",
+          -- },
+        },
+      })
 
       -- register keymaps only on LspAttach event
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
         callback = function(args)
-          vim.diagnostic.config({
-            -- Disabling virtual_text diagnostic line side-by-side with the code line
-            -- Often does not fit on the screen. Floating window with diagnostics works better
-            virtual_text = false,
-            -- or
-            virtual_lines = false,
-            underline = true,
-            update_in_insert = true,
-            severity_sort = true,
-            signs = {
-              text = {
-                -- '', '', '', '' -- alternative icons
-                [vim.diagnostic.severity.ERROR] = " ",
-                [vim.diagnostic.severity.WARN] = " ",
-                [vim.diagnostic.severity.INFO] = " ",
-                [vim.diagnostic.severity.HINT] = "󰠠 ",
-              },
-              linehl = {
-                [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-                [vim.diagnostic.severity.WARN] = "WarningMsg",
-              },
-              -- numhl = {
-              --   [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-              --   [vim.diagnostic.severity.WARN] = "WarningMsg",
-              -- },
-            },
-          })
-
           local client = vim.lsp.get_client_by_id(args.data.client_id)
 
           -- Enable CodeLens only for servers which support it
@@ -65,7 +66,9 @@ return {
           -- current basic setup conflicts with other hover Windows
           -- for example `S-k` show docs hover is closed and diagnostic hover reappears
           -- check lspsaga for better hovers
+          vim.api.nvim_clear_autocmds({ group = diagnostics_group, buffer = args.buf })
           vim.api.nvim_create_autocmd("CursorHold", {
+            group = diagnostics_group,
             buffer = args.buf,
             callback = function()
               local opts = {
