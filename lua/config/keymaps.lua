@@ -14,17 +14,7 @@ keymap("n", "<leader>q", "<CMD>quit<CR>", { desc = "Quit buffer" })
 -- jj is disable for yazi and lazygit filetypes in autocmds.lua
 keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
--- https://github.com/jdhao/nvim-config/blob/a872921029c295672748e056f15fdaa1832dce76/lua/mappings.lua#L89-L98
-keymap("n", "<leader>so", function()
-  vim.cmd([[
-      update $MYVIMRC
-      source $MYVIMRC
-    ]])
-  vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
-end, {
-  silent = true,
-  desc = "reload init.lua",
-})
+keymap("n", "<leader>so", "<CMD>restart<CR>", { desc = "Restart Neovim" })
 
 -- Remap for dealing with visual line wraps
 -- https://vim.fandom.com/wiki/Move_cursor_by_display_lines_when_wrapping
