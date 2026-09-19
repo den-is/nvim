@@ -30,7 +30,7 @@ return {
         json = { "prettier" },
         -- json5 = { "prettier" },
         lua = { "stylua" },
-        python = { "black", "ruff_organize_imports" },
+        python = { "ruff_organize_imports", "black" },
         -- Go formatting is done using gopls
         -- https://github.com/mvdan/gofumpt?tab=readme-ov-file#installation
         -- https://github.com/stevearc/conform.nvim/issues/387#issuecomment-2084732371
