@@ -9,8 +9,8 @@ return {
     conform.setup({
 
       -- Use `:ConformInfo` to see the location of the log file.
-      -- log_level = vim.log.levels.TRACE,
-      log_level = vim.log.levels.DEBUG,
+      -- log_level = vim.log.levels.DEBUG,
+      log_level = vim.log.levels.WARN,
 
       format_on_save = {
         -- These options will be passed to conform.format()
