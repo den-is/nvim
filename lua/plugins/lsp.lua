@@ -369,16 +369,6 @@ return {
         -- },
         lua_ls = {
           settings = {
-            diagnostics = {
-              -- make the language server recognize "vim" global
-              globals = { "vim" },
-              -- disable warnings for LuaLS globally
-              -- or use annotations `---@diagnostic disable-next-line: missing-fields` or `---@diagnostic disable: missing-fields`
-              --
-              -- disable = { "missing-parameters", "missing-fields" },
-            },
-            telemetry = { enable = false },
-            hint = { enable = true },
             Lua = {
               workspace = {
                 checkThirdParty = false,
@@ -387,8 +377,11 @@ return {
                 callSnippet = "Replace",
               },
               diagnostics = {
+                -- make the language server recognize "vim" global
+                globals = { "vim" },
                 disable = { "missing-fields" },
               },
+              telemetry = { enable = false },
               codeLens = {
                 enable = false,
               },
