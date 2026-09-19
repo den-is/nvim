@@ -1,25 +1,28 @@
 -- https://github.com/rmagatti/auto-session
 return {
   "rmagatti/auto-session",
-  lazy = false,
-  dependencies = {
-    "nvim-telescope/telescope.nvim", -- Only needed if you want to use session lens
+  cmd = "AutoSession",
+  keys = {
+    { "<leader>wr", "<cmd>AutoSession restore<CR>", desc = "Restore session for cwd" },
+    { "<leader>ws", "<cmd>AutoSession save<CR>", desc = "Save session to auto-sessions data dir" },
+    { "<leader>wf", "<cmd>AutoSession search<CR>", desc = "Session search" },
+    { "<leader>wa", "<cmd>AutoSession toggle<CR>", desc = "Toggle session autosave" },
   },
 
   config = function()
     local auto_session = require("auto-session")
     auto_session.setup({
-      enabled = false,
-      auto_restore_last_session = false,
+      enabled = true,
+      auto_save = false,
+      auto_restore = false,
       suppressed_dirs = { "~/", "~/Downloads", "~/Desktop", "~/Documents" },
-      bypass_save_filetypes = { "alpha", "dashboard" },
+      bypass_save_filetypes = { "alpha", "dashboard", "snacks_dashboard" },
+      legacy_cmds = false,
+      session_lens = {
+        picker = "snacks",
+      },
       -- root_dir = vim.fn.stdpath "data" .. "/sessions/",
       -- log_level = 'debug',
     })
-
-    vim.keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
-    vim.keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session to auto-sessions data dir" })
-    vim.keymap.set("n", "<leader>wf", "<cmd>SessionSearch<CR>", { desc = "Session search" })
-    vim.keymap.set("n", "<leader>wa", "<cmd>SessionToggleAutoSave<CR>", { desc = "Toggle session autosave" })
   end,
 }
