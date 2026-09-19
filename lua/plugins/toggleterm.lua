@@ -22,7 +22,7 @@ return {
       start_in_insert = true,
       direction = "horizontal", -- 'vertical' | 'horizontal' | 'tab' | 'float',
       shade_terminals = true,
-      shading_factor = "-10", -- the percentage by which to lighten dark terminal background, default: -30
+      shading_factor = -10, -- the percentage by which to lighten dark terminal background, default: -30
       persist_size = true,
       -- size can be a number or function which is passed the current terminal
       size = function(term)
