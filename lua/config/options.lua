@@ -48,13 +48,10 @@ vim.opt.listchars = {
   precedes = "<",
 }
 -- vim.opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:"
--- Enable break indent. Every wrapped line will continue visually indented
--- (same amount of space as the beginning of that line)
-vim.opt.breakindent = true
 vim.opt.ruler = true
 
 -- CMD ------------------------------------------------------------------------
-vim.opt.history = 500
+vim.opt.history = 10000 -- default
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 vim.opt.showcmd = true -- Show command or size of selected text in Visual mode
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
@@ -107,6 +104,8 @@ vim.opt.softtabstop = 2
 vim.opt.autoindent = true
 vim.opt.wrap = false
 vim.opt.linebreak = true
+-- Enable break indent. Every wrapped line will continue visually indented
+-- (same amount of space as the beginning of that line)
 vim.opt.breakindent = true
 vim.opt.textwidth = 0
 vim.opt.wrapmargin = 0
