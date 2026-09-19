@@ -106,7 +106,7 @@ return {
           end, opts)
 
           opts.desc = "Restart LSP"
-          keymap.set("n", "<leader>rs", "<CMD>LspRestart<CR>", opts)
+          keymap.set("n", "<leader>rs", "<CMD>lsp restart<CR>", opts)
 
           -- gd and gD - are default keys in neovim
           -- https://neovim.io/doc/user/pattern.html#gd
