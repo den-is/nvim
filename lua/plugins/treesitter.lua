@@ -8,8 +8,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
-    -- lazy = false,
+    lazy = false,
     branch = "main",
     version = false,
     build = ":TSUpdate",
@@ -114,10 +113,26 @@ return {
 
           local lang = vim.treesitter.language.get_lang(ft) or ft
           local buf = ev.buf
-          pcall(vim.treesitter.start, buf, lang)
+          local started = pcall(vim.treesitter.start, buf, lang)
+          if not started then
+            return
+          end
 
-          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          local function has_query(query)
+            local ok, result = pcall(vim.treesitter.query.get, lang, query)
+            return ok and result ~= nil
+          end
+
+          if has_query("indents") then
+            vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+
+          if has_query("folds") then
+            for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+              vim.wo[win].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+              vim.wo[win].foldmethod = "expr"
+            end
+          end
         end,
       })
     end,
