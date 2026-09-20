@@ -75,7 +75,7 @@ return {
                 focusable = false,
                 close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
                 -- border = "rounded", -- controlled by global vim.o.winborder = "rounded"
-                source = "always",
+                source = true,
                 prefix = " ",
                 header = "",
                 -- scope = "cursor",
@@ -96,8 +96,34 @@ return {
           -- https://neovim.io/doc/user/diagnostic.html#_defaults
           -- <C-w>d - default key
           -- useless since we always show diagnostics on hover (check above)
-          opts.desc = "Show line diagnostics"
-          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+          opts.desc = "Show and focus line diagnostics"
+          keymap.set("n", "<leader>d", function()
+            local _, winid = vim.diagnostic.open_float({
+              focusable = true,
+              focus_id = "diagnostic-copy",
+              scope = "line",
+              source = true,
+              prefix = " ", -- As by Opus it is possible to add non-selectable ghost text, but requires too "much" code
+              header = "",
+              wrap = true,
+              max_width = math.min(100, math.floor(vim.o.columns * 0.6)),
+              max_height = math.floor(vim.o.lines * 0.4),
+              title = " Diagnostics ",
+              title_pos = "left", -- "left" | "center" | "right"
+            })
+            if not winid then
+              return
+            end
+            vim.api.nvim_set_current_win(winid)
+            local wo = vim.wo[winid]
+            wo.number = false
+            wo.relativenumber = false
+            wo.signcolumn = "no"
+            wo.foldcolumn = "0"
+            wo.statuscolumn = ""
+            wo.linebreak = true -- wrap at word boundaries instead of mid-word
+            wo.breakindent = true -- keep wrapped lines aligned with the first line
+          end, opts)
 
           opts.desc = "Format code"
           keymap.set({ "n", "x" }, "<leader>gf", vim.lsp.buf.format, opts)
