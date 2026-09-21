@@ -17,6 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
 
+  concurrency = 4,
+
   spec = {
     -- importing our plugins defined in "plugins" directory
     { import = "plugins" },
@@ -31,6 +33,7 @@ require("lazy").setup({
   checker = {
     enabled = true,
     notify = false,
+    concurrency = 4,
   },
   change_detection = {
     enabled = false,
