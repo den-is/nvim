@@ -222,7 +222,7 @@ return {
             end
           },
           { icon = " ", key = "b", desc = "File browser", action = function() require("yazi").yazi(nil, vim.fn.getcwd()) end},
-          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy check", enabled = package.loaded.lazy },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           -- stylua: ignore end
         },
