@@ -1,4 +1,5 @@
 lazy-lock.json
+/local.lua
 *.bkp
 *.log
 tmp

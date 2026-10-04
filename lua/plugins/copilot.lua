@@ -4,10 +4,12 @@
 -- shortcuts alternative https://github.com/orgs/community/discussions/45434
 --
 -- alternative to review https://github.com/yetone/avante.nvim
+local local_settings = require("utils.load_local")
+
 return {
   {
     "zbirenbaum/copilot.lua",
-    enabled = vim.g.ai_enabled,
+    enabled = local_settings.ai_enabled,
     cmd = "Copilot",
     event = "InsertEnter",
     build = ":Copilot auth",
@@ -71,7 +73,7 @@ return {
   {
     -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
     "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = vim.g.ai_enabled,
+    enabled = local_settings.ai_enabled,
     branch = "main",
     lazy = true,
     event = "VeryLazy",
