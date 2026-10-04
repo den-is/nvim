@@ -1,0 +1,20 @@
+-- Copy to local.lua in the config root. local.lua is ignored by Git.
+-- Omitted settings use the defaults from lua/utils/load_local.lua.
+return {
+  -- Enable Copilot and Copilot Chat on this machine. Default: false.
+  ai_enabled = true,
+
+  -- Skip setup, activation, and Mason installation for these LSP servers.
+  disabled_lsp = {
+    gopls = true,
+    ty = true,
+    jqls = true,
+  },
+
+  -- Native Lazy specs override shared plugins or add machine-specific ones.
+  plugins = {
+    { "ray-x/go.nvim", enabled = false },
+    { "fredrikaverpil/godoc.nvim", enabled = false },
+    { "mbbill/undotree", enabled = true },
+  },
+}
