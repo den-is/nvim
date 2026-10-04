@@ -8,6 +8,8 @@
 --
 -- :LspInfo - view configured LSP for current buffer
 -- :h lspconfig-all
+local local_settings = require("utils.load_local")
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -491,6 +493,13 @@ return {
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
+
+      -- disable servers that are disabled in local_settings.disabled_lsp
+      for server, disabled in pairs(local_settings.disabled_lsp) do
+        if disabled then
+          servers[server] = nil
+        end
+      end
 
       for server, server_opts in pairs(servers) do
         server_opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_opts.capabilities or {})
