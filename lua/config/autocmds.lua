@@ -64,25 +64,6 @@ api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-api.nvim_create_autocmd("FileType", {
-  desc = "Fix Terraform and HCL comment string",
-  group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
-  pattern = { "hcl", "terraform", "terraform-vars" },
-  callback = function(ev)
-    vim.bo[ev.buf].commentstring = "# %s"
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Set pgpass comment string",
-  group = vim.api.nvim_create_augroup("PgpassCommentString", { clear = true }),
-  pattern = "pgpass",
-  callback = function(ev)
-    vim.bo[ev.buf].commentstring = "# %s"
-    vim.bo[ev.buf].comments = "b:#"
-  end,
-})
-
 api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight on Yank",
   callback = function()
